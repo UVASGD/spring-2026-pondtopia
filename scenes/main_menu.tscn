@@ -1,0 +1,76 @@
+[gd_scene load_steps=3 format=3 uid="uid://c1dbjgt7bmt4v"]
+
+[ext_resource type="Script" uid="uid://dxtynud8inqjs" path="res://scripts/main_menu.gd" id="1_ekxnf"]
+[ext_resource type="Texture2D" uid="uid://p614qa2bt4ch" path="res://assets/main_menu_frog.png" id="1_l6cm7"]
+
+[node name="MainMenu" type="Node"]
+script = ExtResource("1_ekxnf")
+
+[node name="Main" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="TextureRect" parent="Main"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Main"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Title" type="Label" parent="Main/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.129412, 0.317647, 0.270588, 1)
+theme_override_font_sizes/font_size = 64
+text = "Pondtopia"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Main/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+theme_override_constants/separation = 100
+
+[node name="ButtonsContainer" type="VBoxContainer" parent="Main/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 25
+
+[node name="New Game" type="Button" parent="Main/VBoxContainer/HBoxContainer/ButtonsContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "New City"
+
+[node name="Continue" type="Button" parent="Main/VBoxContainer/HBoxContainer/ButtonsContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Continue"
+
+[node name="Options" type="Button" parent="Main/VBoxContainer/HBoxContainer/ButtonsContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Options"
+
+[node name="Quit" type="Button" parent="Main/VBoxContainer/HBoxContainer/ButtonsContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Quit"
+
+[node name="TextureRect" type="TextureRect" parent="Main/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+texture = ExtResource("1_l6cm7")
+
+[connection signal="pressed" from="Main/VBoxContainer/HBoxContainer/ButtonsContainer/New Game" to="." method="_on_new_game_pressed"]
+[connection signal="pressed" from="Main/VBoxContainer/HBoxContainer/ButtonsContainer/Quit" to="." method="_on_quit_pressed"]
