@@ -1,69 +1,93 @@
-[gd_scene load_steps=2 format=3 uid="uid://dd71ltua8vpqj"]
+[gd_scene format=3 uid="uid://dd71ltua8vpqj"]
 
+[ext_resource type="Texture2D" uid="uid://p614qa2bt4ch" path="res://assets/main_menu_frog.png" id="1_gqxyi"]
 [ext_resource type="Script" uid="uid://bj5ye56nvni8h" path="res://shell_scenes/scene_switch_button.gd" id="1_u5tdt"]
 
-[node name="MainMenu" type="Control"]
+[node name="MainMenu" type="Control" unique_id=1283535406]
 layout_mode = 3
 anchors_preset = 0
 
-[node name="Label" type="Label" parent="."]
-layout_mode = 0
-offset_left = 1152.0
-offset_top = 648.0
-offset_right = 1546.0
-offset_bottom = 671.0
-
-[node name="PlayButton" type="Button" parent="."]
+[node name="Main" type="Control" parent="." unique_id=666527932]
 layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
+anchors_preset = 15
+anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 386.0
-offset_top = 320.0
-offset_right = 756.0
-offset_bottom = 395.0
+offset_left = 590.0
+offset_top = 290.0
+offset_right = 590.0
+offset_bottom = 290.0
 grow_horizontal = 2
-grow_vertical = 0
-text = "Play"
-script = ExtResource("1_u5tdt")
-switch_to = "game_shell_scene"
-allow_quick_key = true
+grow_vertical = 2
 
-[node name="CreditsButton" type="Button" parent="."]
-layout_mode = 0
-offset_left = 388.0
-offset_top = 519.0
-offset_right = 758.0
-offset_bottom = 569.0
+[node name="Background" type="TextureRect" parent="Main" unique_id=1273949055]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Main" unique_id=1322681973]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Title" type="Label" parent="Main/VBoxContainer" unique_id=1540126012]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.129412, 0.317647, 0.270588, 1)
+theme_override_font_sizes/font_size = 64
+text = "Pondtopia"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Main/VBoxContainer" unique_id=245117347]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+theme_override_constants/separation = 100
+
+[node name="ButtonsContainer" type="VBoxContainer" parent="Main/VBoxContainer/HBoxContainer" unique_id=380992561]
+layout_mode = 2
+theme_override_constants/separation = 25
+
+[node name="New Game" type="Button" parent="Main/VBoxContainer/HBoxContainer/ButtonsContainer" unique_id=2099464037]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "New City"
+script = ExtResource("1_u5tdt")
+switch_to = "game"
+
+[node name="Continue" type="Button" parent="Main/VBoxContainer/HBoxContainer/ButtonsContainer" unique_id=1278931718]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "  Continue  "
+script = ExtResource("1_u5tdt")
+switch_to = "game"
+
+[node name="Options" type="Button" parent="Main/VBoxContainer/HBoxContainer/ButtonsContainer" unique_id=902455310]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Options"
+script = ExtResource("1_u5tdt")
+switch_to = "options"
+
+[node name="Credits" type="Button" parent="Main/VBoxContainer/HBoxContainer/ButtonsContainer" unique_id=2009996100]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
 text = "Credits"
 script = ExtResource("1_u5tdt")
 switch_to = "credits"
 
-[node name="InstructionsButton" type="Button" parent="."]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = 386.0
-offset_top = 420.0
-offset_right = 756.0
-offset_bottom = 470.0
-grow_horizontal = 2
-grow_vertical = 0
-text = "Instructions"
+[node name="Quit" type="Button" parent="Main/VBoxContainer/HBoxContainer/ButtonsContainer" unique_id=1045350316]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Quit"
 script = ExtResource("1_u5tdt")
-switch_to = "instructions"
+switch_to = "quit"
 
-[node name="TEMP" type="Label" parent="."]
-layout_mode = 0
-offset_left = 482.0
-offset_top = 164.0
-offset_right = 646.0
-offset_bottom = 213.0
-text = "Game Title
-Main Menu"
-horizontal_alignment = 1
+[node name="TextureRect" type="TextureRect" parent="Main/VBoxContainer/HBoxContainer" unique_id=1603106351]
+layout_mode = 2
+size_flags_horizontal = 10
+texture = ExtResource("1_gqxyi")

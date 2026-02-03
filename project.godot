@@ -26,6 +26,12 @@ GameManager="*uid://bkrk63111d2e5"
 Utility="*uid://dw2dangfus3bu"
 Debug="*uid://brlf44p7my8xb"
 Global="*uid://drjo45iitybu0"
+ShellSceneManager="*uid://cikmhh7uipt2u"
+Ref="*uid://ciyveyuo2ihr0"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/reference_book/plugin.cfg")
 
 [gui]
 

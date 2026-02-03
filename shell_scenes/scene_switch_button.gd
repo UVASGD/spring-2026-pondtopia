@@ -29,6 +29,10 @@ func _process(_delta):
 		_on_pressed()
 
 func _on_pressed() :
+	if switch_to == "quit" :
+		Input.action_press("DEBUG_QUIT")
+		return
+	
 	if just_close_overlay_panel :
 		# pressed in a shell scene w/o overlay panel -> does nothing
 		# pressed in a shell scene w/ overlay panel -> closes the overlay panel

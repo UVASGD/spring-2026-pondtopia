@@ -18,13 +18,11 @@ class_name _Reference
 
 @export_category("Scenes")
 @export_group("Shell Scenes")
-@export var startup : PackedScene
-@export var main_menu : PackedScene
-@export var instructions : PackedScene
-@export var credits : PackedScene
-@export var loading : PackedScene
-@export var game_shell_scene : PackedScene
-@export var victory : PackedScene
+var credits : PackedScene = preload("uid://bhuom4ivjp0be")
+var game : PackedScene = preload("uid://cyhkbbhd03a2w")
+var main_menu : PackedScene = preload("uid://dd71ltua8vpqj")
+var options : PackedScene = preload("uid://cltaghkxnswjy")
+var startup : PackedScene = preload("uid://d176ir76ayfrc")
 
 @export_group("Prefabs")
 
