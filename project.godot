@@ -19,6 +19,18 @@ run/main_scene="uid://c1dbjgt7bmt4v"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+AudioManager="*uid://dllbx7awtn42f"
+Debug="*uid://brlf44p7my8xb"
+GameInfo="*uid://q515awnoredo"
+GameManager="*uid://bkrk63111d2e5"
+Global="*uid://drjo45iitybu0"
+ShellSceneManager="*uid://cikmhh7uipt2u"
+Utility="*uid://dw2dangfus3bu"
+Ref="*uid://ciyveyuo2ihr0"
+HexManager="*uid://c8k4l0okofhqd"
+
 [gui]
 
 theme/default_font_multichannel_signed_distance_field=true
@@ -68,4 +80,3 @@ quit={
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
-environment/defaults/default_clear_color=Color(0.729412, 0.823529, 0.647059, 1)
