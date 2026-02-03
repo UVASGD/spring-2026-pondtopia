@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bak838mxakk2y"]
 
 [ext_resource type="Script" uid="uid://b8r2x7fjv62sf" path="res://hexes/migrated/migrated_hex.gd" id="1_jjyrr"]
-[ext_resource type="Texture2D" uid="uid://b1fy6lrw0qevl" path="res://assets/sprites/hexes/hex_tilemap.png" id="2_u7edc"]
+[ext_resource type="Texture2D" uid="uid://b1fy6lrw0qevl" path="res://z_assets/sprites/hexes/hex_tilemap.png" id="2_u7edc"]
 
 [node name="MigratedHex" type="Node2D" unique_id=1869561470]
 script = ExtResource("1_jjyrr")
@@ -50,6 +50,7 @@ position = Vector2(-1.5, 0.866)
 position = Vector2(-1.5, -0.866)
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=2031391160]
+rotation = 0.5235988
 texture = ExtResource("2_u7edc")
 hframes = 10
 vframes = 10

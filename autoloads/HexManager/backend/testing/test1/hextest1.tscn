@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://c8n0f11j0251n"]
+
+[ext_resource type="Script" uid="uid://28usua7e6pi8" path="res://autoloads/HexManager/backend/testing/test1/hextest1.gd" id="1_nvwlj"]
+
+[node name="Hextest1" type="Node2D" unique_id=1731252114]
+script = ExtResource("1_nvwlj")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1080621824]
+
+[node name="Label" type="Label" parent="." unique_id=755266807]
+offset_left = -297.0
+offset_top = -307.0
+offset_right = 276.0
+offset_bottom = -284.0
+text = "Run this scene to prove that grid_to_real() and real_to_grid_nearest() work!"

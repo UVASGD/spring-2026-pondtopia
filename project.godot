@@ -34,10 +34,6 @@ GameInfo="*uid://q515awnoredo"
 
 window/stretch/mode="canvas_items"
 
-[editor_plugins]
-
-enabled=PackedStringArray("res://addons/reference_book/plugin.cfg")
-
 [gui]
 
 theme/default_font_multichannel_signed_distance_field=true

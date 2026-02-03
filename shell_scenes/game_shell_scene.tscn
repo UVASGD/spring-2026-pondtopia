@@ -1,13 +1,13 @@
 [gd_scene format=3 uid="uid://cyhkbbhd03a2w"]
 
 [ext_resource type="Script" uid="uid://bj5ye56nvni8h" path="res://shell_scenes/scene_switch_button.gd" id="1_txtef"]
-[ext_resource type="Texture2D" uid="uid://bd3dx0uk1ld84" path="res://assets/sprites/ui/bar_under.png" id="2_ncqdm"]
-[ext_resource type="Texture2D" uid="uid://dej4gdp3m2iub" path="res://assets/sprites/ui/happy_bar_over.png" id="3_wco21"]
-[ext_resource type="Texture2D" uid="uid://kpm0jca7rlrl" path="res://assets/sprites/ui/happy_progress.png" id="4_s1oyo"]
-[ext_resource type="Texture2D" uid="uid://dmqvcex57r3dc" path="res://assets/sprites/ui/energy_bar_over.png" id="5_s5eym"]
-[ext_resource type="Texture2D" uid="uid://b2jv1g64sbwr" path="res://assets/sprites/ui/energy_progress.png" id="6_gmmaf"]
-[ext_resource type="Texture2D" uid="uid://dk472mh4cpvpb" path="res://assets/sprites/ui/build_hammer.png" id="7_w5jcl"]
-[ext_resource type="Texture2D" uid="uid://kyqr8msqgvk7" path="res://assets/sprites/ui/build_hammer_pressed.png" id="8_xywm7"]
+[ext_resource type="Texture2D" uid="uid://bd3dx0uk1ld84" path="res://z_assets/sprites/ui/bar_under.png" id="2_ncqdm"]
+[ext_resource type="Texture2D" uid="uid://dej4gdp3m2iub" path="res://z_assets/sprites/ui/happy_bar_over.png" id="3_wco21"]
+[ext_resource type="Texture2D" uid="uid://kpm0jca7rlrl" path="res://z_assets/sprites/ui/happy_progress.png" id="4_s1oyo"]
+[ext_resource type="Texture2D" uid="uid://dmqvcex57r3dc" path="res://z_assets/sprites/ui/energy_bar_over.png" id="5_s5eym"]
+[ext_resource type="Texture2D" uid="uid://b2jv1g64sbwr" path="res://z_assets/sprites/ui/energy_progress.png" id="6_gmmaf"]
+[ext_resource type="Texture2D" uid="uid://dk472mh4cpvpb" path="res://z_assets/sprites/ui/build_hammer.png" id="7_w5jcl"]
+[ext_resource type="Texture2D" uid="uid://kyqr8msqgvk7" path="res://z_assets/sprites/ui/build_hammer_pressed.png" id="8_xywm7"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o1dak"]
 bg_color = Color(0.282353, 0.705882, 0.227451, 1)

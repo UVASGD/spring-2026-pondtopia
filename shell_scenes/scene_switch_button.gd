@@ -8,6 +8,7 @@ extends Button
 ##  - Close overlay panel
 ##  - Close overlay panel when switching shell scenes
 ##  - Simulate button press with keyboard input
+##  - Some special stuff if you give it the right switch_to word
 
 ## When true, pressing the button will close the current overlay panel and do nothing else (it will ignore all other export variables).
 @export var just_close_overlay_panel : bool
