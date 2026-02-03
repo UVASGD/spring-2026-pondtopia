@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dd71ltua8vpqj"]
 
 [ext_resource type="Texture2D" uid="uid://p614qa2bt4ch" path="res://z_assets/sprites/main_menu/main_menu_frog.png" id="1_gqxyi"]
-[ext_resource type="Script" uid="uid://bj5ye56nvni8h" path="res://shell_scenes/scene_switch_button.gd" id="1_u5tdt"]
+[ext_resource type="Script" uid="uid://bj5ye56nvni8h" path="res://shell_scenes/button_general.gd" id="1_u5tdt"]
 
 [node name="MainMenu" type="Control" unique_id=1283535406]
 layout_mode = 3
@@ -41,6 +41,11 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 40
 text = "New City"
 script = ExtResource("1_u5tdt")
+emit_signal_ = true
+switch_scene = true
+allow_quick_key = true
+signal_to_emit = "start_game_pressed"
+emit_order = 1
 switch_to = "game"
 
 [node name="Continue" type="Button" parent="VBoxContainer/HBoxContainer/ButtonsContainer" unique_id=1278931718]
@@ -48,6 +53,10 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 40
 text = "  Continue  "
 script = ExtResource("1_u5tdt")
+emit_signal_ = true
+switch_scene = true
+signal_to_emit = "start_game_pressed"
+emit_order = 1
 switch_to = "game"
 
 [node name="Options" type="Button" parent="VBoxContainer/HBoxContainer/ButtonsContainer" unique_id=902455310]
@@ -55,6 +64,7 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 40
 text = "Options"
 script = ExtResource("1_u5tdt")
+switch_scene = true
 switch_to = "options"
 
 [node name="Credits" type="Button" parent="VBoxContainer/HBoxContainer/ButtonsContainer" unique_id=2009996100]
@@ -62,6 +72,7 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 40
 text = "Credits"
 script = ExtResource("1_u5tdt")
+switch_scene = true
 switch_to = "credits"
 
 [node name="Quit" type="Button" parent="VBoxContainer/HBoxContainer/ButtonsContainer" unique_id=1045350316]
@@ -69,9 +80,13 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 40
 text = "Quit"
 script = ExtResource("1_u5tdt")
-switch_to = "quit"
+emit_signal_ = true
+signal_to_emit = "quit_pressed"
 
 [node name="TextureRect" type="TextureRect" parent="VBoxContainer/HBoxContainer" unique_id=1603106351]
 layout_mode = 2
 size_flags_horizontal = 10
 texture = ExtResource("1_gqxyi")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1719388801]
+position = Vector2(2, 4)

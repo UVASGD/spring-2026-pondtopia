@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bthyueckt3nn"]
 
-[ext_resource type="Script" uid="uid://bj5ye56nvni8h" path="res://shell_scenes/scene_switch_button.gd" id="1_mua0j"]
+[ext_resource type="Script" uid="uid://bj5ye56nvni8h" path="res://shell_scenes/button_general.gd" id="1_mua0j"]
 
 [node name="Victory" type="Control" unique_id=1102925550]
 layout_mode = 3
@@ -14,6 +14,7 @@ offset_right = 782.0
 offset_bottom = 486.0
 text = "Return to Main Menu"
 script = ExtResource("1_mua0j")
+switch_scene = true
 switch_to = "main_menu"
 allow_quick_key = true
 

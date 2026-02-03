@@ -18,7 +18,8 @@ func IS_DEBUG_OFF() -> bool :
 
 func _process(_delta):
 	# quit if DEBUG_QUIT key pressed - DEBUG
-	if IS_DEBUG_ON() && Input.is_action_pressed("DEBUG_QUIT") : get_tree().quit()
+	if IS_DEBUG_ON() && Input.is_action_pressed("DEBUG_QUIT") :
+		GameManager.quit_game()
 
 #region Signal Debug
 

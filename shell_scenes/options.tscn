@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cltaghkxnswjy"]
 
-[ext_resource type="Script" uid="uid://bj5ye56nvni8h" path="res://shell_scenes/scene_switch_button.gd" id="1_4nwng"]
+[ext_resource type="Script" uid="uid://bj5ye56nvni8h" path="res://shell_scenes/button_general.gd" id="1_4nwng"]
 
 [node name="Instructions" type="Control" unique_id=667572769]
 layout_mode = 3
@@ -14,6 +14,7 @@ offset_right = 747.0
 offset_bottom = 574.0
 text = "Back"
 script = ExtResource("1_4nwng")
+switch_scene = true
 switch_to = "main_menu"
 allow_quick_key = true
 

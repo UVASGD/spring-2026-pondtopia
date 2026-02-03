@@ -13,6 +13,9 @@ const SE = Vector2(1,-1)
 const SOUTH = Vector2(0,-1)
 const SW = Vector2(-1,0)
 
+## When set to false, all methods in region Modify will be returned immediately
+var _allow_modify_actions : bool = false
+
 ## Allows conversion between real and grid coordinates.
 var grid = HexGrid.new(75)
 
@@ -20,6 +23,10 @@ var grid = HexGrid.new(75)
 var hex_list : Array[BaseHex] = []
 ## Stores the hexes based on their grid coordinates for easy access by coords.
 var map : DoubleDict = DoubleDict.new()
+
+## Selected Hex
+var _is_hex_selected : bool = false
+var _selected_hex : BaseHex = null
 
 # Other
 var next_debug_id = 0
@@ -66,6 +73,8 @@ func get_associated_real_position(grid_coords: Vector2) -> Vector2:
 
 ## Creates a hex grid_coords. If there is already there, throws an error. 
 func create_hex(grid_coords: Vector2i, hex_scene : PackedScene, type: BaseHex.CREATE_TYPE = BaseHex.CREATE_TYPE.INSTANT) -> BaseHex:
+	if not _allow_modify_actions :
+		return null
 	if map.has_entryv(grid_coords) :
 		push_error("Tried to create a new hex at " + str(grid_coords) + " but a hex was already there.")
 		return
@@ -89,6 +98,8 @@ func create_hex_(x:int,y:int, hex_scene : PackedScene, type: BaseHex.CREATE_TYPE
 
 ## Moves a hex from its current position to new_grid_coords.
 func move_hex(hex: BaseHex, new_grid_coords: Vector2i, type: BaseHex.MOVE_TYPE = BaseHex.MOVE_TYPE.INSTANT):
+	if not _allow_modify_actions :
+		return null
 	if map.has_entryv(new_grid_coords) :
 		push_error("Tried to move a hex to " + str(new_grid_coords) + " but a hex was already there.")
 		return
@@ -112,6 +123,8 @@ func move_hex_from_(old_x:int,old_y:int,new_x:int,new_y:int,type: BaseHex.MOVE_T
 
 ## Removes and deletes the hex.
 func remove_hex(hex: BaseHex, type: BaseHex.REMOVE_TYPE = BaseHex.REMOVE_TYPE.INSTANT):
+	if not _allow_modify_actions :
+		return null
 	_unregister_hex(hex)
 	hex.on_removed_from_map(type)
 
@@ -213,6 +226,37 @@ func get_contiguous_conditional(center: Vector2i, condition: Callable, check_cen
 					check_queue.append(h)
 					acknowledged.append(h)
 	return output
+
+#endregion
+
+#region Select
+
+func _input(event):
+	if event is InputEventMouseButton :
+		var coords : Vector2i = grid.real_to_grid_nearestv(event.position)
+		if is_hex_at(coords) :
+			select_hex(get_hex(coords))
+		## TODO
+		## TODO
+		## TODO
+
+func select_hex(hex : BaseHex) :
+	_is_hex_selected = true
+	_selected_hex = hex
+	hex.is_selected = true
+	hex.on_selected()
+
+func deselect_selected_hex() :
+	_selected_hex.is_selected = false
+	_selected_hex.on_deselected()
+	_is_hex_selected = false
+	_selected_hex = null
+
+func is_hex_selected() -> bool :
+	return _is_hex_selected
+
+func get_selected_hex() -> BaseHex :
+	return _selected_hex
 
 #endregion
 

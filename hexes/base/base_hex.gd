@@ -34,12 +34,24 @@ var debug_id
 
 ## The coordinates of the spot on the map that this hex holds. The hex may not necessarily be at the associated real position.
 var grid_coords : Vector2i
+## Whether this hex is currently selected. Automatically set by HexManager.
+var is_selected : bool = false
 
 ## Intended for overriding!
 ## This function is automatically called every HexManager.tick_duration seconds.
 ## We could break tick into more calls in HexManager (eg generate_resources(), resolve_damage(), act_on_neighbors()) for more consistent behavior.
 func tick() :
 	tick_base()
+
+## Intended for overriding!
+## This function is automatically called when this hex is selected.
+func on_selected() :
+	on_selected_base()
+
+## Intended for overriding!
+## This function is automatically called when this hex is deselected.
+func on_deselected() :
+	on_deselected_base()
 
 ## Intended for overriding!
 ## This function is automatically called when the hex is created and added to the map.
@@ -62,6 +74,12 @@ func on_removed_from_map(_type: REMOVE_TYPE) :
 func tick_base() :
 	pass
 
+func on_selected_base() :
+	pass
+
+func on_deselected_base() :
+	pass
+
 func on_added_to_map_base(_type: CREATE_TYPE) :
 	match _type :
 		CREATE_TYPE.INSTANT :
@@ -71,7 +89,7 @@ func on_added_to_map_base(_type: CREATE_TYPE) :
 			position = real_pos()
 			#fade in
 			var tween = create_tween()
-			tween.tween_property(self, "modulate:a", 1, 0.8)
+			tween.tween_property(self, "modulate:a", 1, 1.2)
 		_ : #default, do same as instant
 			position = real_pos()
 

@@ -9,6 +9,10 @@ extends Node
 const tick_duration : float = 0.1 #in seconds
 var time_since_last_tick : float = 0
 
+func _ready() -> void:
+	SignalBus.quit_pressed.connect(quit_game)
+	SignalBus.skip_to_win_pressed.connect(end_game)
+	SignalBus.start_game_pressed.connect(start_game)
 
 func _physics_process(_delta: float) -> void:
 	tick(_delta)
@@ -20,10 +24,14 @@ func tick(_delta: float) :
 		HexManager.tick()
 
 func start_game() :
+	HexManager._allow_modify_actions = true
 	var size = 2
 	for coord in HexManager.get_coords_in_hexagon(size) :
 		HexManager.create_hex(coord, BaseHex.HEX_SCENES.MIGRATED, BaseHex.CREATE_TYPE.FADE_IN)
-		await get_tree().create_timer(0.05).timeout
 
 func end_game() :
 	HexManager.remove_all_hexes()
+	HexManager._allow_modify_actions = false
+
+func quit_game() :
+	get_tree().quit()
