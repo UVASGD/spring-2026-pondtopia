@@ -1,6 +1,6 @@
-[gd_scene load_steps=5 format=4 uid="uid://dktrw4sj86mkf"]
+[gd_scene format=4 uid="uid://dktrw4sj86mkf"]
 
-[ext_resource type="Texture2D" uid="uid://b1fy6lrw0qevl" path="res://assets/hex_tilemap.png" id="1_bw3vb"]
+[ext_resource type="Texture2D" uid="uid://b1fy6lrw0qevl" path="res://assets/sprites/hexes/hex_tilemap.png" id="1_bw3vb"]
 [ext_resource type="Script" uid="uid://cd3ocyguuf0uu" path="res://scripts/board_controller.gd" id="2_tx6nw"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tx6nw"]
@@ -19,7 +19,7 @@ tile_shape = 3
 tile_size = Vector2i(128, 128)
 sources/0 = SubResource("TileSetAtlasSource_tx6nw")
 
-[node name="Board" type="TileMapLayer"]
+[node name="Board" type="TileMapLayer" unique_id=301311637]
 tile_map_data = PackedByteArray("AAAAAAAAAAACAAAAAAABAAAAAAABAAAAAAAAAP//AAACAAAAAAABAP//AAACAAAAAAACAP//AAADAAAAAAACAP7/AAACAAAAAAACAAAAAAADAAAAAAACAAEAAAADAAAAAAADAAAAAAAAAAAAAAACAAIAAAACAAAAAAADAAIAAAACAAAAAAADAAEAAAAAAAAAAAAEAAIAAAAAAAAAAAAEAAEAAAAAAAAAAAAEAAAAAAACAAAAAAADAP//AAAAAAAAAAAFAAAAAAACAAAAAAAEAP//AAACAAAAAAABAAEAAAABAAAAAAAAAAEAAAABAAAAAAABAAIAAAABAAAAAAADAP7/AAACAAAAAAAEAP7/AAACAAAAAAABAP7/AAACAAAAAAA=")
 tile_set = SubResource("TileSet_id3w2")
 script = ExtResource("2_tx6nw")

@@ -12,7 +12,11 @@ const SE = Vector2(1,-1)
 const SOUTH = Vector2(0,-1)
 const SW = Vector2(-1,0)
 
-### BASE_ON_MOVE
+## Preloaded hex scenes (allows HexManager to create different hexes by loading a different scene)
+const HEX_SCENES : Dictionary = {
+	BASE = preload("res://hex_stuff/base_hex.tscn"),
+	MIGRATED = preload("res://hexes/migrated/migrated_hex.tscn")
+}
 
 ## Create/move/remove types (allows for different animations on create move and remove)
 enum CREATE_TYPE {
@@ -40,7 +44,6 @@ func tick() :
 ## Intended for overriding!
 ## This function is automatically called when the hex is created and added to the map.
 func on_added_to_map(_type: CREATE_TYPE) :
-	$Label.text = str(debug_id) #debug
 	on_added_to_map_base(_type)
 
 ## Intended for overriding!

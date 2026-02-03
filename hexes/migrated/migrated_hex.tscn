@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://bak838mxakk2y"]
+
+[ext_resource type="Script" uid="uid://b8r2x7fjv62sf" path="res://hexes/migrated/migrated_hex.gd" id="1_jjyrr"]
+[ext_resource type="Texture2D" uid="uid://b1fy6lrw0qevl" path="res://assets/sprites/hexes/hex_tilemap.png" id="2_u7edc"]
+
+[node name="MigratedHex" type="Node2D" unique_id=1869561470]
+script = ExtResource("1_jjyrr")
+
+[node name="HexagonMarkers" type="Node2D" parent="." unique_id=639948345]
+scale = Vector2(30, 30)
+
+[node name="Corners" type="Node2D" parent="HexagonMarkers" unique_id=780405811]
+
+[node name="NW" type="Marker2D" parent="HexagonMarkers/Corners" unique_id=989975811]
+position = Vector2(-1, -1.732)
+
+[node name="NE" type="Marker2D" parent="HexagonMarkers/Corners" unique_id=1685445418]
+position = Vector2(1, -1.732)
+
+[node name="East" type="Marker2D" parent="HexagonMarkers/Corners" unique_id=1286496623]
+position = Vector2(2, 0)
+
+[node name="SE" type="Marker2D" parent="HexagonMarkers/Corners" unique_id=1959738102]
+position = Vector2(1, 1.732)
+
+[node name="SW" type="Marker2D" parent="HexagonMarkers/Corners" unique_id=299643276]
+position = Vector2(-1, 1.732)
+
+[node name="West" type="Marker2D" parent="HexagonMarkers/Corners" unique_id=325134289]
+position = Vector2(-2, 0)
+
+[node name="EdgeMidpoints" type="Node2D" parent="HexagonMarkers" unique_id=211231160]
+
+[node name="North" type="Marker2D" parent="HexagonMarkers/EdgeMidpoints" unique_id=1901371932]
+position = Vector2(0, -1.732)
+
+[node name="NE" type="Marker2D" parent="HexagonMarkers/EdgeMidpoints" unique_id=2052928562]
+position = Vector2(1.5, -0.866)
+
+[node name="SE" type="Marker2D" parent="HexagonMarkers/EdgeMidpoints" unique_id=780349706]
+position = Vector2(1.5, 0.866)
+
+[node name="South" type="Marker2D" parent="HexagonMarkers/EdgeMidpoints" unique_id=1880606761]
+position = Vector2(0, 1.732)
+
+[node name="SW" type="Marker2D" parent="HexagonMarkers/EdgeMidpoints" unique_id=380709243]
+position = Vector2(-1.5, 0.866)
+
+[node name="NW" type="Marker2D" parent="HexagonMarkers/EdgeMidpoints" unique_id=227428277]
+position = Vector2(-1.5, -0.866)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2031391160]
+texture = ExtResource("2_u7edc")
+hframes = 10
+vframes = 10

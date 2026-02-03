@@ -33,6 +33,14 @@ func _on_pressed() :
 		Input.action_press("DEBUG_QUIT")
 		return
 	
+	if switch_to == "game" :
+		GameManager.start_game()
+		#dont return
+	
+	if switch_to == "reset" :
+		GameManager.end_game()
+		switch_to = "victory"
+	
 	if just_close_overlay_panel :
 		# pressed in a shell scene w/o overlay panel -> does nothing
 		# pressed in a shell scene w/ overlay panel -> closes the overlay panel

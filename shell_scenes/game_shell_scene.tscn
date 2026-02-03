@@ -1,27 +1,188 @@
 [gd_scene format=3 uid="uid://cyhkbbhd03a2w"]
 
 [ext_resource type="Script" uid="uid://bj5ye56nvni8h" path="res://shell_scenes/scene_switch_button.gd" id="1_txtef"]
+[ext_resource type="Texture2D" uid="uid://bd3dx0uk1ld84" path="res://assets/sprites/ui/bar_under.png" id="2_ncqdm"]
+[ext_resource type="Texture2D" uid="uid://dej4gdp3m2iub" path="res://assets/sprites/ui/happy_bar_over.png" id="3_wco21"]
+[ext_resource type="Texture2D" uid="uid://kpm0jca7rlrl" path="res://assets/sprites/ui/happy_progress.png" id="4_s1oyo"]
+[ext_resource type="Texture2D" uid="uid://dmqvcex57r3dc" path="res://assets/sprites/ui/energy_bar_over.png" id="5_s5eym"]
+[ext_resource type="Texture2D" uid="uid://b2jv1g64sbwr" path="res://assets/sprites/ui/energy_progress.png" id="6_gmmaf"]
+[ext_resource type="Texture2D" uid="uid://dk472mh4cpvpb" path="res://assets/sprites/ui/build_hammer.png" id="7_w5jcl"]
+[ext_resource type="Texture2D" uid="uid://kyqr8msqgvk7" path="res://assets/sprites/ui/build_hammer_pressed.png" id="8_xywm7"]
 
-[node name="GameShellScene" type="Control" unique_id=1315261677]
-layout_mode = 3
-anchors_preset = 0
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o1dak"]
+bg_color = Color(0.282353, 0.705882, 0.227451, 1)
 
-[node name="Button" type="Button" parent="." unique_id=1496227827]
-layout_mode = 0
-offset_left = 554.0
-offset_top = 276.0
-offset_right = 656.0
-offset_bottom = 307.0
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ndf5c"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_thr5o"]
+bg_color = Color(0.282353, 0.705882, 0.227451, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_k45jv"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bu0qf"]
+bg_color = Color(0.282566, 0.706913, 0.22648, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0n0x8"]
+
+[node name="GameShellScene" type="Node" unique_id=1945027471]
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=793561251]
+
+[node name="UI" type="Node" parent="." unique_id=466442117]
+
+[node name="DebugButton" type="Button" parent="UI" unique_id=1496227827]
+z_index = 100
+custom_minimum_size = Vector2(250, 80)
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -132.0
+offset_right = 313.0
+grow_vertical = 0
 text = "Press to win"
 script = ExtResource("1_txtef")
-switch_to = "victory"
+switch_to = "reset"
 allow_quick_key = true
 
-[node name="Label" type="Label" parent="." unique_id=1165408061]
-modulate = Color(0.839216, 0.388235, 0.85098, 1)
-layout_mode = 0
-offset_left = 533.0
-offset_top = 55.0
-offset_right = 657.0
-offset_bottom = 78.0
-text = "In Game UI Text"
+[node name="BuildingUI" type="Control" parent="UI" unique_id=1802666193]
+layout_mode = 3
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -313.0
+offset_top = -66.0
+offset_bottom = 66.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/BuildingUI" unique_id=564947610]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -121.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="BuildingContainer" type="VBoxContainer" parent="UI/BuildingUI/MarginContainer" unique_id=186569349]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+
+[node name="FlyButton" type="Button" parent="UI/BuildingUI/MarginContainer/BuildingContainer" unique_id=378834193]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+theme_override_styles/pressed = SubResource("StyleBoxFlat_o1dak")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ndf5c")
+toggle_mode = true
+text = "Fly | +🪰"
+metadata/id = "fly"
+
+[node name="FlowerButton" type="Button" parent="UI/BuildingUI/MarginContainer/BuildingContainer" unique_id=1242161716]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+theme_override_styles/pressed = SubResource("StyleBoxFlat_thr5o")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_k45jv")
+toggle_mode = true
+text = "Flower | +😄"
+metadata/id = "flower"
+
+[node name="LilypadButton" type="Button" parent="UI/BuildingUI/MarginContainer/BuildingContainer" unique_id=1378464808]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+theme_override_styles/pressed = SubResource("StyleBoxFlat_bu0qf")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_0n0x8")
+toggle_mode = true
+text = "Lilypad | +⚡"
+metadata/id = "lilypad"
+
+[node name="Bars" type="VBoxContainer" parent="UI" unique_id=1710765985]
+offset_right = 256.0
+offset_bottom = 132.0
+
+[node name="HappyBar" type="TextureProgressBar" parent="UI/Bars" unique_id=1698050509]
+layout_mode = 2
+max_value = 24.0
+value = 24.0
+texture_under = ExtResource("2_ncqdm")
+texture_over = ExtResource("3_wco21")
+texture_progress = ExtResource("4_s1oyo")
+texture_progress_offset = Vector2(77, 12)
+
+[node name="EnergyBar" type="TextureProgressBar" parent="UI/Bars" unique_id=1172527547]
+layout_mode = 2
+max_value = 24.0
+value = 24.0
+texture_under = ExtResource("2_ncqdm")
+texture_over = ExtResource("5_s5eym")
+texture_progress = ExtResource("6_gmmaf")
+texture_progress_offset = Vector2(77, 12)
+
+[node name="ResourceUI" type="HBoxContainer" parent="UI" unique_id=853063437]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -313.0
+offset_bottom = 132.0
+grow_horizontal = 0
+
+[node name="DaysCounter" type="Label" parent="UI/ResourceUI" unique_id=1762370653]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0.129412, 0.317647, 0.270588, 1)
+theme_override_font_sizes/font_size = 24
+text = "Days Remaining: 30"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/ResourceUI" unique_id=360727991]
+layout_mode = 2
+size_flags_horizontal = 10
+
+[node name="FrogCounter" type="Label" parent="UI/ResourceUI/VBoxContainer" unique_id=435688995]
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0, 0.686275, 0, 1)
+theme_override_font_sizes/font_size = 24
+text = "🐸: 0"
+
+[node name="FlyCounter" type="Label" parent="UI/ResourceUI/VBoxContainer" unique_id=489392848]
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 24
+text = "🪰: 0"
+
+[node name="BuildingPopup" type="Control" parent="UI" unique_id=115627467]
+layout_mode = 3
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="BuildButton" type="TextureButton" parent="UI/BuildingPopup" unique_id=1876302381]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -40.0
+grow_horizontal = 0
+grow_vertical = 0
+texture_normal = ExtResource("7_w5jcl")
+texture_pressed = ExtResource("8_xywm7")
+ignore_texture_size = true
+stretch_mode = 5

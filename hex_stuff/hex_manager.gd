@@ -14,7 +14,7 @@ const SOUTH = Vector2(0,-1)
 const SW = Vector2(-1,0)
 
 ## Allows conversion between real and grid coordinates.
-var grid = HexGrid.new(20)
+var grid = HexGrid.new(80)
 
 ## An array of all hexes on the map for easy iteration (as opposed to having to do difficult iteration through the map double dictionary).
 var hex_list : Array[BaseHex] = []
@@ -23,7 +23,6 @@ var map : DoubleDict = DoubleDict.new()
 
 # Other
 var next_debug_id = 0
-var base_hex : PackedScene = preload("res://hex_stuff/base_hex.tscn")
 
 ## Called by GameManager
 ## Could break tick into more calls (eg generate_resources(), resolve_damage(), act_on_neighbors()) for more consistent behavior.
@@ -66,13 +65,13 @@ func get_associated_real_position(grid_coords: Vector2) -> Vector2:
 #region Modify
 
 ## Creates a hex grid_coords. If there is already there, throws an error. 
-func create_hex(grid_coords: Vector2i, type: BaseHex.CREATE_TYPE = BaseHex.CREATE_TYPE.INSTANT) -> BaseHex:
+func create_hex(grid_coords: Vector2i, hex_scene : PackedScene, type: BaseHex.CREATE_TYPE = BaseHex.CREATE_TYPE.INSTANT) -> BaseHex:
 	if map.has_entryv(grid_coords) :
 		push_error("Tried to create a new hex at " + str(grid_coords) + " but a hex was already there.")
 		return
 	# instantiate
 	#TODO type options
-	var hex : BaseHex = base_hex.instantiate()
+	var hex : BaseHex = hex_scene.instantiate()
 	# set parent
 	add_child(hex)
 	# set debug id
@@ -85,8 +84,8 @@ func create_hex(grid_coords: Vector2i, type: BaseHex.CREATE_TYPE = BaseHex.CREAT
 	return hex
 
 ## See create_hex().
-func create_hex_(x:int,y:int, type: BaseHex.CREATE_TYPE) -> BaseHex:
-	return create_hex(Vector2i(x,y),type)
+func create_hex_(x:int,y:int, hex_scene : PackedScene, type: BaseHex.CREATE_TYPE) -> BaseHex:
+	return create_hex(Vector2i(x,y), hex_scene, type)
 
 ## Moves a hex from its current position to new_grid_coords.
 func move_hex(hex: BaseHex, new_grid_coords: Vector2i, type: BaseHex.MOVE_TYPE = BaseHex.MOVE_TYPE.INSTANT):
@@ -115,6 +114,10 @@ func move_hex_from_(old_x:int,old_y:int,new_x:int,new_y:int,type: BaseHex.MOVE_T
 func remove_hex(hex: BaseHex, type: BaseHex.REMOVE_TYPE = BaseHex.REMOVE_TYPE.INSTANT):
 	_unregister_hex(hex)
 	hex.on_removed_from_map(type)
+
+func remove_all_hexes(type: BaseHex.REMOVE_TYPE = BaseHex.REMOVE_TYPE.INSTANT) :
+	for i in hex_list.size() :
+		hex_list[0].remove_from_map(type)
 
 #endregion
 

@@ -18,3 +18,12 @@ func tick(_delta: float) :
 	if time_since_last_tick > tick_duration :
 		time_since_last_tick -= tick_duration
 		HexManager.tick()
+
+func start_game() :
+	var size = 2
+	for coord in HexManager.get_coords_in_hexagon(size) :
+		HexManager.create_hex(coord, BaseHex.HEX_SCENES.MIGRATED, BaseHex.CREATE_TYPE.FADE_IN)
+		await get_tree().create_timer(0.05).timeout
+
+func end_game() :
+	HexManager.remove_all_hexes()

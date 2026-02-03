@@ -1,23 +1,24 @@
-[gd_scene load_steps=2 format=3 uid="uid://d176ir76ayfrc"]
+[gd_scene format=3 uid="uid://d176ir76ayfrc"]
 
 [ext_resource type="Script" uid="uid://bj5ye56nvni8h" path="res://shell_scenes/scene_switch_button.gd" id="1_2aema"]
 
-[node name="StartupCutscene" type="Control"]
+[node name="StartupCutscene" type="Control" unique_id=1548154024]
 layout_mode = 3
 anchors_preset = 0
 
-[node name="CutSceneOverButton" type="Button" parent="."]
+[node name="CutSceneOverButton" type="Button" parent="." unique_id=2023023106]
+custom_minimum_size = Vector2(250, 80)
 layout_mode = 0
-offset_left = 517.0
+offset_left = 457.0
 offset_top = 407.0
-offset_right = 645.0
-offset_bottom = 438.0
+offset_right = 707.0
+offset_bottom = 487.0
 text = "[CutSceneOver]"
 script = ExtResource("1_2aema")
 switch_to = "main_menu"
 allow_quick_key = true
 
-[node name="THIS SCENE IS TEMP" type="Label" parent="."]
+[node name="THIS SCENE IS TEMP" type="Label" parent="." unique_id=2116422151]
 layout_mode = 0
 offset_left = 503.0
 offset_top = 136.0

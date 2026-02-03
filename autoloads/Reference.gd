@@ -23,9 +23,10 @@ var game : PackedScene = preload("uid://cyhkbbhd03a2w")
 var main_menu : PackedScene = preload("uid://dd71ltua8vpqj")
 var options : PackedScene = preload("uid://cltaghkxnswjy")
 var startup : PackedScene = preload("uid://d176ir76ayfrc")
+var victory : PackedScene = preload("uid://bthyueckt3nn")
 
-@export_group("Prefabs")
+@export_group("Temp")
 
 
 @export_category("Other")
-@export_group("Stats")
+@export_group("Temp")
