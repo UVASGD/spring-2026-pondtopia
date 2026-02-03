@@ -1,7 +1,7 @@
 extends Object
 class_name HexGrid
 
-# see res://hex_stuff/HexGridGuide.png ("uid://dy7h6t3p2n6j")
+# see res://hex_stuff/HexGridGuide.png
 
 const sqrt3 : float = sqrt(3)
 
