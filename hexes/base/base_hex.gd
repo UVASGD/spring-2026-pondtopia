@@ -75,9 +75,13 @@ func tick_base() :
 	pass
 
 func on_selected_base() :
+	modulate.b = 0
+	modulate.r = 0
 	pass
 
 func on_deselected_base() :
+	modulate.b = 1
+	modulate.r = 1
 	pass
 
 func on_added_to_map_base(_type: CREATE_TYPE) :

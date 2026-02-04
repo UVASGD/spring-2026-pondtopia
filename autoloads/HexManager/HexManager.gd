@@ -1,4 +1,4 @@
-extends Node
+extends Node2D
 
 ### AUTOLOAD
 
@@ -17,7 +17,7 @@ const SW = Vector2(-1,0)
 var _allow_modify_actions : bool = false
 
 ## Allows conversion between real and grid coordinates.
-var grid = HexGrid.new(75)
+var grid = HexGrid.new(76)
 
 ## An array of all hexes on the map for easy iteration (as opposed to having to do difficult iteration through the map double dictionary).
 var hex_list : Array[BaseHex] = []
@@ -231,24 +231,43 @@ func get_contiguous_conditional(center: Vector2i, condition: Callable, check_cen
 
 #region Select
 
-func _input(event):
-	if event is InputEventMouseButton :
-		var coords : Vector2i = grid.real_to_grid_nearestv(event.position)
-		if is_hex_at(coords) :
-			select_hex(get_hex(coords))
-		## TODO
-		## TODO
-		## TODO
+func _unhandled_input(event):
+	if not _allow_modify_actions :
+		return
+	if event is InputEventMouseButton and event.pressed :
+		# convert to world coords
+		var world_pos = get_global_mouse_position() #only works on Node2D
+		var grid_coords : Vector2i = grid.real_to_grid_nearestv(world_pos)
+		# call input functions
+		if event.button_index == MOUSE_BUTTON_LEFT :
+			process_mouse_left_click(grid_coords)
+
+func process_mouse_left_click(coords : Vector2i) :
+	if is_hex_at(coords) :
+		var hex = get_hex(coords)
+		select_hex(hex)
+	else :
+		deselect_selected_hex()
 
 func select_hex(hex : BaseHex) :
+	var select_to_deselect = true
+	if select_to_deselect :
+		if _selected_hex and hex == _selected_hex :
+			deselect_selected_hex()
+			return
+		deselect_selected_hex()
+	else :
+		if _selected_hex and hex !=_selected_hex :
+			deselect_selected_hex()
 	_is_hex_selected = true
 	_selected_hex = hex
 	hex.is_selected = true
 	hex.on_selected()
 
 func deselect_selected_hex() :
-	_selected_hex.is_selected = false
-	_selected_hex.on_deselected()
+	if _selected_hex :
+		_selected_hex.is_selected = false
+		_selected_hex.on_deselected()
 	_is_hex_selected = false
 	_selected_hex = null
 

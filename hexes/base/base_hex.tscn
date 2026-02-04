@@ -10,54 +10,78 @@ script = ExtResource("1_bnqpj")
 scale = Vector2(0.15, 0.15)
 texture = ExtResource("1_kg2gx")
 
+[node name="HexBoundsMarkers" type="Node2D" parent="." unique_id=519870482]
+scale = Vector2(38, 38)
+
+[node name="Corners" type="Node2D" parent="HexBoundsMarkers" unique_id=505405943]
+
+[node name="NW" type="Marker2D" parent="HexBoundsMarkers/Corners" unique_id=255237480]
+position = Vector2(-1, -1.732)
+scale = Vector2(10, 10)
+gizmo_extents = 0.0
+
+[node name="NE" type="Marker2D" parent="HexBoundsMarkers/Corners" unique_id=199069168]
+position = Vector2(1, -1.732)
+scale = Vector2(10, 10)
+gizmo_extents = 0.0
+
+[node name="East" type="Marker2D" parent="HexBoundsMarkers/Corners" unique_id=1802291294]
+position = Vector2(2, 0)
+scale = Vector2(10, 10)
+gizmo_extents = 0.0
+
+[node name="SE" type="Marker2D" parent="HexBoundsMarkers/Corners" unique_id=1776601100]
+position = Vector2(1, 1.732)
+scale = Vector2(10, 10)
+gizmo_extents = 0.0
+
+[node name="SW" type="Marker2D" parent="HexBoundsMarkers/Corners" unique_id=2125302604]
+position = Vector2(-1, 1.732)
+scale = Vector2(10, 10)
+gizmo_extents = 0.0
+
+[node name="West" type="Marker2D" parent="HexBoundsMarkers/Corners" unique_id=470138458]
+position = Vector2(-2, 0)
+scale = Vector2(10, 10)
+gizmo_extents = 0.0
+
+[node name="EdgeMidpoints" type="Node2D" parent="HexBoundsMarkers" unique_id=1090388498]
+
+[node name="North" type="Marker2D" parent="HexBoundsMarkers/EdgeMidpoints" unique_id=630530242]
+position = Vector2(0, -1.732)
+scale = Vector2(10, 10)
+gizmo_extents = 0.0
+
+[node name="NE" type="Marker2D" parent="HexBoundsMarkers/EdgeMidpoints" unique_id=1411927313]
+position = Vector2(1.5, -0.866)
+scale = Vector2(10, 10)
+gizmo_extents = 0.0
+
+[node name="SE" type="Marker2D" parent="HexBoundsMarkers/EdgeMidpoints" unique_id=1862650448]
+position = Vector2(1.5, 0.866)
+scale = Vector2(10, 10)
+gizmo_extents = 0.0
+
+[node name="South" type="Marker2D" parent="HexBoundsMarkers/EdgeMidpoints" unique_id=461070591]
+position = Vector2(0, 1.732)
+scale = Vector2(10, 10)
+gizmo_extents = 0.0
+
+[node name="SW" type="Marker2D" parent="HexBoundsMarkers/EdgeMidpoints" unique_id=1361352040]
+position = Vector2(-1.5, 0.866)
+scale = Vector2(10, 10)
+gizmo_extents = 0.0
+
+[node name="NW" type="Marker2D" parent="HexBoundsMarkers/EdgeMidpoints" unique_id=132154210]
+position = Vector2(-1.5, -0.866)
+scale = Vector2(10, 10)
+gizmo_extents = 0.0
+
 [node name="Label" type="Label" parent="." unique_id=1987564325]
 offset_left = -9.0
 offset_top = -8.0
 offset_right = 31.0
 offset_bottom = 15.0
-
-[node name="HexagonMarkers" type="Node2D" parent="." unique_id=1353945370]
-scale = Vector2(10, 10)
-
-[node name="Corners" type="Node2D" parent="HexagonMarkers" unique_id=1759284283]
-
-[node name="NW" type="Marker2D" parent="HexagonMarkers/Corners" unique_id=1819717245]
-position = Vector2(-1, -1.732)
-
-[node name="NE" type="Marker2D" parent="HexagonMarkers/Corners" unique_id=1432843732]
-position = Vector2(1, -1.732)
-
-[node name="East" type="Marker2D" parent="HexagonMarkers/Corners" unique_id=782577298]
-position = Vector2(2, 0)
-
-[node name="SE" type="Marker2D" parent="HexagonMarkers/Corners" unique_id=351210182]
-position = Vector2(1, 1.732)
-
-[node name="SW" type="Marker2D" parent="HexagonMarkers/Corners" unique_id=92805414]
-position = Vector2(-1, 1.732)
-
-[node name="West" type="Marker2D" parent="HexagonMarkers/Corners" unique_id=1435106248]
-position = Vector2(-2, 0)
-
-[node name="EdgeMidpoints" type="Node2D" parent="HexagonMarkers" unique_id=1674545066]
-
-[node name="North" type="Marker2D" parent="HexagonMarkers/EdgeMidpoints" unique_id=1703295251]
-position = Vector2(0, -1.732)
-
-[node name="NE" type="Marker2D" parent="HexagonMarkers/EdgeMidpoints" unique_id=134381791]
-position = Vector2(1.5, -0.866)
-
-[node name="SE" type="Marker2D" parent="HexagonMarkers/EdgeMidpoints" unique_id=1934014619]
-position = Vector2(1.5, 0.866)
-
-[node name="South" type="Marker2D" parent="HexagonMarkers/EdgeMidpoints" unique_id=506352891]
-position = Vector2(0, 1.732)
-
-[node name="SW" type="Marker2D" parent="HexagonMarkers/EdgeMidpoints" unique_id=167202113]
-position = Vector2(-1.5, 0.866)
-
-[node name="NW" type="Marker2D" parent="HexagonMarkers/EdgeMidpoints" unique_id=1186511638]
-position = Vector2(-1.5, -0.866)
 
 [node name="TempOtherSprites" type="Node2D" parent="." unique_id=1465388028]
 visible = false
