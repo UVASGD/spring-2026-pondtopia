@@ -15,7 +15,8 @@ const SW = Vector2(-1,0)
 ## Preloaded hex scenes (allows HexManager to create different hexes by loading a different scene)
 const HEX_SCENES : Dictionary = {
 	BASE = preload("res://hexes/base/base_hex.tscn"),
-	MIGRATED = preload("res://hexes/migrated/migrated_hex.tscn")
+	MIGRATED = preload("res://hexes/migrated/migrated_hex.tscn"),
+	FRUIT = preload("res://hexes/fruit/fruit_hex.tscn")
 }
 
 ## Create/move/remove types (allows for different animations on create move and remove)
@@ -33,9 +34,11 @@ enum REMOVE_TYPE {
 var debug_id
 
 ## The coordinates of the spot on the map that this hex holds. The hex may not necessarily be at the associated real position.
-var grid_coords : Vector2i
+var _grid_coords : Vector2i
 ## Whether this hex is currently selected. Automatically set by HexManager.
-var is_selected : bool = false
+var _is_selected : bool = false
+## Whether this hex is currently highlighted. Automatically set by HexManager.
+var _is_highlighted : bool = false
 
 ## Intended for overriding!
 ## This function is automatically called every HexManager.tick_duration seconds.
@@ -52,6 +55,16 @@ func on_selected() :
 ## This function is automatically called when this hex is deselected.
 func on_deselected() :
 	on_deselected_base()
+
+## Intended for overriding!
+## This function is automatically called when this hex is selected.
+func on_highlighted() :
+	on_unhighlighted_base()
+
+## Intended for overriding!
+## This function is automatically called when this hex is deselected.
+func on_unhighlighted() :
+	on_unhighlighted_base()
 
 ## Intended for overriding!
 ## This function is automatically called when the hex is created and added to the map.
@@ -82,6 +95,14 @@ func on_selected_base() :
 func on_deselected_base() :
 	modulate.b = 1
 	modulate.r = 1
+	pass
+
+func on_highlighted_base() :
+	modulate.a = 0.5
+	pass
+
+func on_unhighlighted_base() :
+	modulate.a = 1
 	pass
 
 func on_added_to_map_base(_type: CREATE_TYPE) :
@@ -137,35 +158,35 @@ func remove_from_map(type: REMOVE_TYPE = REMOVE_TYPE.INSTANT) :
 
 ## Do not override.
 func real_pos() -> Vector2:
-	return HexManager.get_associated_real_position(grid_coords)
+	return HexManager.get_associated_real_position(_grid_coords)
 
 ## Do not override. Gets the hex at the grid spot self.grid_coords + relative_grid_coords.
 func get_hex_rel(relative_grid_coords: Vector2i) -> BaseHex:
-	return HexManager.get_hex_relative_to(grid_coords, relative_grid_coords)
+	return HexManager.get_hex_relative_to(_grid_coords, relative_grid_coords)
 
 ## Do not override.
 func get_coords_within(radius:int) -> Array[Vector2i]:
-	return HexManager.get_coords_in_hexagon(radius,grid_coords)
+	return HexManager.get_coords_in_hexagon(radius,_grid_coords)
 
 ## Do not override.
 func get_hexes_within(radius:int) -> Array[BaseHex]:
-	return HexManager.get_hexes_in_hexagon(radius,grid_coords)
+	return HexManager.get_hexes_in_hexagon(radius,_grid_coords)
 
 ## Do not override.
 func nth_nearest_neighbors_coords(n:int) -> Array[Vector2i]:
-	return HexManager.get_nth_nearest_neighbors_coords(n,grid_coords)
+	return HexManager.get_nth_nearest_neighbors_coords(n,_grid_coords)
 
 ## Do not override.
 func nth_nearest_neighbors(n:int) -> Array[BaseHex]:
-	return HexManager.get_nth_nearest_neighbors_hexes(n,grid_coords)
+	return HexManager.get_nth_nearest_neighbors_hexes(n,_grid_coords)
 
 ## Do not override.
 func get_adjacent_coords() -> Array[Vector2i]:
-	return HexManager.get_adjacent_coords(grid_coords)
+	return HexManager.get_adjacent_coords(_grid_coords)
 
 ## Do not override.
 func get_adjacent_hexes() -> Array[BaseHex]:
-	return HexManager.get_adjacent_hexes(grid_coords)
+	return HexManager.get_adjacent_hexes(_grid_coords)
 
 ## Do not override. Returns true if target_grid_coords are up to or including n spaces away.
 func is_within(target_grid_coords: Vector2i, n:int) -> bool:
@@ -177,10 +198,30 @@ func is_hex_within(target_hex:BaseHex, n:int) -> bool:
 
 ## Do not override. Returns what level of nearest neighbor the grid coords are (an adjacent tile returns 1).
 func nearest_neighbor_dist(target_grid_coords: Vector2i) -> int:
-	return HexManager.nearest_neighbor_dist(grid_coords, target_grid_coords)
+	return HexManager.nearest_neighbor_dist(_grid_coords, target_grid_coords)
 
 ## Do not override.
 func nearest_neighbor_dist_(target_hex: BaseHex) -> int:
 	return nearest_neighbor_dist(target_hex.grid_coords)
+
+## Do not override.
+func is_selected() -> bool :
+	return _is_selected
+
+## Do not override.
+func is_highlighted() -> bool :
+	return _is_highlighted
+
+## Do not override.
+func highlight() :
+	if _is_highlighted : return
+	_is_highlighted = true
+	on_highlighted()
+
+## Do not override.
+func unhighlight() :
+	if not _is_highlighted : return
+	_is_highlighted = false
+	on_unhighlighted()
 
 #endregion

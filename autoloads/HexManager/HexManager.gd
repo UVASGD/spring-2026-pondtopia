@@ -57,7 +57,7 @@ func get_hex_(x:int,y:int) -> BaseHex:
 
 ## Like get_hex() but uses relative_to_hex as the origin.
 func get_hex_relative(relative_to_hex: BaseHex, relative_grid_coords: Vector2i) -> BaseHex:
-	return get_hex(relative_to_hex.grid_coords + relative_grid_coords)
+	return get_hex(relative_to_hex._grid_coords + relative_grid_coords)
 
 ## Like get_hex() but uses relative_to_coords as the origin.
 func get_hex_relative_to(relative_to_coords: Vector2i, relative_grid_coords: Vector2i) -> BaseHex:
@@ -220,7 +220,7 @@ func get_contiguous_conditional(center: Vector2i, condition: Callable, check_cen
 		var meets_condition = await condition.call(next_hex)
 		if meets_condition : #if the hex meets the condition
 			output.append(next_hex)
-			var neighbors = get_adjacent_hexes(next_hex.grid_coords)
+			var neighbors = get_adjacent_hexes(next_hex._grid_coords)
 			for h in neighbors :
 				if !acknowledged.has(h) :
 					check_queue.append(h)
@@ -261,12 +261,12 @@ func select_hex(hex : BaseHex) :
 			deselect_selected_hex()
 	_is_hex_selected = true
 	_selected_hex = hex
-	hex.is_selected = true
+	hex._is_selected = true
 	hex.on_selected()
 
 func deselect_selected_hex() :
 	if _selected_hex :
-		_selected_hex.is_selected = false
+		_selected_hex._is_selected = false
 		_selected_hex.on_deselected()
 	_is_hex_selected = false
 	_selected_hex = null
@@ -290,13 +290,13 @@ func _register_hex_at(hex: BaseHex, grid_coords: Vector2i):
 ## INTERNAL USE ONLY. You might be looking for move_hex(). 
 ## Directly sets the hexes position. Overrides any existing hex.
 func _set_hex_position(hex: BaseHex, grid_coords: Vector2i):
-	hex.grid_coords = grid_coords
+	hex._grid_coords = grid_coords
 	map.set_entryv(grid_coords,hex)
 
 ## INTERNAL USE ONLY. You might be looking for remove_hex().
 ## Removes a hex from hex_list and map.
 func _unregister_hex(hex: BaseHex):
 	hex_list.erase(hex)
-	map.delete_entryv(hex.grid_coords)
+	map.delete_entryv(hex._grid_coords)
 
 #endregion
