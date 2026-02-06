@@ -1,23 +1,24 @@
-[gd_scene load_steps=2 format=3 uid="uid://cby3remb66qik"]
+[gd_scene format=3 uid="uid://bthyueckt3nn"]
 
-[ext_resource type="Script" uid="uid://bj5ye56nvni8h" path="res://shell_scenes/scene_switch_button.gd" id="1_mua0j"]
+[ext_resource type="Script" uid="uid://bj5ye56nvni8h" path="res://shell_scenes/button_general.gd" id="1_mua0j"]
 
-[node name="Victory" type="Control"]
+[node name="Victory" type="Control" unique_id=1102925550]
 layout_mode = 3
 anchors_preset = 0
 
-[node name="TitleButton" type="Button" parent="."]
+[node name="TitleButton" type="Button" parent="." unique_id=680200164]
 layout_mode = 0
 offset_left = 356.0
 offset_top = 414.0
 offset_right = 782.0
 offset_bottom = 486.0
-text = "MainMenu"
+text = "Return to Main Menu"
 script = ExtResource("1_mua0j")
+switch_scene = true
 switch_to = "main_menu"
 allow_quick_key = true
 
-[node name="TEMP" type="Label" parent="."]
+[node name="TEMP" type="Label" parent="." unique_id=930082413]
 layout_mode = 0
 offset_left = 385.0
 offset_top = 185.0

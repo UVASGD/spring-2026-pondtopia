@@ -1,0 +1,80 @@
+[gd_scene format=3 uid="uid://bak838mxakk2y"]
+
+[ext_resource type="Script" uid="uid://b8r2x7fjv62sf" path="res://hexes/migrated/migrated_hex.gd" id="1_jjyrr"]
+[ext_resource type="Texture2D" uid="uid://b1fy6lrw0qevl" path="res://z_assets/sprites/hexes/hex_tilemap.png" id="2_u7edc"]
+
+[node name="MigratedHex" type="Node2D" unique_id=1869561470]
+script = ExtResource("1_jjyrr")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2031391160]
+rotation = 0.5235988
+texture = ExtResource("2_u7edc")
+hframes = 10
+vframes = 10
+
+[node name="HexBoundsMarkers" type="Node2D" parent="." unique_id=443622468]
+scale = Vector2(38, 38)
+
+[node name="Corners" type="Node2D" parent="HexBoundsMarkers" unique_id=1380306693]
+
+[node name="NW" type="Marker2D" parent="HexBoundsMarkers/Corners" unique_id=725499743]
+position = Vector2(-1, -1.732)
+scale = Vector2(10, 10)
+gizmo_extents = 0.0
+
+[node name="NE" type="Marker2D" parent="HexBoundsMarkers/Corners" unique_id=1383217297]
+position = Vector2(1, -1.732)
+scale = Vector2(10, 10)
+gizmo_extents = 0.0
+
+[node name="East" type="Marker2D" parent="HexBoundsMarkers/Corners" unique_id=988396600]
+position = Vector2(2, 0)
+scale = Vector2(10, 10)
+gizmo_extents = 0.0
+
+[node name="SE" type="Marker2D" parent="HexBoundsMarkers/Corners" unique_id=843029180]
+position = Vector2(1, 1.732)
+scale = Vector2(10, 10)
+gizmo_extents = 0.0
+
+[node name="SW" type="Marker2D" parent="HexBoundsMarkers/Corners" unique_id=1746182189]
+position = Vector2(-1, 1.732)
+scale = Vector2(10, 10)
+gizmo_extents = 0.0
+
+[node name="West" type="Marker2D" parent="HexBoundsMarkers/Corners" unique_id=119814716]
+position = Vector2(-2, 0)
+scale = Vector2(10, 10)
+gizmo_extents = 0.0
+
+[node name="EdgeMidpoints" type="Node2D" parent="HexBoundsMarkers" unique_id=647667101]
+
+[node name="North" type="Marker2D" parent="HexBoundsMarkers/EdgeMidpoints" unique_id=1620141738]
+position = Vector2(0, -1.732)
+scale = Vector2(10, 10)
+gizmo_extents = 0.0
+
+[node name="NE" type="Marker2D" parent="HexBoundsMarkers/EdgeMidpoints" unique_id=471217635]
+position = Vector2(1.5, -0.866)
+scale = Vector2(10, 10)
+gizmo_extents = 0.0
+
+[node name="SE" type="Marker2D" parent="HexBoundsMarkers/EdgeMidpoints" unique_id=1959897259]
+position = Vector2(1.5, 0.866)
+scale = Vector2(10, 10)
+gizmo_extents = 0.0
+
+[node name="South" type="Marker2D" parent="HexBoundsMarkers/EdgeMidpoints" unique_id=1315482333]
+position = Vector2(0, 1.732)
+scale = Vector2(10, 10)
+gizmo_extents = 0.0
+
+[node name="SW" type="Marker2D" parent="HexBoundsMarkers/EdgeMidpoints" unique_id=663782450]
+position = Vector2(-1.5, 0.866)
+scale = Vector2(10, 10)
+gizmo_extents = 0.0
+
+[node name="NW" type="Marker2D" parent="HexBoundsMarkers/EdgeMidpoints" unique_id=1368779961]
+position = Vector2(-1.5, -0.866)
+scale = Vector2(10, 10)
+gizmo_extents = 0.0
