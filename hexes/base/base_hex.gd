@@ -4,6 +4,15 @@ class_name BaseHex
 ## BaseHex is a template for other hexes (all other hexes should extend this class).
 ## Override these methods to give other types of hexes different behavior.
 
+### TO PROPERLY EXTEND BaseHex
+## 1. Create a folder in the Hexes folder called example.
+## 2. Create a Node2D scene in that folder called example_hex.tscn.
+## 3. Open the scene and create a script on the root node called example_hex.gd. (Make sure the script is also in the folder).
+## 4. In the script change "extends Node2D" to "extends BaseHex".
+## 5. Below that line add "class_name ExampleHex".
+## 6. Open base_hex.gd (this script), find the HEX_SCENES dictionary, and add an entry "EXAMPLE = preload("res://hexes/example/example_hex.tscn")".
+## 7. You're done! To create special behaviors for your hex, override the functions in base hex (eg tick()). Remember to call the base behavior functions (eg tick_base()) if you want the overriden functions to also do the base functionality. 
+
 ## Directions (using Vector2 instead of enum so you can add with them, also declared in HexManager for easy access)
 const NW := Vector2i(-1,1)
 const NORTH := Vector2i(0,1)
