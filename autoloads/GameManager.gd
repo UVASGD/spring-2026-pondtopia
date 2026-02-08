@@ -27,7 +27,7 @@ func start_game() :
 	HexManager._allow_modify_actions = true
 	var size = 2
 	for coord in HexManager.get_coords_in_hexagon(size) :
-		HexManager.create_hex(coord, BaseHex.HEX_SCENES.MIGRATED, BaseHex.CREATE_TYPE.FADE_IN)
+		HexManager.create_hex(coord, BaseHex.HEX_SCENES.FRUIT, BaseHex.CREATE_TYPE.FADE_IN, randi_range(0,3))
 
 func end_game() :
 	HexManager.remove_all_hexes()

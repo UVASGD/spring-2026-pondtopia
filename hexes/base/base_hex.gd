@@ -5,12 +5,12 @@ class_name BaseHex
 ## Override these methods to give other types of hexes different behavior.
 
 ## Directions (using Vector2 instead of enum so you can add with them, also declared in HexManager for easy access)
-const NW = Vector2(-1,1)
-const NORTH = Vector2(0,1)
-const NE = Vector2(0,1)
-const SE = Vector2(1,-1)
-const SOUTH = Vector2(0,-1)
-const SW = Vector2(-1,0)
+const NW := Vector2i(-1,1)
+const NORTH := Vector2i(0,1)
+const NE := Vector2i(1,0)
+const SE := Vector2i(1,-1)
+const SOUTH := Vector2i(0,-1)
+const SW := Vector2i(-1,0)
 
 ## Preloaded hex scenes (allows HexManager to create different hexes by loading a different scene)
 const HEX_SCENES : Dictionary = {
@@ -59,7 +59,7 @@ func on_deselected() :
 ## Intended for overriding!
 ## This function is automatically called when this hex is selected.
 func on_highlighted() :
-	on_unhighlighted_base()
+	on_highlighted_base()
 
 ## Intended for overriding!
 ## This function is automatically called when this hex is deselected.
@@ -68,18 +68,18 @@ func on_unhighlighted() :
 
 ## Intended for overriding!
 ## This function is automatically called when the hex is created and added to the map.
-func on_added_to_map(_type: CREATE_TYPE) :
+func on_added_to_map(_type: CREATE_TYPE, _extra_params : Variant) :
 	on_added_to_map_base(_type)
 
 ## Intended for overriding!
 ## This function is automatically called when the hex is moved from one grid spot to another.
-func on_moved(_type: MOVE_TYPE) :
+func on_moved(_type: MOVE_TYPE, _extra_params : Variant) :
 	on_moved_base(_type)
 
 ## Intended for overriding! (Don't forget to queue_free at the end though)
 ## This function is automatically called when the hex is about to be removed from the map and queue_freed.
 ## Although this hex will not hold the grid spot anymore, the hex's nodes can stay in the same real position to do disappear animations etc.
-func on_removed_from_map(_type: REMOVE_TYPE) :
+func on_removed_from_map(_type: REMOVE_TYPE, _extra_params : Variant) :
 	on_removed_from_map_base(_type)
 
 #region Base Behaviors
@@ -90,20 +90,16 @@ func tick_base() :
 func on_selected_base() :
 	modulate.b = 0
 	modulate.r = 0
-	pass
 
 func on_deselected_base() :
 	modulate.b = 1
 	modulate.r = 1
-	pass
 
 func on_highlighted_base() :
 	modulate.a = 0.5
-	pass
 
 func on_unhighlighted_base() :
 	modulate.a = 1
-	pass
 
 func on_added_to_map_base(_type: CREATE_TYPE) :
 	match _type :
@@ -114,7 +110,7 @@ func on_added_to_map_base(_type: CREATE_TYPE) :
 			position = real_pos()
 			#fade in
 			var tween = create_tween()
-			tween.tween_property(self, "modulate:a", 1, 1.2)
+			tween.tween_property(self, "modulate:a", 1, 0.8)
 		_ : #default, do same as instant
 			position = real_pos()
 
@@ -163,6 +159,10 @@ func real_pos() -> Vector2:
 ## Do not override. Gets the hex at the grid spot self.grid_coords + relative_grid_coords.
 func get_hex_rel(relative_grid_coords: Vector2i) -> BaseHex:
 	return HexManager.get_hex_relative_to(_grid_coords, relative_grid_coords)
+
+## Do not override.
+func get_hexes_rel(relative_grid_coords_list : Array) -> Array[BaseHex]:
+	return HexManager.get_hexes_relative_to(_grid_coords,relative_grid_coords_list)
 
 ## Do not override.
 func get_coords_within(radius:int) -> Array[Vector2i]:
