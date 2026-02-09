@@ -13,6 +13,12 @@ const SE = Vector2(1,-1)
 const SOUTH = Vector2(0,-1)
 const SW = Vector2(-1,0)
 
+## Preloaded hex packed scenes for instantiating hexes
+## These should be preloaded constants but preloading them causes a cyclic error.
+var BASE_HEX : PackedScene = load("res://hexes/base/base_hex.tscn")
+var MIGRATED_HEX : PackedScene = load("res://hexes/migrated/migrated_hex.tscn")
+var FRUIT_HEX : PackedScene = load("res://hexes/fruit/fruit_hex.tscn")
+
 ## When set to false, all methods in region Modify will be returned immediately
 var _allow_modify_actions : bool = false
 
@@ -111,6 +117,14 @@ func create_hex(grid_coords: Vector2i, hex_scene : PackedScene, type: BaseHex.CR
 ## See create_hex().
 func create_hex_(x:int,y:int, hex_scene : PackedScene, type: BaseHex.CREATE_TYPE = BaseHex.CREATE_TYPE.INSTANT, extra_params : Array = []) -> BaseHex:
 	return create_hex(Vector2i(x,y), hex_scene, type, extra_params)
+
+func ccc(grid_coords: Vector2i, hex_scene : PackedScene) :
+	pass
+
+func ccd(grid_coords: Vector2i) :
+	pass
+func cdc(hex_scene : PackedScene) :
+	pass
 
 ## Moves a hex from its current position to new_grid_coords.
 func move_hex(hex: BaseHex, new_grid_coords: Vector2i, type: BaseHex.MOVE_TYPE = BaseHex.MOVE_TYPE.INSTANT, extra_params : Array = []):

@@ -15,7 +15,7 @@ class_name BaseHex
 ##   a) Open example_hex.tscn and create a script on the root node called example_hex.gd. (Make sure the script is also in the folder).
 ##   b) In the script change "extends Node2D" to "extends BaseHex".
 ##   c) Below that line add "class_name ExampleHex".
-## 4. Open base_hex.gd (this script), find the HEX_SCENES dictionary, and add an entry "EXAMPLE = preload("res://hexes/example/example_hex.tscn")".
+## 4. Open HexManager.gd, find the list of hex packed scene vars and add a new line "var EXAMPLE_HEX : PackedScene = load("res://hexes/example/example_hex.tscn")".
 ## 5. You're done! To create special behaviors for your hex, override the functions in base hex (eg tick()). Remember to call the base behavior functions (eg tick_base()) if you want the overriden functions to also do the base functionality. 
 
 ## Directions (using Vector2 instead of enum so you can add with them, also declared in HexManager for easy access)
@@ -25,13 +25,6 @@ const NE := Vector2i(1,0)
 const SE := Vector2i(1,-1)
 const SOUTH := Vector2i(0,-1)
 const SW := Vector2i(-1,0)
-
-## Preloaded hex scenes (allows HexManager to create different hexes by loading a different scene)
-const HEX_SCENES : Dictionary = {
-	BASE = preload("res://hexes/base/base_hex.tscn"),
-	MIGRATED = preload("res://hexes/migrated/migrated_hex.tscn"),
-	FRUIT = preload("res://hexes/fruit/fruit_hex.tscn")
-}
 
 ## Create/move/remove types (allows for different animations on create move and remove)
 enum CREATE_TYPE {
@@ -136,7 +129,6 @@ func on_unhighlighted_base() :
 	sprites.modulate.a = 1
 
 func on_hex_options_button_pressed_base(button_action_name : String) :
-	
 	match button_action_name :
 		"delete":
 			try_deselect()
@@ -144,7 +136,7 @@ func on_hex_options_button_pressed_base(button_action_name : String) :
 		"clear":
 			try_deselect()
 			remove_from_map()
-			#HexManager.create_hex(_grid_coords, HEX_SCENES.MIGRATED, CREATE_TYPE.INSTANT, [2])
+			HexManager.create_hex(_grid_coords, HexManager.MIGRATED, CREATE_TYPE.INSTANT, [2])
 
 func on_added_to_map_base(_type: CREATE_TYPE) :
 	match _type :
