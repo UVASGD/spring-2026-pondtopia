@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://otoc08ucd8fq"]
+
+[ext_resource type="Script" uid="uid://b60ltjly6brbh" path="res://game_ui/hex_options/hex_options.gd" id="1_8at8g"]
+[ext_resource type="Script" uid="uid://b33h6vsi7r2xx" path="res://game_ui/hex_options/circle_container.gd" id="2_gb543"]
+
+[node name="HexOptions" type="Control" unique_id=2025673578]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_8at8g")
+
+[node name="Container" type="Container" parent="." unique_id=1310302994]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("2_gb543")
