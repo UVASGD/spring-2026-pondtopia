@@ -118,14 +118,6 @@ func create_hex(grid_coords: Vector2i, hex_scene : PackedScene, type: BaseHex.CR
 func create_hex_(x:int,y:int, hex_scene : PackedScene, type: BaseHex.CREATE_TYPE = BaseHex.CREATE_TYPE.INSTANT, extra_params : Array = []) -> BaseHex:
 	return create_hex(Vector2i(x,y), hex_scene, type, extra_params)
 
-func ccc(grid_coords: Vector2i, hex_scene : PackedScene) :
-	pass
-
-func ccd(grid_coords: Vector2i) :
-	pass
-func cdc(hex_scene : PackedScene) :
-	pass
-
 ## Moves a hex from its current position to new_grid_coords.
 func move_hex(hex: BaseHex, new_grid_coords: Vector2i, type: BaseHex.MOVE_TYPE = BaseHex.MOVE_TYPE.INSTANT, extra_params : Array = []):
 	if not _allow_modify_actions :
