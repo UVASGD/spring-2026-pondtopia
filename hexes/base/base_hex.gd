@@ -4,14 +4,19 @@ class_name BaseHex
 ## BaseHex is a template for other hexes (all other hexes should extend this class).
 ## Override these methods to give other types of hexes different behavior.
 
-### TO PROPERLY EXTEND BaseHex
+### To properly extend BaseHex
 ## 1. Create a folder in the Hexes folder called example.
-## 2. Create a Node2D scene in that folder called example_hex.tscn.
-## 3. Open the scene and create a script on the root node called example_hex.gd. (Make sure the script is also in the folder).
-## 4. In the script change "extends Node2D" to "extends BaseHex".
-## 5. Below that line add "class_name ExampleHex".
-## 6. Open base_hex.gd (this script), find the HEX_SCENES dictionary, and add an entry "EXAMPLE = preload("res://hexes/example/example_hex.tscn")".
-## 7. You're done! To create special behaviors for your hex, override the functions in base hex (eg tick()). Remember to call the base behavior functions (eg tick_base()) if you want the overriden functions to also do the base functionality. 
+## 2. Create the scene.
+##   a) Create a Node2D scene in that folder called example_hex.tscn.
+##   b) Add a Node2D as a child of root. Rename it Sprites. Optional: Add Sprite2D nodes as children of that node.
+##   b) Instantiate a HexOptions scene as a child of root (either by dragging in the file or via the link button). This is the cicle menu that pops up when you select a hex.
+##   c) Optional: Open base_hex.tscn, copy the HexBoundsMarkers node, and paste it in example_hex.tscn.
+## 3. Create the script.
+##   a) Open example_hex.tscn and create a script on the root node called example_hex.gd. (Make sure the script is also in the folder).
+##   b) In the script change "extends Node2D" to "extends BaseHex".
+##   c) Below that line add "class_name ExampleHex".
+## 4. Open base_hex.gd (this script), find the HEX_SCENES dictionary, and add an entry "EXAMPLE = preload("res://hexes/example/example_hex.tscn")".
+## 5. You're done! To create special behaviors for your hex, override the functions in base hex (eg tick()). Remember to call the base behavior functions (eg tick_base()) if you want the overriden functions to also do the base functionality. 
 
 ## Directions (using Vector2 instead of enum so you can add with them, also declared in HexManager for easy access)
 const NW := Vector2i(-1,1)
@@ -84,21 +89,26 @@ func on_highlighted() :
 ## This function is automatically called when this hex is deselected.
 func on_unhighlighted() :
 	on_unhighlighted_base()
+#
+### Intended for overriding!
+### This function is automatically called when one of this hex's HexOptions buttons is pressed.
+func on_hex_options_button_pressed(button_action_name : String) :
+	on_hex_options_button_pressed_base(button_action_name)
 
 ## Intended for overriding!
 ## This function is automatically called when the hex is created and added to the map.
-func on_added_to_map(_type: CREATE_TYPE, _extra_params : Variant) :
+func on_added_to_map(_type: CREATE_TYPE, _extra_params : Array) :
 	on_added_to_map_base(_type)
 
 ## Intended for overriding!
 ## This function is automatically called when the hex is moved from one grid spot to another.
-func on_moved(_type: MOVE_TYPE, _extra_params : Variant) :
+func on_moved(_type: MOVE_TYPE, _extra_params : Array) :
 	on_moved_base(_type)
 
 ## Intended for overriding! (Don't forget to queue_free at the end though)
 ## This function is automatically called when the hex is about to be removed from the map and queue_freed.
 ## Although this hex will not hold the grid spot anymore, the hex's nodes can stay in the same real position to do disappear animations etc.
-func on_removed_from_map(_type: REMOVE_TYPE, _extra_params : Variant) :
+func on_removed_from_map(_type: REMOVE_TYPE, _extra_params : Array) :
 	on_removed_from_map_base(_type)
 
 #region Base Behaviors
@@ -124,6 +134,17 @@ func on_highlighted_base() :
 
 func on_unhighlighted_base() :
 	sprites.modulate.a = 1
+
+func on_hex_options_button_pressed_base(button_action_name : String) :
+	
+	match button_action_name :
+		"delete":
+			try_deselect()
+			remove_from_map(REMOVE_TYPE.FADE_OUT)
+		"clear":
+			try_deselect()
+			remove_from_map()
+			#HexManager.create_hex(_grid_coords, HEX_SCENES.MIGRATED, CREATE_TYPE.INSTANT, [2])
 
 func on_added_to_map_base(_type: CREATE_TYPE) :
 	match _type :
@@ -231,6 +252,14 @@ func nearest_neighbor_dist_(target_hex: BaseHex) -> int:
 ## Do not override.
 func is_selected() -> bool :
 	return _is_selected
+
+## Do not override.
+func select() :
+	HexManager.select_hex(self)
+
+## Do not override.
+func try_deselect() :
+	HexManager.try_deselect_hex(self)
 
 ## Do not override.
 func is_highlighted() -> bool :

@@ -25,7 +25,6 @@ var hex_list : Array[BaseHex] = []
 var map : DoubleDict = DoubleDict.new()
 
 ## Selected Hex
-var _is_hex_selected : bool = false
 var _selected_hex : BaseHex = null
 
 # Other
@@ -90,14 +89,13 @@ func get_associated_real_position(grid_coords: Vector2) -> Vector2:
 #region Modify
 
 ## Creates a hex grid_coords. If there is already there, throws an error. 
-func create_hex(grid_coords: Vector2i, hex_scene : PackedScene, type: BaseHex.CREATE_TYPE = BaseHex.CREATE_TYPE.INSTANT, extra_params : Variant = false) -> BaseHex:
+func create_hex(grid_coords: Vector2i, hex_scene : PackedScene, type: BaseHex.CREATE_TYPE = BaseHex.CREATE_TYPE.INSTANT, extra_params : Array = []) -> BaseHex:
 	if not _allow_modify_actions :
 		return null
 	if map.has_entryv(grid_coords) :
 		push_error("Tried to create a new hex at " + str(grid_coords) + " but a hex was already there.")
 		return
 	# instantiate
-	#TODO type options
 	var hex : BaseHex = hex_scene.instantiate()
 	# set parent
 	add_child(hex)
@@ -111,11 +109,11 @@ func create_hex(grid_coords: Vector2i, hex_scene : PackedScene, type: BaseHex.CR
 	return hex
 
 ## See create_hex().
-func create_hex_(x:int,y:int, hex_scene : PackedScene, type: BaseHex.CREATE_TYPE = BaseHex.CREATE_TYPE.INSTANT, extra_params : Variant = false) -> BaseHex:
+func create_hex_(x:int,y:int, hex_scene : PackedScene, type: BaseHex.CREATE_TYPE = BaseHex.CREATE_TYPE.INSTANT, extra_params : Array = []) -> BaseHex:
 	return create_hex(Vector2i(x,y), hex_scene, type, extra_params)
 
 ## Moves a hex from its current position to new_grid_coords.
-func move_hex(hex: BaseHex, new_grid_coords: Vector2i, type: BaseHex.MOVE_TYPE = BaseHex.MOVE_TYPE.INSTANT, extra_params : Variant = false):
+func move_hex(hex: BaseHex, new_grid_coords: Vector2i, type: BaseHex.MOVE_TYPE = BaseHex.MOVE_TYPE.INSTANT, extra_params : Array = []):
 	if not _allow_modify_actions :
 		return null
 	if map.has_entryv(new_grid_coords) :
@@ -125,22 +123,22 @@ func move_hex(hex: BaseHex, new_grid_coords: Vector2i, type: BaseHex.MOVE_TYPE =
 	hex.on_moved(type, extra_params)
 
 ## See move_hex().
-func move_hex_(hex: BaseHex, new_x: int, new_y: int, type: BaseHex.MOVE_TYPE = BaseHex.MOVE_TYPE.INSTANT, extra_params : Variant = false) :
+func move_hex_(hex: BaseHex, new_x: int, new_y: int, type: BaseHex.MOVE_TYPE = BaseHex.MOVE_TYPE.INSTANT, extra_params : Array = []) :
 	move_hex(hex,Vector2i(new_x,new_y),type,extra_params)
 
 ## Moves the hex at old_grid_coords to new_grid_coords.
-func move_hex_from(old_grid_coords: Vector2i, new_grid_coords: Vector2i, type: BaseHex.MOVE_TYPE = BaseHex.MOVE_TYPE.INSTANT, extra_params : Variant = false):
+func move_hex_from(old_grid_coords: Vector2i, new_grid_coords: Vector2i, type: BaseHex.MOVE_TYPE = BaseHex.MOVE_TYPE.INSTANT, extra_params : Array = []):
 	if map.has_entryv(old_grid_coords) :
 		push_error("Tried to move a hex from " + str(new_grid_coords) + " but there was no hex there.")
 		return
 	move_hex(get_hex(old_grid_coords),new_grid_coords,type,extra_params)
 
 ## See move_hex_from().
-func move_hex_from_(old_x:int,old_y:int,new_x:int,new_y:int,type: BaseHex.MOVE_TYPE = BaseHex.MOVE_TYPE.INSTANT, extra_params : Variant = false):
+func move_hex_from_(old_x:int,old_y:int,new_x:int,new_y:int,type: BaseHex.MOVE_TYPE = BaseHex.MOVE_TYPE.INSTANT, extra_params : Array = []):
 	move_hex_from(Vector2i(old_x,old_y),Vector2i(new_x,new_y),type,extra_params)
 
 ## Removes and deletes the hex.
-func remove_hex(hex: BaseHex, type: BaseHex.REMOVE_TYPE = BaseHex.REMOVE_TYPE.INSTANT, extra_params : Variant = false):
+func remove_hex(hex: BaseHex, type: BaseHex.REMOVE_TYPE = BaseHex.REMOVE_TYPE.INSTANT, extra_params : Array = []):
 	if not _allow_modify_actions :
 		return null
 	_unregister_hex(hex)
@@ -267,9 +265,9 @@ func process_mouse_left_click(coords : Vector2i) :
 	else :
 		deselect_selected_hex()
 
+const reselect_to_deselect = true #internal setting
 func select_hex(hex : BaseHex) :
-	var select_to_deselect = true
-	if select_to_deselect :
+	if reselect_to_deselect : 
 		if _selected_hex and hex == _selected_hex :
 			deselect_selected_hex()
 			return
@@ -277,20 +275,22 @@ func select_hex(hex : BaseHex) :
 	else :
 		if _selected_hex and hex !=_selected_hex :
 			deselect_selected_hex()
-	_is_hex_selected = true
 	_selected_hex = hex
 	hex._is_selected = true
 	hex.on_selected()
+
+func try_deselect_hex(hex : BaseHex) :
+	if hex.is_selected() :
+		deselect_selected_hex()
 
 func deselect_selected_hex() :
 	if _selected_hex :
 		_selected_hex._is_selected = false
 		_selected_hex.on_deselected()
-	_is_hex_selected = false
-	_selected_hex = null
+		_selected_hex = null
 
 func is_hex_selected() -> bool :
-	return _is_hex_selected
+	return true if _selected_hex else false
 
 func get_selected_hex() -> BaseHex :
 	return _selected_hex
