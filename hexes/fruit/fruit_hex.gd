@@ -10,19 +10,19 @@ var type : TYPE
 func on_added_to_map(_type: CREATE_TYPE, _extra_params : Variant):
 	match _extra_params :
 		"orange" :
-			$FruitSprite.frame = 0
+			$Sprites/FruitSprite.frame = 0
 			type = TYPE.ORANGE
 		"strawberry" :
-			$FruitSprite.frame = 1
+			$Sprites/FruitSprite.frame = 1
 			type = TYPE.STRAWBERRY
 		"pear" :
-			$FruitSprite.frame = 2
+			$Sprites/FruitSprite.frame = 2
 			type = TYPE.PEAR
 		"banana" :
-			$FruitSprite.frame = 3
+			$Sprites/FruitSprite.frame = 3
 			type = TYPE.BANANA
 	if _extra_params is int :
-		$FruitSprite.frame = _extra_params
+		$Sprites/FruitSprite.frame = _extra_params
 		type = _extra_params
 	on_added_to_map_base(_type)
 

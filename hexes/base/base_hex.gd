@@ -49,6 +49,8 @@ var _is_selected : bool = false
 ## Whether this hex is currently highlighted. Automatically set by HexManager.
 var _is_highlighted : bool = false
 
+@onready var sprites : Node2D = $Sprites
+
 ## Intended for overriding!
 ## This function is automatically called every HexManager.tick_duration seconds.
 ## We could break tick into more calls in HexManager (eg generate_resources(), resolve_damage(), act_on_neighbors()) for more consistent behavior.
@@ -97,18 +99,18 @@ func tick_base() :
 	pass
 
 func on_selected_base() :
-	modulate.b = 0
-	modulate.r = 0
+	sprites.modulate.b = 0
+	sprites.modulate.r = 0
 
 func on_deselected_base() :
-	modulate.b = 1
-	modulate.r = 1
+	sprites.modulate.b = 1
+	sprites.modulate.r = 1
 
 func on_highlighted_base() :
-	modulate.a = 0.5
+	sprites.modulate.a = 0.5
 
 func on_unhighlighted_base() :
-	modulate.a = 1
+	sprites.modulate.a = 1
 
 func on_added_to_map_base(_type: CREATE_TYPE) :
 	match _type :

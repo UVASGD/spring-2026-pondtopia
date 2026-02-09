@@ -7,20 +7,6 @@
 [node name="FruitHex" type="Node2D" unique_id=229729213]
 script = ExtResource("1_6c8ni")
 
-[node name="HexSprite" type="Sprite2D" parent="." unique_id=1398648652]
-rotation = 0.5235988
-scale = Vector2(1, 1.15)
-texture = ExtResource("3_l5do4")
-hframes = 10
-vframes = 10
-frame = 2
-
-[node name="FruitSprite" type="Sprite2D" parent="." unique_id=851043240]
-scale = Vector2(0.3, 0.3)
-texture = ExtResource("1_o3l72")
-hframes = 2
-vframes = 2
-
 [node name="HexBoundsMarkers" type="Node2D" parent="." unique_id=522562309]
 scale = Vector2(38, 38)
 
@@ -87,3 +73,19 @@ gizmo_extents = 0.0
 position = Vector2(-1.5, -0.866)
 scale = Vector2(10, 10)
 gizmo_extents = 0.0
+
+[node name="Sprites" type="Node2D" parent="." unique_id=2083647452]
+
+[node name="HexSprite" type="Sprite2D" parent="Sprites" unique_id=1398648652]
+rotation = 0.5235988
+scale = Vector2(1, 1.15)
+texture = ExtResource("3_l5do4")
+hframes = 10
+vframes = 10
+frame = 2
+
+[node name="FruitSprite" type="Sprite2D" parent="Sprites" unique_id=851043240]
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("1_o3l72")
+hframes = 2
+vframes = 2

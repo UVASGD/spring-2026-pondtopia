@@ -6,12 +6,6 @@
 [node name="MigratedHex" type="Node2D" unique_id=1869561470]
 script = ExtResource("1_jjyrr")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2031391160]
-rotation = 0.5235988
-texture = ExtResource("2_u7edc")
-hframes = 10
-vframes = 10
-
 [node name="HexBoundsMarkers" type="Node2D" parent="." unique_id=443622468]
 scale = Vector2(38, 38)
 
@@ -78,3 +72,11 @@ gizmo_extents = 0.0
 position = Vector2(-1.5, -0.866)
 scale = Vector2(10, 10)
 gizmo_extents = 0.0
+
+[node name="Sprites" type="Node2D" parent="." unique_id=932546899]
+
+[node name="Sprite2D" type="Sprite2D" parent="Sprites" unique_id=2031391160]
+rotation = 0.5235988
+texture = ExtResource("2_u7edc")
+hframes = 10
+vframes = 10
