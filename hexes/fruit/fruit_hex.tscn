@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://d10piyhocj0rb" path="res://hexes/fruit/fruit_hex.gd" id="1_6c8ni"]
 [ext_resource type="Texture2D" uid="uid://ccm3c45v5ub63" path="res://z_assets/sprites/Frutis.png" id="1_o3l72"]
 [ext_resource type="Texture2D" uid="uid://b1fy6lrw0qevl" path="res://z_assets/sprites/hexes/hex_tilemap.png" id="3_l5do4"]
+[ext_resource type="PackedScene" uid="uid://otoc08ucd8fq" path="res://game_ui/hex_options/hex_options.tscn" id="4_gn56h"]
 
 [node name="FruitHex" type="Node2D" unique_id=229729213]
 script = ExtResource("1_6c8ni")
@@ -89,3 +90,5 @@ scale = Vector2(0.3, 0.3)
 texture = ExtResource("1_o3l72")
 hframes = 2
 vframes = 2
+
+[node name="HexOptions" parent="." unique_id=2025673578 instance=ExtResource("4_gn56h")]

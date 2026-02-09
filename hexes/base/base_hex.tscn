@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://c503q2ov4usp0" path="res://hexes/base/base_hex.gd" id="1_bnqpj"]
 [ext_resource type="Texture2D" uid="uid://8uvrpaf3fp8e" path="res://icon.svg" id="1_kg2gx"]
+[ext_resource type="PackedScene" uid="uid://otoc08ucd8fq" path="res://game_ui/hex_options/hex_options.tscn" id="3_20gfp"]
 
 [node name="BaseHex" type="Node2D" unique_id=432663569]
 script = ExtResource("1_bnqpj")
@@ -101,6 +102,8 @@ gizmo_extents = 0.0
 position = Vector2(-1.5, -0.866)
 scale = Vector2(10, 10)
 gizmo_extents = 0.0
+
+[node name="HexOptions" parent="." unique_id=2025673578 instance=ExtResource("3_20gfp")]
 
 [node name="Label" type="Label" parent="." unique_id=1987564325]
 offset_left = -9.0

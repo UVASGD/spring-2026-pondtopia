@@ -2,7 +2,8 @@ extends Control
 class_name HexOptions
 
 const button_dict : Dictionary = {
-	"delete" = preload("res://game_ui/hex_options/buttons/HO_delete_button.tscn")
+	"delete" = preload("res://game_ui/hex_options/buttons/hob_delete.tscn"),
+	"clear" = preload("res://game_ui/hex_options/buttons/hob_clear.tscn"),
 }
 
 var hex : BaseHex

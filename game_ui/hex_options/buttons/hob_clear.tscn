@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://cai31qe6de334"]
+
+[ext_resource type="Script" uid="uid://ek3x6taumoiw" path="res://game_ui/hex_options/buttons/hex_options_button.gd" id="1_s0x2w"]
+
+[node name="HobClear" type="Control" unique_id=657124553]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_s0x2w")
+action_name = "clear"
+
+[node name="Button" type="Button" parent="." unique_id=2132754526]
+z_index = 2
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -24.5
+offset_top = -15.5
+offset_right = 24.5
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Clear"

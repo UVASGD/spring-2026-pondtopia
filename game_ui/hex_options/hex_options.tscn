@@ -2,14 +2,21 @@
 
 [ext_resource type="Script" uid="uid://b60ltjly6brbh" path="res://game_ui/hex_options/hex_options.gd" id="1_8at8g"]
 [ext_resource type="Script" uid="uid://b33h6vsi7r2xx" path="res://game_ui/hex_options/circle_container.gd" id="2_gb543"]
+[ext_resource type="PackedScene" uid="uid://1tgyxs7icjmc" path="res://game_ui/hex_options/buttons/hob_delete.tscn" id="3_edrnc"]
+[ext_resource type="PackedScene" uid="uid://cai31qe6de334" path="res://game_ui/hex_options/buttons/hob_clear.tscn" id="4_gnejw"]
 
 [node name="HexOptions" type="Control" unique_id=2025673578]
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_8at8g")
 
-[node name="Container" type="Container" parent="." unique_id=1310302994]
+[node name="CircleContainer" type="Container" parent="." unique_id=1310302994]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
 script = ExtResource("2_gb543")
+radius = 110.0
+
+[node name="HobDelete" parent="CircleContainer" unique_id=1042006475 instance=ExtResource("3_edrnc")]
+layout_mode = 2
+
+[node name="HobClear" parent="CircleContainer" unique_id=657124553 instance=ExtResource("4_gnejw")]
+layout_mode = 2

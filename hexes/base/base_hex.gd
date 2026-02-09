@@ -49,6 +49,8 @@ var _is_selected : bool = false
 ## Whether this hex is currently highlighted. Automatically set by HexManager.
 var _is_highlighted : bool = false
 
+## The node that handles the circle popup menu.
+@onready var hex_options : HexOptions = $HexOptions
 ## This node holds the sprites that make up the hex.
 @onready var sprites : Node2D = $Sprites
 
@@ -101,8 +103,8 @@ func on_removed_from_map(_type: REMOVE_TYPE, _extra_params : Variant) :
 
 #region Base Behaviors
 
-func ready_base() : 
-	pass
+func ready_base() :
+	hex_options.hide()
 
 func tick_base() :
 	pass
@@ -110,10 +112,12 @@ func tick_base() :
 func on_selected_base() :
 	sprites.modulate.b = 0
 	sprites.modulate.r = 0
+	hex_options.show()
 
 func on_deselected_base() :
 	sprites.modulate.b = 1
 	sprites.modulate.r = 1
+	hex_options.hide()
 
 func on_highlighted_base() :
 	sprites.modulate.a = 0.5
