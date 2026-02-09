@@ -49,7 +49,13 @@ var _is_selected : bool = false
 ## Whether this hex is currently highlighted. Automatically set by HexManager.
 var _is_highlighted : bool = false
 
+## This node holds the sprites that make up the hex.
 @onready var sprites : Node2D = $Sprites
+
+## Intended for overriding!
+## Calling ready in extended versions of BaseHex will override this function. Make sure to call ready_base().
+func _ready() -> void:
+	ready_base()
 
 ## Intended for overriding!
 ## This function is automatically called every HexManager.tick_duration seconds.
@@ -94,6 +100,9 @@ func on_removed_from_map(_type: REMOVE_TYPE, _extra_params : Variant) :
 	on_removed_from_map_base(_type)
 
 #region Base Behaviors
+
+func ready_base() : 
+	pass
 
 func tick_base() :
 	pass
