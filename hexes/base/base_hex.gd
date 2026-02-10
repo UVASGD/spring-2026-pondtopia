@@ -40,8 +40,6 @@ enum REMOVE_TYPE {
 ## A unique id set by the HexManager when the hex is created
 var debug_id
 
-## The coordinates of the spot on the map that this hex holds. The hex may not necessarily be at the associated real position.
-var _grid_coords : Vector2i
 ## Whether this hex is currently selected. Automatically set by HexManager.
 var _is_selected : bool = false
 ## Whether this hex is currently highlighted. Automatically set by HexManager.
@@ -51,6 +49,8 @@ var _is_highlighted : bool = false
 @onready var hex_options : HexOptions = $HexOptions
 ## This node holds the sprites that make up the hex.
 @onready var sprites : Node2D = $Sprites
+## This resource holds all of the hex data.
+@onready var data : HexData = HexData.new()
 
 ## Intended for overriding!
 ## Calling ready in extended versions of BaseHex will override this function. Make sure to call ready_base().
@@ -136,7 +136,7 @@ func on_hex_options_button_pressed_base(button_action_name : String) :
 		"clear":
 			try_deselect()
 			remove_from_map()
-			HexManager.create_hex(_grid_coords, HexManager.MIGRATED_HEX, CREATE_TYPE.INSTANT, [2])
+			HexManager.create_hex(data.grid_coords, HexManager.MIGRATED_HEX, CREATE_TYPE.INSTANT, [2])
 		"fly":
 			if GameInfo.num_flies >= 100:
 				try_deselect()
@@ -196,39 +196,39 @@ func remove_from_map(type: REMOVE_TYPE = REMOVE_TYPE.INSTANT) :
 
 ## Do not override.
 func real_pos() -> Vector2:
-	return HexManager.get_associated_real_position(_grid_coords)
+	return HexManager.get_associated_real_position(data.grid_coords)
 
 ## Do not override. Gets the hex at the grid spot self.grid_coords + relative_grid_coords.
 func get_hex_rel(relative_grid_coords: Vector2i) -> BaseHex:
-	return HexManager.get_hex_relative_to(_grid_coords, relative_grid_coords)
+	return HexManager.get_hex_relative_to(data.grid_coords, relative_grid_coords)
 
 ## Do not override.
 func get_hexes_rel(relative_grid_coords_list : Array) -> Array[BaseHex]:
-	return HexManager.get_hexes_relative_to(_grid_coords,relative_grid_coords_list)
+	return HexManager.get_hexes_relative_to(data.grid_coords,relative_grid_coords_list)
 
 ## Do not override.
 func get_coords_within(radius:int) -> Array[Vector2i]:
-	return HexManager.get_coords_in_hexagon(radius,_grid_coords)
+	return HexManager.get_coords_in_hexagon(radius,data.grid_coords)
 
 ## Do not override.
 func get_hexes_within(radius:int) -> Array[BaseHex]:
-	return HexManager.get_hexes_in_hexagon(radius,_grid_coords)
+	return HexManager.get_hexes_in_hexagon(radius,data.grid_coords)
 
 ## Do not override.
 func nth_nearest_neighbors_coords(n:int) -> Array[Vector2i]:
-	return HexManager.get_nth_nearest_neighbors_coords(n,_grid_coords)
+	return HexManager.get_nth_nearest_neighbors_coords(n,data.grid_coords)
 
 ## Do not override.
 func nth_nearest_neighbors(n:int) -> Array[BaseHex]:
-	return HexManager.get_nth_nearest_neighbors_hexes(n,_grid_coords)
+	return HexManager.get_nth_nearest_neighbors_hexes(n,data.grid_coords)
 
 ## Do not override.
 func get_adjacent_coords() -> Array[Vector2i]:
-	return HexManager.get_adjacent_coords(_grid_coords)
+	return HexManager.get_adjacent_coords(data.grid_coords)
 
 ## Do not override.
 func get_adjacent_hexes() -> Array[BaseHex]:
-	return HexManager.get_adjacent_hexes(_grid_coords)
+	return HexManager.get_adjacent_hexes(data.grid_coords)
 
 ## Do not override. Returns true if target_grid_coords are up to or including n spaces away.
 func is_within(target_grid_coords: Vector2i, n:int) -> bool:
@@ -236,15 +236,15 @@ func is_within(target_grid_coords: Vector2i, n:int) -> bool:
 
 ## Do not override.
 func is_hex_within(target_hex:BaseHex, n:int) -> bool:
-	return is_within(target_hex.grid_coords,n)
+	return is_within(target_hex.data.grid_coords, n)
 
 ## Do not override. Returns what level of nearest neighbor the grid coords are (an adjacent tile returns 1).
 func nearest_neighbor_dist(target_grid_coords: Vector2i) -> int:
-	return HexManager.nearest_neighbor_dist(_grid_coords, target_grid_coords)
+	return HexManager.nearest_neighbor_dist(data.grid_coords, target_grid_coords)
 
 ## Do not override.
 func nearest_neighbor_dist_(target_hex: BaseHex) -> int:
-	return nearest_neighbor_dist(target_hex.grid_coords)
+	return nearest_neighbor_dist(target_hex.data.grid_coords)
 
 ## Do not override.
 func is_selected() -> bool :
