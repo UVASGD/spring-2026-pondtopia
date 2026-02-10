@@ -5,4 +5,4 @@ extends Node
 ### GameInfo ###
 ## Game state flags vars and funcs.
 
-var num_flies: int = 200
+var num_flies: int = 50
