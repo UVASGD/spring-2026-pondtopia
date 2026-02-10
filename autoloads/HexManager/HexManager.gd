@@ -62,7 +62,7 @@ func get_hex_(x:int,y:int) -> BaseHex:
 
 ## Like get_hex() but uses relative_to_hex as the origin.
 func get_hex_relative(relative_to_hex: BaseHex, relative_grid_coords: Vector2i) -> BaseHex:
-	return get_hex(relative_to_hex._grid_coords + relative_grid_coords)
+	return get_hex(relative_to_hex.data.grid_coords + relative_grid_coords)
 
 ## Like get_hex() but uses relative_to_coords as the origin.
 func get_hex_relative_to(relative_to_coords: Vector2i, relative_grid_coords: Vector2i) -> BaseHex:
@@ -79,7 +79,7 @@ func get_hexes(grid_coords_list: Array) -> Array[BaseHex]:
 
 ## Like get_hex_relative() but allows for multiple hexes.
 func get_hexes_relative(relative_to_hex: BaseHex, relative_grid_coords_list: Array) -> Array[BaseHex]:
-	return get_hexes_relative_to(relative_to_hex._grid_coords, relative_grid_coords_list)
+	return get_hexes_relative_to(relative_to_hex.data.grid_coords, relative_grid_coords_list)
 
 ## Like get_hex_relative_to() but allows for multiple hexes.
 func get_hexes_relative_to(relative_to_coords: Vector2i, relative_grid_coords_list: Array) -> Array[BaseHex]:
@@ -242,7 +242,7 @@ func get_contiguous_conditional(center: Vector2i, condition: Callable, check_cen
 		var meets_condition = await condition.call(next_hex)
 		if meets_condition : #if the hex meets the condition
 			output.append(next_hex)
-			var neighbors = get_adjacent_hexes(next_hex._grid_coords)
+			var neighbors = get_adjacent_hexes(next_hex.data.grid_coords)
 			for h in neighbors :
 				if !acknowledged.has(h) :
 					check_queue.append(h)
@@ -314,13 +314,13 @@ func _register_hex_at(hex: BaseHex, grid_coords: Vector2i):
 ## INTERNAL USE ONLY. You might be looking for move_hex(). 
 ## Directly sets the hexes position. Overrides any existing hex.
 func _set_hex_position(hex: BaseHex, grid_coords: Vector2i):
-	hex._grid_coords = grid_coords
+	hex.data.grid_coords = grid_coords
 	map.set_entryv(grid_coords,hex)
 
 ## INTERNAL USE ONLY. You might be looking for remove_hex().
 ## Removes a hex from hex_list and map.
 func _unregister_hex(hex: BaseHex):
 	hex_list.erase(hex)
-	map.delete_entryv(hex._grid_coords)
+	map.delete_entryv(hex.data.grid_coords)
 
 #endregion
