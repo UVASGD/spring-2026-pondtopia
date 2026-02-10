@@ -2,13 +2,15 @@
 
 [ext_resource type="Script" uid="uid://vwlpgn4uou8q" path="res://hexes/fly/fly_hex.gd" id="1_vcn42"]
 [ext_resource type="Texture2D" uid="uid://sfpuuj5axuue" path="res://z_assets/sprites/hexes/fly.png" id="2_5dt03"]
-[ext_resource type="Texture2D" uid="uid://8uvrpaf3fp8e" path="res://icon.svg" id="2_i5cpg"]
+[ext_resource type="PackedScene" uid="uid://otoc08ucd8fq" path="res://game_ui/hex_options/hex_options.tscn" id="4_bry2g"]
 
 [node name="FlyHex" type="Node2D" unique_id=432663569]
 script = ExtResource("1_vcn42")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1927785233]
-scale = Vector2(0.15, 0.15)
+[node name="Sprites" type="Node2D" parent="." unique_id=724530356]
+
+[node name="Sprite2D" type="Sprite2D" parent="Sprites" unique_id=1927785233]
+rotation = -0.5235988
 texture = ExtResource("2_5dt03")
 
 [node name="HexBoundsMarkers" type="Node2D" parent="." unique_id=519870482]
@@ -84,25 +86,4 @@ offset_top = -8.0
 offset_right = 31.0
 offset_bottom = 15.0
 
-[node name="TempOtherSprites" type="Node2D" parent="." unique_id=1465388028]
-visible = false
-
-[node name="Sprite2D2" type="Sprite2D" parent="TempOtherSprites" unique_id=1281072366]
-position = Vector2(-9.536743e-07, -17)
-scale = Vector2(0.03, 0.03)
-texture = ExtResource("2_i5cpg")
-
-[node name="Sprite2D3" type="Sprite2D" parent="TempOtherSprites" unique_id=1031892425]
-position = Vector2(-15, -8.999999)
-scale = Vector2(0.03, 0.03)
-texture = ExtResource("2_i5cpg")
-
-[node name="Sprite2D4" type="Sprite2D" parent="TempOtherSprites" unique_id=743338923]
-position = Vector2(14.919998, -9.08)
-scale = Vector2(0.03, 0.03)
-texture = ExtResource("2_i5cpg")
-
-[node name="Sprite2D5" type="Sprite2D" parent="TempOtherSprites" unique_id=114663123]
-position = Vector2(-14.999999, 8.999998)
-scale = Vector2(0.03, 0.03)
-texture = ExtResource("2_i5cpg")
+[node name="HexOptions" parent="." unique_id=2025673578 instance=ExtResource("4_bry2g")]

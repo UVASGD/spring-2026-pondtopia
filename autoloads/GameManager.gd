@@ -6,7 +6,7 @@ extends Node
 ## Manages the flow of the game with game_loop. Mostly calls methods in other autoloads and sends/receives signals.
 
 ## Tick timing
-const tick_duration : float = 0.1 #in seconds
+const tick_duration : float = 0.5 #in seconds
 var time_since_last_tick : float = 0
 
 func _ready() -> void:

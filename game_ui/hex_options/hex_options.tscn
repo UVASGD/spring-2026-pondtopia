@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://b33h6vsi7r2xx" path="res://game_ui/hex_options/circle_container.gd" id="2_gb543"]
 [ext_resource type="PackedScene" uid="uid://1tgyxs7icjmc" path="res://game_ui/hex_options/buttons/hob_delete.tscn" id="3_edrnc"]
 [ext_resource type="PackedScene" uid="uid://cai31qe6de334" path="res://game_ui/hex_options/buttons/hob_clear.tscn" id="4_gnejw"]
+[ext_resource type="PackedScene" uid="uid://cxtpoyi3g533e" path="res://game_ui/hex_options/buttons/hob_fly.tscn" id="5_gnejw"]
 
 [node name="HexOptions" type="Control" unique_id=2025673578]
 layout_mode = 3
@@ -19,4 +20,7 @@ radius = 110.0
 layout_mode = 2
 
 [node name="HobClear" parent="CircleContainer" unique_id=657124553 instance=ExtResource("4_gnejw")]
+layout_mode = 2
+
+[node name="HobFly" parent="CircleContainer" unique_id=486253108 instance=ExtResource("5_gnejw")]
 layout_mode = 2

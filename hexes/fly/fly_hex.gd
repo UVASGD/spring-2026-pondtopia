@@ -1,2 +1,10 @@
 extends BaseHex
 class_name FlyHex
+
+func on_added_to_map(_type: CREATE_TYPE, _extra_params : Array):
+	# cost
+	GameInfo.num_flies -= 100
+
+func tick():
+	GameInfo.num_flies += 25
+	print(GameInfo.num_flies)
