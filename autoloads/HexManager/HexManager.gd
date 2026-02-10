@@ -13,6 +13,12 @@ const SE = Vector2(1,-1)
 const SOUTH = Vector2(0,-1)
 const SW = Vector2(-1,0)
 
+## Preloaded hex packed scenes for instantiating hexes
+## These should be preloaded constants but preloading them causes a cyclic error.
+var BASE_HEX : PackedScene = load("res://hexes/base/base_hex.tscn")
+var MIGRATED_HEX : PackedScene = load("res://hexes/migrated/migrated_hex.tscn")
+var FRUIT_HEX : PackedScene = load("res://hexes/fruit/fruit_hex.tscn")
+
 ## When set to false, all methods in region Modify will be returned immediately
 var _allow_modify_actions : bool = false
 
@@ -25,7 +31,6 @@ var hex_list : Array[BaseHex] = []
 var map : DoubleDict = DoubleDict.new()
 
 ## Selected Hex
-var _is_hex_selected : bool = false
 var _selected_hex : BaseHex = null
 
 # Other
@@ -57,11 +62,29 @@ func get_hex_(x:int,y:int) -> BaseHex:
 
 ## Like get_hex() but uses relative_to_hex as the origin.
 func get_hex_relative(relative_to_hex: BaseHex, relative_grid_coords: Vector2i) -> BaseHex:
-	return get_hex(relative_to_hex.grid_coords + relative_grid_coords)
+	return get_hex(relative_to_hex._grid_coords + relative_grid_coords)
 
 ## Like get_hex() but uses relative_to_coords as the origin.
 func get_hex_relative_to(relative_to_coords: Vector2i, relative_grid_coords: Vector2i) -> BaseHex:
 	return get_hex(relative_to_coords + relative_grid_coords)
+
+## Like get_hex() but allows for multiple hexes.
+func get_hexes(grid_coords_list: Array) -> Array[BaseHex]:
+	#assert(grid_coords_list is Array[Vector2i])
+	var output : Array[BaseHex] = []
+	for c in grid_coords_list:
+		if is_hex_at(c) :
+			output.append(get_hex(c))
+	return output
+
+## Like get_hex_relative() but allows for multiple hexes.
+func get_hexes_relative(relative_to_hex: BaseHex, relative_grid_coords_list: Array) -> Array[BaseHex]:
+	return get_hexes_relative_to(relative_to_hex._grid_coords, relative_grid_coords_list)
+
+## Like get_hex_relative_to() but allows for multiple hexes.
+func get_hexes_relative_to(relative_to_coords: Vector2i, relative_grid_coords_list: Array) -> Array[BaseHex]:
+	var grid_coords_list = relative_grid_coords_list.map(func(v): return v + relative_to_coords)
+	return get_hexes(grid_coords_list)
 
 ## Returns the real position associated with grid_coords.
 func get_associated_real_position(grid_coords: Vector2) -> Vector2:
@@ -72,14 +95,13 @@ func get_associated_real_position(grid_coords: Vector2) -> Vector2:
 #region Modify
 
 ## Creates a hex grid_coords. If there is already there, throws an error. 
-func create_hex(grid_coords: Vector2i, hex_scene : PackedScene, type: BaseHex.CREATE_TYPE = BaseHex.CREATE_TYPE.INSTANT) -> BaseHex:
+func create_hex(grid_coords: Vector2i, hex_scene : PackedScene, type: BaseHex.CREATE_TYPE = BaseHex.CREATE_TYPE.INSTANT, extra_params : Array = []) -> BaseHex:
 	if not _allow_modify_actions :
 		return null
 	if map.has_entryv(grid_coords) :
 		push_error("Tried to create a new hex at " + str(grid_coords) + " but a hex was already there.")
 		return
 	# instantiate
-	#TODO type options
 	var hex : BaseHex = hex_scene.instantiate()
 	# set parent
 	add_child(hex)
@@ -89,44 +111,44 @@ func create_hex(grid_coords: Vector2i, hex_scene : PackedScene, type: BaseHex.CR
 	# register
 	_register_hex_at(hex, grid_coords)
 	# call on_added_to_map for unique behavior
-	hex.on_added_to_map(type)
+	hex.on_added_to_map(type, extra_params)
 	return hex
 
 ## See create_hex().
-func create_hex_(x:int,y:int, hex_scene : PackedScene, type: BaseHex.CREATE_TYPE) -> BaseHex:
-	return create_hex(Vector2i(x,y), hex_scene, type)
+func create_hex_(x:int,y:int, hex_scene : PackedScene, type: BaseHex.CREATE_TYPE = BaseHex.CREATE_TYPE.INSTANT, extra_params : Array = []) -> BaseHex:
+	return create_hex(Vector2i(x,y), hex_scene, type, extra_params)
 
 ## Moves a hex from its current position to new_grid_coords.
-func move_hex(hex: BaseHex, new_grid_coords: Vector2i, type: BaseHex.MOVE_TYPE = BaseHex.MOVE_TYPE.INSTANT):
+func move_hex(hex: BaseHex, new_grid_coords: Vector2i, type: BaseHex.MOVE_TYPE = BaseHex.MOVE_TYPE.INSTANT, extra_params : Array = []):
 	if not _allow_modify_actions :
 		return null
 	if map.has_entryv(new_grid_coords) :
 		push_error("Tried to move a hex to " + str(new_grid_coords) + " but a hex was already there.")
 		return
 	_set_hex_position(hex, new_grid_coords)
-	hex.on_moved(type)
+	hex.on_moved(type, extra_params)
 
 ## See move_hex().
-func move_hex_(hex: BaseHex, new_x: int, new_y: int, type: BaseHex.MOVE_TYPE = BaseHex.MOVE_TYPE.INSTANT) :
-	move_hex(hex,Vector2i(new_x,new_y),type)
+func move_hex_(hex: BaseHex, new_x: int, new_y: int, type: BaseHex.MOVE_TYPE = BaseHex.MOVE_TYPE.INSTANT, extra_params : Array = []) :
+	move_hex(hex,Vector2i(new_x,new_y),type,extra_params)
 
 ## Moves the hex at old_grid_coords to new_grid_coords.
-func move_hex_from(old_grid_coords: Vector2i, new_grid_coords: Vector2i, type: BaseHex.MOVE_TYPE = BaseHex.MOVE_TYPE.INSTANT):
+func move_hex_from(old_grid_coords: Vector2i, new_grid_coords: Vector2i, type: BaseHex.MOVE_TYPE = BaseHex.MOVE_TYPE.INSTANT, extra_params : Array = []):
 	if map.has_entryv(old_grid_coords) :
 		push_error("Tried to move a hex from " + str(new_grid_coords) + " but there was no hex there.")
 		return
-	move_hex(get_hex(old_grid_coords),new_grid_coords,type)
+	move_hex(get_hex(old_grid_coords),new_grid_coords,type,extra_params)
 
 ## See move_hex_from().
-func move_hex_from_(old_x:int,old_y:int,new_x:int,new_y:int,type: BaseHex.MOVE_TYPE = BaseHex.MOVE_TYPE.INSTANT):
-	move_hex_from(Vector2i(old_x,old_y),Vector2i(new_x,new_y),type)
+func move_hex_from_(old_x:int,old_y:int,new_x:int,new_y:int,type: BaseHex.MOVE_TYPE = BaseHex.MOVE_TYPE.INSTANT, extra_params : Array = []):
+	move_hex_from(Vector2i(old_x,old_y),Vector2i(new_x,new_y),type,extra_params)
 
 ## Removes and deletes the hex.
-func remove_hex(hex: BaseHex, type: BaseHex.REMOVE_TYPE = BaseHex.REMOVE_TYPE.INSTANT):
+func remove_hex(hex: BaseHex, type: BaseHex.REMOVE_TYPE = BaseHex.REMOVE_TYPE.INSTANT, extra_params : Array = []):
 	if not _allow_modify_actions :
 		return null
 	_unregister_hex(hex)
-	hex.on_removed_from_map(type)
+	hex.on_removed_from_map(type,extra_params)
 
 func remove_all_hexes(type: BaseHex.REMOVE_TYPE = BaseHex.REMOVE_TYPE.INSTANT) :
 	for i in hex_list.size() :
@@ -220,7 +242,7 @@ func get_contiguous_conditional(center: Vector2i, condition: Callable, check_cen
 		var meets_condition = await condition.call(next_hex)
 		if meets_condition : #if the hex meets the condition
 			output.append(next_hex)
-			var neighbors = get_adjacent_hexes(next_hex.grid_coords)
+			var neighbors = get_adjacent_hexes(next_hex._grid_coords)
 			for h in neighbors :
 				if !acknowledged.has(h) :
 					check_queue.append(h)
@@ -249,9 +271,9 @@ func process_mouse_left_click(coords : Vector2i) :
 	else :
 		deselect_selected_hex()
 
+const reselect_to_deselect = true #internal setting
 func select_hex(hex : BaseHex) :
-	var select_to_deselect = true
-	if select_to_deselect :
+	if reselect_to_deselect : 
 		if _selected_hex and hex == _selected_hex :
 			deselect_selected_hex()
 			return
@@ -259,20 +281,22 @@ func select_hex(hex : BaseHex) :
 	else :
 		if _selected_hex and hex !=_selected_hex :
 			deselect_selected_hex()
-	_is_hex_selected = true
 	_selected_hex = hex
-	hex.is_selected = true
+	hex._is_selected = true
 	hex.on_selected()
+
+func try_deselect_hex(hex : BaseHex) :
+	if hex.is_selected() :
+		deselect_selected_hex()
 
 func deselect_selected_hex() :
 	if _selected_hex :
-		_selected_hex.is_selected = false
+		_selected_hex._is_selected = false
 		_selected_hex.on_deselected()
-	_is_hex_selected = false
-	_selected_hex = null
+		_selected_hex = null
 
 func is_hex_selected() -> bool :
-	return _is_hex_selected
+	return true if _selected_hex else false
 
 func get_selected_hex() -> BaseHex :
 	return _selected_hex
@@ -290,13 +314,13 @@ func _register_hex_at(hex: BaseHex, grid_coords: Vector2i):
 ## INTERNAL USE ONLY. You might be looking for move_hex(). 
 ## Directly sets the hexes position. Overrides any existing hex.
 func _set_hex_position(hex: BaseHex, grid_coords: Vector2i):
-	hex.grid_coords = grid_coords
+	hex._grid_coords = grid_coords
 	map.set_entryv(grid_coords,hex)
 
 ## INTERNAL USE ONLY. You might be looking for remove_hex().
 ## Removes a hex from hex_list and map.
 func _unregister_hex(hex: BaseHex):
 	hex_list.erase(hex)
-	map.delete_entryv(hex.grid_coords)
+	map.delete_entryv(hex._grid_coords)
 
 #endregion
