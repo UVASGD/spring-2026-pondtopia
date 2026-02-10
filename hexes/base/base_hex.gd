@@ -141,7 +141,7 @@ func on_hex_options_button_pressed_base(button_action_name : String) :
 			if GameInfo.num_flies >= 100:
 				try_deselect()
 				remove_from_map()
-				HexManager.create_hex(_grid_coords, HexManager.FLY_HEX, CREATE_TYPE.INSTANT)
+				HexManager.create_hex(data.grid_coords, HexManager.FLY_HEX, CREATE_TYPE.INSTANT)
 
 func on_added_to_map_base(_type: CREATE_TYPE, _extra_params: Array) :
 	match _type :
