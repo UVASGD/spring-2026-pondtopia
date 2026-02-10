@@ -1,0 +1,94 @@
+[gd_scene format=3 uid="uid://cjxpkmrvylng8"]
+
+[ext_resource type="Script" uid="uid://d10piyhocj0rb" path="res://hexes/fruit/fruit_hex.gd" id="1_6c8ni"]
+[ext_resource type="Texture2D" uid="uid://ccm3c45v5ub63" path="res://z_assets/sprites/Frutis.png" id="1_o3l72"]
+[ext_resource type="Texture2D" uid="uid://b1fy6lrw0qevl" path="res://z_assets/sprites/hexes/hex_tilemap.png" id="3_l5do4"]
+[ext_resource type="PackedScene" uid="uid://otoc08ucd8fq" path="res://game_ui/hex_options/hex_options.tscn" id="4_gn56h"]
+
+[node name="FruitHex" type="Node2D" unique_id=229729213]
+script = ExtResource("1_6c8ni")
+
+[node name="HexBoundsMarkers" type="Node2D" parent="." unique_id=522562309]
+scale = Vector2(38, 38)
+
+[node name="Corners" type="Node2D" parent="HexBoundsMarkers" unique_id=596080461]
+
+[node name="NW" type="Marker2D" parent="HexBoundsMarkers/Corners" unique_id=1811349985]
+position = Vector2(-1, -1.732)
+scale = Vector2(10, 10)
+gizmo_extents = 0.0
+
+[node name="NE" type="Marker2D" parent="HexBoundsMarkers/Corners" unique_id=388284252]
+position = Vector2(1, -1.732)
+scale = Vector2(10, 10)
+gizmo_extents = 0.0
+
+[node name="East" type="Marker2D" parent="HexBoundsMarkers/Corners" unique_id=1383987278]
+position = Vector2(2, 0)
+scale = Vector2(10, 10)
+gizmo_extents = 0.0
+
+[node name="SE" type="Marker2D" parent="HexBoundsMarkers/Corners" unique_id=123837811]
+position = Vector2(1, 1.732)
+scale = Vector2(10, 10)
+gizmo_extents = 0.0
+
+[node name="SW" type="Marker2D" parent="HexBoundsMarkers/Corners" unique_id=1814975189]
+position = Vector2(-1, 1.732)
+scale = Vector2(10, 10)
+gizmo_extents = 0.0
+
+[node name="West" type="Marker2D" parent="HexBoundsMarkers/Corners" unique_id=655537739]
+position = Vector2(-2, 0)
+scale = Vector2(10, 10)
+gizmo_extents = 0.0
+
+[node name="EdgeMidpoints" type="Node2D" parent="HexBoundsMarkers" unique_id=968194197]
+
+[node name="North" type="Marker2D" parent="HexBoundsMarkers/EdgeMidpoints" unique_id=1259244478]
+position = Vector2(0, -1.732)
+scale = Vector2(10, 10)
+gizmo_extents = 0.0
+
+[node name="NE" type="Marker2D" parent="HexBoundsMarkers/EdgeMidpoints" unique_id=747098694]
+position = Vector2(1.5, -0.866)
+scale = Vector2(10, 10)
+gizmo_extents = 0.0
+
+[node name="SE" type="Marker2D" parent="HexBoundsMarkers/EdgeMidpoints" unique_id=489725149]
+position = Vector2(1.5, 0.866)
+scale = Vector2(10, 10)
+gizmo_extents = 0.0
+
+[node name="South" type="Marker2D" parent="HexBoundsMarkers/EdgeMidpoints" unique_id=1140249432]
+position = Vector2(0, 1.732)
+scale = Vector2(10, 10)
+gizmo_extents = 0.0
+
+[node name="SW" type="Marker2D" parent="HexBoundsMarkers/EdgeMidpoints" unique_id=1492945630]
+position = Vector2(-1.5, 0.866)
+scale = Vector2(10, 10)
+gizmo_extents = 0.0
+
+[node name="NW" type="Marker2D" parent="HexBoundsMarkers/EdgeMidpoints" unique_id=1814806849]
+position = Vector2(-1.5, -0.866)
+scale = Vector2(10, 10)
+gizmo_extents = 0.0
+
+[node name="Sprites" type="Node2D" parent="." unique_id=2083647452]
+
+[node name="HexSprite" type="Sprite2D" parent="Sprites" unique_id=1398648652]
+rotation = 0.5235988
+scale = Vector2(1, 1.15)
+texture = ExtResource("3_l5do4")
+hframes = 10
+vframes = 10
+frame = 2
+
+[node name="FruitSprite" type="Sprite2D" parent="Sprites" unique_id=851043240]
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("1_o3l72")
+hframes = 2
+vframes = 2
+
+[node name="HexOptions" parent="." unique_id=2025673578 instance=ExtResource("4_gn56h")]

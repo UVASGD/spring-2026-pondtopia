@@ -5,7 +5,7 @@ extends Node
 ### SignalBus ###
 ## Stores signals for easy access.
 
-# Signals for buttons
+# Signals for shell scene buttons
 signal quit_pressed
 signal start_game_pressed
 signal skip_to_win_pressed
