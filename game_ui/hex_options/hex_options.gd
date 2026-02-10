@@ -4,6 +4,7 @@ class_name HexOptions
 const button_dict : Dictionary = {
 	"delete" = preload("res://game_ui/hex_options/buttons/hob_delete.tscn"),
 	"clear" = preload("res://game_ui/hex_options/buttons/hob_clear.tscn"),
+	"fly" = preload("res://hexes/fly/fly_hex.tscn"),
 }
 
 var hex : BaseHex

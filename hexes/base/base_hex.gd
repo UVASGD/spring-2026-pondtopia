@@ -91,18 +91,18 @@ func on_hex_options_button_pressed(button_action_name : String) :
 ## Intended for overriding!
 ## This function is automatically called when the hex is created and added to the map.
 func on_added_to_map(_type: CREATE_TYPE, _extra_params : Array) :
-	on_added_to_map_base(_type)
+	on_added_to_map_base(_type, _extra_params)
 
 ## Intended for overriding!
 ## This function is automatically called when the hex is moved from one grid spot to another.
 func on_moved(_type: MOVE_TYPE, _extra_params : Array) :
-	on_moved_base(_type)
+	on_moved_base(_type, _extra_params)
 
 ## Intended for overriding! (Don't forget to queue_free at the end though)
 ## This function is automatically called when the hex is about to be removed from the map and queue_freed.
 ## Although this hex will not hold the grid spot anymore, the hex's nodes can stay in the same real position to do disappear animations etc.
 func on_removed_from_map(_type: REMOVE_TYPE, _extra_params : Array) :
-	on_removed_from_map_base(_type)
+	on_removed_from_map_base(_type, _extra_params)
 
 #region Base Behaviors
 
@@ -136,9 +136,14 @@ func on_hex_options_button_pressed_base(button_action_name : String) :
 		"clear":
 			try_deselect()
 			remove_from_map()
-			HexManager.create_hex(data.grid_coords, HexManager.MIGRATED_HEX, CREATE_TYPE.INSTANT, [1])
+			HexManager.create_hex(data.grid_coords, HexManager.MIGRATED_HEX, CREATE_TYPE.INSTANT, [2])
+		"fly":
+			if GameInfo.num_flies >= 100:
+				try_deselect()
+				remove_from_map()
+				HexManager.create_hex(data.grid_coords, HexManager.FLY_HEX, CREATE_TYPE.INSTANT)
 
-func on_added_to_map_base(_type: CREATE_TYPE) :
+func on_added_to_map_base(_type: CREATE_TYPE, _extra_params: Array) :
 	match _type :
 		CREATE_TYPE.INSTANT :
 			position = real_pos()
@@ -151,7 +156,7 @@ func on_added_to_map_base(_type: CREATE_TYPE) :
 		_ : #default, do same as instant
 			position = real_pos()
 
-func on_moved_base(_type: MOVE_TYPE) :
+func on_moved_base(_type: MOVE_TYPE, _extra_params: Array) :
 	match _type :
 		MOVE_TYPE.INSTANT :
 			position = real_pos()
@@ -161,7 +166,7 @@ func on_moved_base(_type: MOVE_TYPE) :
 		_ : #default, do same as instant
 			position = real_pos()
 
-func on_removed_from_map_base(_type: REMOVE_TYPE) :
+func on_removed_from_map_base(_type: REMOVE_TYPE, _extra_params: Array) :
 	match _type :
 		REMOVE_TYPE.INSTANT :
 			queue_free()
