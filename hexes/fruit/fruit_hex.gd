@@ -22,7 +22,7 @@ func on_added_to_map(_type: CREATE_TYPE, _extra_params : Array):
 				set_type(TYPE.BANANA)
 		if _extra_params[0] is int :
 			set_type(_extra_params[0] as TYPE)
-	on_added_to_map_base(_type)
+	on_added_to_map_base(_type, _extra_params)
 
 func on_selected():
 	var a : Array[BaseHex] = []
