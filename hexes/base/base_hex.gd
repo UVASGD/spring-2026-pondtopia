@@ -136,7 +136,7 @@ func on_hex_options_button_pressed_base(button_action_name : String) :
 		"clear":
 			try_deselect()
 			remove_from_map()
-			HexManager.create_hex(_grid_coords, HexManager.MIGRATED, CREATE_TYPE.INSTANT, [2])
+			HexManager.create_hex(_grid_coords, HexManager.MIGRATED_HEX, CREATE_TYPE.INSTANT, [1])
 
 func on_added_to_map_base(_type: CREATE_TYPE) :
 	match _type :
