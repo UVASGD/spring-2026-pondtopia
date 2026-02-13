@@ -48,3 +48,4 @@ func load_file(save_path : String):
 	#hex map loading
 	for i in loaded_save.hex_list:
 		HexManager.create_hex(i.coords,hex_type_to_scene.get(i.type),BaseHex.CREATE_TYPE.INSTANT,i.extra_params)
+	GameInfo.num_flies = loaded_save.num_flies
