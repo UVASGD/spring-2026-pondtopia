@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dpfgtpxrxum1r"]
 
 [ext_resource type="Script" uid="uid://bj5ye56nvni8h" path="res://shell_scenes/shell_scene_button.gd" id="1_8xr5c"]
+[ext_resource type="Script" uid="uid://dow28i7obnaa" path="res://shell_scenes/pause.gd" id="1_penmj"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_msatf"]
 bg_color = Color(0.7294118, 0.8235294, 0.64705884, 1)
@@ -27,6 +28,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_penmj")
 
 [node name="TextureRect" type="PanelContainer" parent="." unique_id=495314460]
 layout_mode = 1
@@ -69,12 +71,6 @@ theme_override_colors/font_color = Color(0.12941177, 0.31764707, 0.27058825, 1)
 theme_override_font_sizes/font_size = 40
 theme_override_styles/normal = SubResource("StyleBoxFlat_8xr5c")
 text = "Resume"
-script = ExtResource("1_8xr5c")
-emit_signal_ = true
-switch_scene = true
-signal_to_emit = "start_game_pressed"
-emit_order = 1
-switch_to = "game"
 
 [node name="Options" type="Button" parent="TextureRect/VBoxContainer/HBoxContainer/ButtonsContainer" unique_id=1805524063]
 layout_mode = 2
@@ -82,9 +78,6 @@ theme_override_colors/font_color = Color(0.12941177, 0.31764707, 0.27058825, 1)
 theme_override_font_sizes/font_size = 40
 theme_override_styles/normal = SubResource("StyleBoxFlat_8xr5c")
 text = "Options"
-script = ExtResource("1_8xr5c")
-switch_scene = true
-switch_to = "options"
 
 [node name="Quit" type="Button" parent="TextureRect/VBoxContainer/HBoxContainer/ButtonsContainer" unique_id=93168345]
 layout_mode = 2
@@ -93,3 +86,6 @@ theme_override_font_sizes/font_size = 40
 theme_override_styles/normal = SubResource("StyleBoxFlat_8xr5c")
 text = "Quit
 "
+script = ExtResource("1_8xr5c")
+emit_signal_ = true
+signal_to_emit = "quit_pressed"
