@@ -35,17 +35,3 @@ func end_game() :
 
 func quit_game() :
 	get_tree().quit()
-
-#reading from selected save_path to regenerate the game
-func load_file(save_path : String):
-	#base hex scenes to prepare for create_hex reading from save
-	var hex_type_to_scene : Dictionary[String,PackedScene] = {
-		"base" : HexManager.BASE_HEX,
-		"fruit": HexManager.FRUIT_HEX,
-		"migration": HexManager.MIGRATED_HEX
-	}
-	var loaded_save = ResourceLoader.load(save_path,"",ResourceLoader.CACHE_MODE_REUSE)
-	#hex map loading
-	for i in loaded_save.hex_list:
-		HexManager.create_hex(i.coords,hex_type_to_scene.get(i.type),BaseHex.CREATE_TYPE.INSTANT,i.extra_params)
-	GameInfo.num_flies = loaded_save.num_flies

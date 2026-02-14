@@ -30,6 +30,7 @@ ShellSceneManager="*uid://cikmhh7uipt2u"
 Ref="*uid://ciyveyuo2ihr0"
 GameInfo="*uid://q515awnoredo"
 SignalBus="*uid://jvqt7a3wcl26"
+SaveManager="*uid://dmob3622nhicg"
 
 [display]
 
