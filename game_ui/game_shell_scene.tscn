@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://b2jv1g64sbwr" path="res://z_assets/sprites/ui/energy_progress.png" id="7_o8tbw"]
 [ext_resource type="Texture2D" uid="uid://dk472mh4cpvpb" path="res://z_assets/sprites/ui/build_hammer.png" id="8_pptlg"]
 [ext_resource type="Texture2D" uid="uid://kyqr8msqgvk7" path="res://z_assets/sprites/ui/build_hammer_pressed.png" id="9_pl78p"]
+[ext_resource type="PackedScene" uid="uid://dpfgtpxrxum1r" path="res://shell_scenes/pause.tscn" id="10_ja3q7"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o1dak"]
 bg_color = Color(0.282353, 0.705882, 0.227451, 1)
@@ -191,3 +192,7 @@ texture_normal = ExtResource("8_pptlg")
 texture_pressed = ExtResource("9_pl78p")
 ignore_texture_size = true
 stretch_mode = 5
+
+[node name="Pause" parent="." unique_id=816710642 instance=ExtResource("10_ja3q7")]
+visible = false
+z_index = 101

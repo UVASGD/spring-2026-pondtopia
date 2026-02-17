@@ -15,8 +15,8 @@ offset_bottom = 574.0
 text = "Back"
 script = ExtResource("1_4nwng")
 switch_scene = true
-switch_to = "main_menu"
 allow_quick_key = true
+switch_to = "main_menu"
 
 [node name="TEMP" type="Label" parent="." unique_id=1066550794]
 layout_mode = 0
