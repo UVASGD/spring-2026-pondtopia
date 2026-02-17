@@ -26,9 +26,11 @@ const SE := Vector2i(1,-1)
 const SOUTH := Vector2i(0,-1)
 const SW := Vector2i(-1,0)
 
+const NUM_FROGS_REQUIRED: int = 0
+
 ## Create/move/remove types (allows for different animations on create move and remove)
 enum CREATE_TYPE {
-	INSTANT,FADE_IN
+	INSTANT,FADE_IN,POP
 }
 enum MOVE_TYPE {
 	INSTANT,SLIDE
@@ -176,6 +178,9 @@ func on_removed_from_map_base(_type: REMOVE_TYPE, _extra_params: Array) :
 			queue_free()
 		_ : #default, do same as instant
 			queue_free()
+			
+func get_frogs_required() -> int:
+	return 0
 
 #endregion
 

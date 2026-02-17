@@ -27,7 +27,7 @@ func start_game() :
 	HexManager._allow_modify_actions = true
 	var size = 2
 	for coord in HexManager.get_coords_in_hexagon(size) :
-		HexManager.create_hex(coord, HexManager.FRUIT_HEX, BaseHex.CREATE_TYPE.FADE_IN, [randi_range(0,3)])
+		HexManager.create_hex(coord, HexManager.HOUSING_HEX, BaseHex.CREATE_TYPE.FADE_IN, [randi_range(0,3)])
 
 func end_game() :
 	HexManager.remove_all_hexes()
@@ -42,7 +42,8 @@ func load_file(save_path : String):
 	var hex_type_to_scene : Dictionary[String,PackedScene] = {
 		"base" : HexManager.BASE_HEX,
 		"fruit": HexManager.FRUIT_HEX,
-		"migration": HexManager.MIGRATED_HEX
+		"migration": HexManager.MIGRATED_HEX,
+		"housing": HexManager.HOUSING_HEX
 	}
 	var loaded_save = ResourceLoader.load(save_path,"",ResourceLoader.CACHE_MODE_REUSE)
 	#hex map loading

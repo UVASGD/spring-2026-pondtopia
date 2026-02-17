@@ -17,6 +17,7 @@ const SW = Vector2(-1,0)
 ## These should be preloaded constants but preloading them causes a cyclic error.
 var BASE_HEX : PackedScene = load("res://hexes/base/base_hex.tscn")
 var MIGRATED_HEX : PackedScene = load("res://hexes/migrated/migrated_hex.tscn")
+var HOUSING_HEX : PackedScene = load("res://hexes/housing/housing_hex.tscn")
 var FRUIT_HEX : PackedScene = load("res://hexes/fruit/fruit_hex.tscn")
 var FLY_HEX : PackedScene = load("res://hexes/fly/fly_hex.tscn")
 
