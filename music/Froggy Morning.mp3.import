@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bhiavovtsq0tu"
+path="res://.godot/imported/Froggy Morning.mp3-89fdd1b3f9680509c02883c86628bc80.mp3str"
+
+[deps]
+
+source_file="res://music/Froggy Morning.mp3"
+dest_files=["res://.godot/imported/Froggy Morning.mp3-89fdd1b3f9680509c02883c86628bc80.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

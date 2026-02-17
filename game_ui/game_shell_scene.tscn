@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://cyhkbbhd03a2w"]
 
 [ext_resource type="Script" uid="uid://demh67b4ckedd" path="res://game_ui/game_camera.gd" id="1_6the3"]
+[ext_resource type="Script" uid="uid://47ng837spiho" path="res://game_ui/audio.gd" id="2_aag77"]
 [ext_resource type="Script" uid="uid://bj5ye56nvni8h" path="res://shell_scenes/shell_scene_button.gd" id="2_ja3q7"]
 [ext_resource type="Texture2D" uid="uid://bd3dx0uk1ld84" path="res://z_assets/sprites/ui/bar_under.png" id="3_aag77"]
 [ext_resource type="Texture2D" uid="uid://dej4gdp3m2iub" path="res://z_assets/sprites/ui/happy_bar_over.png" id="4_a66jl"]
@@ -29,6 +30,9 @@ bg_color = Color(0.282566, 0.706913, 0.22648, 1)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=793561251]
 script = ExtResource("1_6the3")
+
+[node name="AudioManager" type="Node" parent="." unique_id=1246075252]
+script = ExtResource("2_aag77")
 
 [node name="UI" type="Node" parent="." unique_id=466442117]
 
