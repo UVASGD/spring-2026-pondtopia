@@ -2,9 +2,8 @@
 
 [ext_resource type="Script" uid="uid://demh67b4ckedd" path="res://game_ui/game_camera.gd" id="1_6the3"]
 [ext_resource type="Script" uid="uid://bj5ye56nvni8h" path="res://shell_scenes/shell_scene_button.gd" id="2_ja3q7"]
-[ext_resource type="Texture2D" uid="uid://bd3dx0uk1ld84" path="res://z_assets/sprites/ui/bar_under.png" id="3_aag77"]
 [ext_resource type="Texture2D" uid="uid://dej4gdp3m2iub" path="res://z_assets/sprites/ui/happy_bar_over.png" id="4_a66jl"]
-[ext_resource type="Texture2D" uid="uid://kpm0jca7rlrl" path="res://z_assets/sprites/ui/happy_progress.png" id="5_y54yx"]
+[ext_resource type="Texture2D" uid="uid://kpm0jca7rlrl" path="res://z_assets/sprites/ui/happy_progress.png" id="5_ja3q7"]
 [ext_resource type="Texture2D" uid="uid://dmqvcex57r3dc" path="res://z_assets/sprites/ui/energy_bar_over.png" id="6_hbhn4"]
 [ext_resource type="Texture2D" uid="uid://b2jv1g64sbwr" path="res://z_assets/sprites/ui/energy_progress.png" id="7_o8tbw"]
 [ext_resource type="Texture2D" uid="uid://dk472mh4cpvpb" path="res://z_assets/sprites/ui/build_hammer.png" id="8_pptlg"]
@@ -115,16 +114,14 @@ offset_bottom = 132.0
 layout_mode = 2
 max_value = 24.0
 value = 24.0
-texture_under = ExtResource("3_aag77")
 texture_over = ExtResource("4_a66jl")
-texture_progress = ExtResource("5_y54yx")
+texture_progress = ExtResource("5_ja3q7")
 texture_progress_offset = Vector2(77, 12)
 
 [node name="EnergyBar" type="TextureProgressBar" parent="UI/Bars" unique_id=1172527547]
 layout_mode = 2
 max_value = 24.0
 value = 24.0
-texture_under = ExtResource("3_aag77")
 texture_over = ExtResource("6_hbhn4")
 texture_progress = ExtResource("7_o8tbw")
 texture_progress_offset = Vector2(77, 12)
