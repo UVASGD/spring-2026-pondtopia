@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://ilr8p4lcf47"]
 
 [ext_resource type="Script" uid="uid://cg0xm47kepfck" path="res://hexes/housing/housing_hex.gd" id="1_3bg4n"]
-[ext_resource type="Script" uid="uid://b60ltjly6brbh" path="res://game_ui/hex_options/hex_options.gd" id="2_8ay86"]
+[ext_resource type="PackedScene" uid="uid://otoc08ucd8fq" path="res://game_ui/hex_options/hex_options.tscn" id="2_3bg4n"]
 [ext_resource type="Texture2D" uid="uid://biyvjjbnuyvma" path="res://z_assets/sprites/housing_tile1.png" id="2_vcmfe"]
 
 [node name="HousingHex" type="Node2D" unique_id=831577586]
@@ -13,14 +13,6 @@ script = ExtResource("1_3bg4n")
 position = Vector2(0.49999762, -0.49999797)
 scale = Vector2(0.19628906, 0.18652344)
 texture = ExtResource("2_vcmfe")
-
-[node name="HexOptions" type="Control" parent="." unique_id=1407583136]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-script = ExtResource("2_8ay86")
-metadata/_custom_type_script = "uid://b60ltjly6brbh"
 
 [node name="HexBoundsMarkers" type="Node2D" parent="." unique_id=117724882]
 scale = Vector2(38, 38)
@@ -88,3 +80,5 @@ gizmo_extents = 0.0
 position = Vector2(-1.5, -0.866)
 scale = Vector2(10, 10)
 gizmo_extents = 0.0
+
+[node name="HexOptions" parent="." unique_id=2025673578 instance=ExtResource("2_3bg4n")]
