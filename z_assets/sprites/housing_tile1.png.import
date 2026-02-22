@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cw6vabrqyjiis"
-path="res://.godot/imported/frog_tile.png-b9ab2a74d93246617655f33bcf920939.ctex"
+uid="uid://biyvjjbnuyvma"
+path="res://.godot/imported/housing_tile1.png-84f4c6bc5dd466550822f3bb3e71a87f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://z_assets/sprites/frog_tile.png"
-dest_files=["res://.godot/imported/frog_tile.png-b9ab2a74d93246617655f33bcf920939.ctex"]
+source_file="res://z_assets/sprites/housing_tile1.png"
+dest_files=["res://.godot/imported/housing_tile1.png-84f4c6bc5dd466550822f3bb3e71a87f.ctex"]
 
 [params]
 
