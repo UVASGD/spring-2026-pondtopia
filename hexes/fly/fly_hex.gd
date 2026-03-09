@@ -8,4 +8,3 @@ func on_added_to_map(_type: CREATE_TYPE, _extra_params : Array):
 
 func tick():
 	GameInfo.num_flies += 25
-	print(GameInfo.num_flies)

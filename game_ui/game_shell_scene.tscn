@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://dej4gdp3m2iub" path="res://z_assets/sprites/ui/happy_bar_over.png" id="4_a66jl"]
 [ext_resource type="Texture2D" uid="uid://kpm0jca7rlrl" path="res://z_assets/sprites/ui/happy_progress.png" id="5_ja3q7"]
 [ext_resource type="Texture2D" uid="uid://dmqvcex57r3dc" path="res://z_assets/sprites/ui/energy_bar_over.png" id="6_hbhn4"]
+[ext_resource type="Script" uid="uid://bqkfxp5husaqc" path="res://game_ui/trackers.gd" id="7_6the3"]
 [ext_resource type="Texture2D" uid="uid://cew31dprjbxtl" path="res://z_assets/sprites/ui/hammer.png" id="7_eilcp"]
 [ext_resource type="Texture2D" uid="uid://b2jv1g64sbwr" path="res://z_assets/sprites/ui/energy_progress.png" id="7_o8tbw"]
 [ext_resource type="PackedScene" uid="uid://dpfgtpxrxum1r" path="res://shell_scenes/pause.tscn" id="10_ja3q7"]
@@ -140,28 +141,27 @@ offset_left = -313.0
 offset_bottom = 132.0
 grow_horizontal = 0
 
-[node name="DaysCounter" type="Label" parent="UI/ResourceUI" unique_id=1762370653]
-visible = false
+[node name="Trackers" type="VBoxContainer" parent="UI/ResourceUI" unique_id=360727991]
 layout_mode = 2
 size_flags_horizontal = 10
-size_flags_vertical = 0
-theme_override_colors/font_color = Color(0.129412, 0.317647, 0.270588, 1)
-theme_override_font_sizes/font_size = 24
-text = "Days Remaining: 30"
+script = ExtResource("7_6the3")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/ResourceUI" unique_id=360727991]
+[node name="DayCounter" type="Label" parent="UI/ResourceUI/Trackers" unique_id=669273260]
 layout_mode = 2
-size_flags_horizontal = 10
+size_flags_horizontal = 8
+theme_override_colors/font_color = Color(0.12941177, 0.31764707, 0.27058825, 1)
+theme_override_font_sizes/font_size = 20
+text = "Day: 1"
 
-[node name="FrogCounter" type="Label" parent="UI/ResourceUI/VBoxContainer" unique_id=435688995]
+[node name="FrogCounter" type="Label" parent="UI/ResourceUI/Trackers" unique_id=435688995]
 layout_mode = 2
 size_flags_horizontal = 10
 size_flags_vertical = 0
 theme_override_colors/font_color = Color(0, 0.686275, 0, 1)
 theme_override_font_sizes/font_size = 24
-text = "🐸: 0"
+text = "🐸: 0/0"
 
-[node name="FlyCounter" type="Label" parent="UI/ResourceUI/VBoxContainer" unique_id=489392848]
+[node name="FlyCounter" type="Label" parent="UI/ResourceUI/Trackers" unique_id=489392848]
 layout_mode = 2
 size_flags_horizontal = 10
 size_flags_vertical = 0
@@ -171,6 +171,7 @@ text = "🪰: 0"
 
 [node name="BuildingPopup" type="Control" parent="UI" unique_id=115627467]
 layout_mode = 3
+anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
