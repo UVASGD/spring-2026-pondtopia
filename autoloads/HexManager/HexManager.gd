@@ -13,6 +13,12 @@ const SE = Vector2(1,-1)
 const SOUTH = Vector2(0,-1)
 const SW = Vector2(-1,0)
 
+enum HexElement {
+  EARTH,
+  WOOD,
+  WATER,
+}
+
 ## Preloaded hex packed scenes for instantiating hexes
 ## These should be preloaded constants but preloading them causes a cyclic error.
 var BASE_HEX : PackedScene = load("res://hexes/base/base_hex.tscn")
