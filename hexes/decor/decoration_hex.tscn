@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://cihdlvk3kltth"]
+
+[ext_resource type="Script" uid="uid://cxfy0d0uyaq5n" path="res://hexes/decor/decoration_hex.gd" id="1_5o4xw"]
+
+[node name="DecorationHex" type="Node2D" unique_id=1683856524]
+script = ExtResource("1_5o4xw")
+metadata/_custom_type_script = "uid://c503q2ov4usp0"
