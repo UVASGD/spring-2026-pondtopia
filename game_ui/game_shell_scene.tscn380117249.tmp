@@ -153,19 +153,13 @@ pivot_offset = Vector2(100, 100)
 theme_override_styles/panel = SubResource("StyleBoxFlat_6the3")
 
 [node name="BuildScrollContainer" type="ScrollContainer" parent="UI/BuildingPopup" unique_id=774979865]
-visible = false
+clip_contents = false
 layout_mode = 1
-anchors_preset = 3
+anchors_preset = 1
 anchor_left = 1.0
-anchor_top = 1.0
 anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -168.0
-offset_top = -380.0
-offset_right = -23.0
-offset_bottom = -105.0
+offset_left = -145.0
 grow_horizontal = 0
-grow_vertical = 0
 horizontal_scroll_mode = 0
 vertical_scroll_mode = 2
 
@@ -203,36 +197,9 @@ metadata/id = "lilypad"
 
 [node name="Button" type="Button" parent="UI/BuildingPopup/BuildScrollContainer/VBoxContainer" unique_id=1564599277]
 layout_mode = 2
-text = "Test Button"
 
 [node name="Button2" type="Button" parent="UI/BuildingPopup/BuildScrollContainer/VBoxContainer" unique_id=1786294106]
 layout_mode = 2
-text = "Test Button"
-
-[node name="Button3" type="Button" parent="UI/BuildingPopup/BuildScrollContainer/VBoxContainer" unique_id=473275641]
-layout_mode = 2
-text = "Test Button"
-
-[node name="Button4" type="Button" parent="UI/BuildingPopup/BuildScrollContainer/VBoxContainer" unique_id=644610316]
-layout_mode = 2
-text = "Test Button
-"
-
-[node name="Button5" type="Button" parent="UI/BuildingPopup/BuildScrollContainer/VBoxContainer" unique_id=792676753]
-layout_mode = 2
-text = "Test Button"
-
-[node name="Button6" type="Button" parent="UI/BuildingPopup/BuildScrollContainer/VBoxContainer" unique_id=1151302957]
-layout_mode = 2
-text = "Test Button"
-
-[node name="Button7" type="Button" parent="UI/BuildingPopup/BuildScrollContainer/VBoxContainer" unique_id=1305256551]
-layout_mode = 2
-text = "Test Button"
-
-[node name="Button8" type="Button" parent="UI/BuildingPopup/BuildScrollContainer/VBoxContainer" unique_id=1678381063]
-layout_mode = 2
-text = "Test Button"
 
 [node name="BuildButton" type="TextureButton" parent="UI/BuildingPopup" unique_id=1876302381]
 layout_mode = 1
