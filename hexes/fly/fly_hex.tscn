@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://io5ihqw6fq7g"]
 
 [ext_resource type="Script" uid="uid://vwlpgn4uou8q" path="res://hexes/fly/fly_hex.gd" id="1_vcn42"]
-[ext_resource type="Texture2D" uid="uid://sfpuuj5axuue" path="res://z_assets/sprites/hexes/fly.png" id="2_5dt03"]
+[ext_resource type="Texture2D" uid="uid://uhng7glamyij" path="res://z_assets/sprites/hexes/fly_hex_sprite.png" id="2_5dt03"]
 [ext_resource type="PackedScene" uid="uid://otoc08ucd8fq" path="res://game_ui/hex_options/hex_options.tscn" id="4_bry2g"]
 
 [node name="FlyHex" type="Node2D" unique_id=432663569]
@@ -10,7 +10,7 @@ script = ExtResource("1_vcn42")
 [node name="Sprites" type="Node2D" parent="." unique_id=724530356]
 
 [node name="Sprite2D" type="Sprite2D" parent="Sprites" unique_id=1927785233]
-rotation = -0.5235988
+scale = Vector2(0.51, 0.561)
 texture = ExtResource("2_5dt03")
 
 [node name="HexBoundsMarkers" type="Node2D" parent="." unique_id=519870482]
