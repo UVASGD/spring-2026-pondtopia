@@ -19,6 +19,7 @@ var BASE_HEX : PackedScene = load("res://hexes/base/base_hex.tscn")
 var MIGRATED_HEX : PackedScene = load("res://hexes/migrated/migrated_hex.tscn")
 var FRUIT_HEX : PackedScene = load("res://hexes/fruit/fruit_hex.tscn")
 var FLY_HEX : PackedScene = load("res://hexes/fly/fly_hex.tscn")
+var DAM_HEX : PackedScene = load("res://hexes/dam/dam_hex.tscn")
 
 ## When set to false, all methods in region Modify will be returned immediately
 var _allow_modify_actions : bool = false

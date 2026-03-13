@@ -1,0 +1,112 @@
+[gd_scene format=3 uid="uid://br4calp28ygph"]
+
+[ext_resource type="Script" uid="uid://bsuxxc5hbyanc" path="res://hexes/dam/dam_hex.gd" id="1_p54tl"]
+[ext_resource type="Texture2D" uid="uid://8uvrpaf3fp8e" path="res://icon.svg" id="2_fa6rc"]
+[ext_resource type="PackedScene" uid="uid://otoc08ucd8fq" path="res://game_ui/hex_options/hex_options.tscn" id="3_4ixg0"]
+
+[node name="BaseHex" type="Node2D" unique_id=432663569]
+script = ExtResource("1_p54tl")
+
+[node name="Sprites" type="Node2D" parent="." unique_id=1788531617]
+
+[node name="TempOtherSprites" type="Node2D" parent="Sprites" unique_id=1465388028]
+visible = false
+
+[node name="Sprite2D2" type="Sprite2D" parent="Sprites/TempOtherSprites" unique_id=1281072366]
+position = Vector2(-9.536743e-07, -17)
+scale = Vector2(0.03, 0.03)
+texture = ExtResource("2_fa6rc")
+
+[node name="Sprite2D3" type="Sprite2D" parent="Sprites/TempOtherSprites" unique_id=1031892425]
+position = Vector2(-15, -8.999999)
+scale = Vector2(0.03, 0.03)
+texture = ExtResource("2_fa6rc")
+
+[node name="Sprite2D4" type="Sprite2D" parent="Sprites/TempOtherSprites" unique_id=743338923]
+position = Vector2(14.919998, -9.08)
+scale = Vector2(0.03, 0.03)
+texture = ExtResource("2_fa6rc")
+
+[node name="Sprite2D5" type="Sprite2D" parent="Sprites/TempOtherSprites" unique_id=114663123]
+position = Vector2(-14.999999, 8.999998)
+scale = Vector2(0.03, 0.03)
+texture = ExtResource("2_fa6rc")
+
+[node name="Sprite2D" type="Sprite2D" parent="Sprites" unique_id=1927785233]
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_fa6rc")
+
+[node name="HexBoundsMarkers" type="Node2D" parent="." unique_id=519870482]
+scale = Vector2(38, 38)
+
+[node name="Corners" type="Node2D" parent="HexBoundsMarkers" unique_id=505405943]
+
+[node name="NW" type="Marker2D" parent="HexBoundsMarkers/Corners" unique_id=255237480]
+position = Vector2(-1, -1.732)
+scale = Vector2(10, 10)
+gizmo_extents = 0.0
+
+[node name="NE" type="Marker2D" parent="HexBoundsMarkers/Corners" unique_id=199069168]
+position = Vector2(1, -1.732)
+scale = Vector2(10, 10)
+gizmo_extents = 0.0
+
+[node name="East" type="Marker2D" parent="HexBoundsMarkers/Corners" unique_id=1802291294]
+position = Vector2(2, 0)
+scale = Vector2(10, 10)
+gizmo_extents = 0.0
+
+[node name="SE" type="Marker2D" parent="HexBoundsMarkers/Corners" unique_id=1776601100]
+position = Vector2(1, 1.732)
+scale = Vector2(10, 10)
+gizmo_extents = 0.0
+
+[node name="SW" type="Marker2D" parent="HexBoundsMarkers/Corners" unique_id=2125302604]
+position = Vector2(-1, 1.732)
+scale = Vector2(10, 10)
+gizmo_extents = 0.0
+
+[node name="West" type="Marker2D" parent="HexBoundsMarkers/Corners" unique_id=470138458]
+position = Vector2(-2, 0)
+scale = Vector2(10, 10)
+gizmo_extents = 0.0
+
+[node name="EdgeMidpoints" type="Node2D" parent="HexBoundsMarkers" unique_id=1090388498]
+
+[node name="North" type="Marker2D" parent="HexBoundsMarkers/EdgeMidpoints" unique_id=630530242]
+position = Vector2(0, -1.732)
+scale = Vector2(10, 10)
+gizmo_extents = 0.0
+
+[node name="NE" type="Marker2D" parent="HexBoundsMarkers/EdgeMidpoints" unique_id=1411927313]
+position = Vector2(1.5, -0.866)
+scale = Vector2(10, 10)
+gizmo_extents = 0.0
+
+[node name="SE" type="Marker2D" parent="HexBoundsMarkers/EdgeMidpoints" unique_id=1862650448]
+position = Vector2(1.5, 0.866)
+scale = Vector2(10, 10)
+gizmo_extents = 0.0
+
+[node name="South" type="Marker2D" parent="HexBoundsMarkers/EdgeMidpoints" unique_id=461070591]
+position = Vector2(0, 1.732)
+scale = Vector2(10, 10)
+gizmo_extents = 0.0
+
+[node name="SW" type="Marker2D" parent="HexBoundsMarkers/EdgeMidpoints" unique_id=1361352040]
+position = Vector2(-1.5, 0.866)
+scale = Vector2(10, 10)
+gizmo_extents = 0.0
+
+[node name="NW" type="Marker2D" parent="HexBoundsMarkers/EdgeMidpoints" unique_id=132154210]
+position = Vector2(-1.5, -0.866)
+scale = Vector2(10, 10)
+gizmo_extents = 0.0
+
+[node name="HexOptions" parent="." unique_id=2025673578 instance=ExtResource("3_4ixg0")]
+
+[node name="Label" type="Label" parent="." unique_id=1987564325]
+offset_left = -9.0
+offset_top = -8.0
+offset_right = 31.0
+offset_bottom = 15.0
