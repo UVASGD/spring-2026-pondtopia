@@ -155,8 +155,8 @@ func move_hex_from_(old_x:int,old_y:int,new_x:int,new_y:int,type: BaseHex.MOVE_T
 func remove_hex(hex: BaseHex, type: BaseHex.REMOVE_TYPE = BaseHex.REMOVE_TYPE.INSTANT, extra_params : Array = []):
 	if not _allow_modify_actions :
 		return null
-	_unregister_hex(hex)
 	hex.on_removed_from_map(type,extra_params)
+	_unregister_hex(hex)
 
 func remove_all_hexes(type: BaseHex.REMOVE_TYPE = BaseHex.REMOVE_TYPE.INSTANT) :
 	for i in hex_list.size() :
