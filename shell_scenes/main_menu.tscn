@@ -3,6 +3,17 @@
 [ext_resource type="Texture2D" uid="uid://p614qa2bt4ch" path="res://z_assets/sprites/main_menu/main_menu_frog.png" id="1_gqxyi"]
 [ext_resource type="Script" uid="uid://bj5ye56nvni8h" path="res://shell_scenes/shell_scene_button.gd" id="1_u5tdt"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hh8ys"]
+content_margin_left = 20.0
+content_margin_top = 10.0
+content_margin_right = 20.0
+content_margin_bottom = 10.0
+bg_color = Color(0.7294118, 0.8235294, 0.64705884, 1)
+corner_radius_top_left = 32
+corner_radius_top_right = 32
+corner_radius_bottom_right = 32
+corner_radius_bottom_left = 32
+
 [node name="MainMenu" type="Control" unique_id=1283535406]
 layout_mode = 3
 anchors_preset = 0
@@ -38,7 +49,9 @@ theme_override_constants/separation = 25
 
 [node name="New Game" type="Button" parent="VBoxContainer/HBoxContainer/ButtonsContainer" unique_id=2099464037]
 layout_mode = 2
+theme_override_colors/font_color = Color(0.12941177, 0.31764707, 0.27058825, 1)
 theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_hh8ys")
 text = "New City"
 script = ExtResource("1_u5tdt")
 emit_signal_ = true
@@ -50,7 +63,9 @@ switch_to = "game"
 
 [node name="Continue" type="Button" parent="VBoxContainer/HBoxContainer/ButtonsContainer" unique_id=1278931718]
 layout_mode = 2
+theme_override_colors/font_color = Color(0.12941177, 0.31764707, 0.27058825, 1)
 theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_hh8ys")
 text = "  Continue  "
 script = ExtResource("1_u5tdt")
 emit_signal_ = true
@@ -60,7 +75,9 @@ switch_to = "save"
 
 [node name="Options" type="Button" parent="VBoxContainer/HBoxContainer/ButtonsContainer" unique_id=902455310]
 layout_mode = 2
+theme_override_colors/font_color = Color(0.12941177, 0.31764707, 0.27058825, 1)
 theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_hh8ys")
 text = "Options"
 script = ExtResource("1_u5tdt")
 switch_scene = true
@@ -68,7 +85,9 @@ switch_to = "options"
 
 [node name="Credits" type="Button" parent="VBoxContainer/HBoxContainer/ButtonsContainer" unique_id=2009996100]
 layout_mode = 2
+theme_override_colors/font_color = Color(0.12941177, 0.31764707, 0.27058825, 1)
 theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_hh8ys")
 text = "Credits"
 script = ExtResource("1_u5tdt")
 switch_scene = true
@@ -76,7 +95,9 @@ switch_to = "credits"
 
 [node name="Quit" type="Button" parent="VBoxContainer/HBoxContainer/ButtonsContainer" unique_id=1045350316]
 layout_mode = 2
+theme_override_colors/font_color = Color(0.12941177, 0.31764707, 0.27058825, 1)
 theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_hh8ys")
 text = "Quit"
 script = ExtResource("1_u5tdt")
 emit_signal_ = true

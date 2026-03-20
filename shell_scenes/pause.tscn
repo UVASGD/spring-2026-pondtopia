@@ -1,0 +1,125 @@
+[gd_scene format=3 uid="uid://dpfgtpxrxum1r"]
+
+[ext_resource type="Script" uid="uid://bj5ye56nvni8h" path="res://shell_scenes/shell_scene_button.gd" id="1_8xr5c"]
+[ext_resource type="Script" uid="uid://dow28i7obnaa" path="res://shell_scenes/pause.gd" id="1_penmj"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_msatf"]
+bg_color = Color(0.7294118, 0.8235294, 0.64705884, 1)
+corner_radius_top_left = 32
+corner_radius_top_right = 32
+corner_radius_bottom_right = 32
+corner_radius_bottom_left = 32
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8xr5c"]
+content_margin_left = 20.0
+content_margin_top = 10.0
+content_margin_right = 20.0
+content_margin_bottom = 10.0
+bg_color = Color(0.9254902, 0.92156863, 0.8352941, 1)
+corner_radius_top_left = 32
+corner_radius_top_right = 32
+corner_radius_bottom_right = 32
+corner_radius_bottom_left = 32
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7rdqf"]
+content_margin_left = 20.0
+content_margin_top = 10.0
+content_margin_right = 20.0
+content_margin_bottom = 10.0
+bg_color = Color(0.4597671, 0.45770824, 0.41241327, 1)
+corner_radius_top_left = 32
+corner_radius_top_right = 32
+corner_radius_bottom_right = 32
+corner_radius_bottom_left = 32
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_penmj"]
+content_margin_left = 20.0
+content_margin_top = 10.0
+content_margin_right = 20.0
+content_margin_bottom = 10.0
+bg_color = Color(0.4597671, 0.45770824, 0.41241327, 1)
+corner_radius_top_left = 32
+corner_radius_top_right = 32
+corner_radius_bottom_right = 32
+corner_radius_bottom_left = 32
+
+[node name="Pause" type="Control" unique_id=816710642]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_penmj")
+
+[node name="TextureRect" type="PanelContainer" parent="." unique_id=495314460]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -278.0
+offset_top = -211.0
+offset_right = 278.0
+offset_bottom = 211.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_msatf")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TextureRect" unique_id=30552383]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="TextureRect/VBoxContainer" unique_id=1825581191]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.129412, 0.317647, 0.270588, 1)
+theme_override_font_sizes/font_size = 64
+text = "Paused"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TextureRect/VBoxContainer" unique_id=1440630471]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+theme_override_constants/separation = 100
+
+[node name="ButtonsContainer" type="VBoxContainer" parent="TextureRect/VBoxContainer/HBoxContainer" unique_id=696266538]
+layout_mode = 2
+theme_override_constants/separation = 25
+
+[node name="Continue" type="Button" parent="TextureRect/VBoxContainer/HBoxContainer/ButtonsContainer" unique_id=1250416432]
+z_index = 101
+layout_mode = 2
+theme_override_colors/font_color = Color(0.12941177, 0.31764707, 0.27058825, 1)
+theme_override_colors/font_hover_color = Color(0.7294118, 0.8235294, 0.64705884, 1)
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_8xr5c")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_7rdqf")
+theme_override_styles/hover = SubResource("StyleBoxFlat_penmj")
+text = "Resume"
+
+[node name="Options" type="Button" parent="TextureRect/VBoxContainer/HBoxContainer/ButtonsContainer" unique_id=1805524063]
+z_index = 101
+layout_mode = 2
+theme_override_colors/font_color = Color(0.12941177, 0.31764707, 0.27058825, 1)
+theme_override_colors/font_hover_color = Color(0.7294118, 0.8235294, 0.64705884, 1)
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_8xr5c")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_7rdqf")
+theme_override_styles/hover = SubResource("StyleBoxFlat_penmj")
+text = "Options"
+
+[node name="Quit" type="Button" parent="TextureRect/VBoxContainer/HBoxContainer/ButtonsContainer" unique_id=93168345]
+z_index = 101
+layout_mode = 2
+theme_override_colors/font_color = Color(0.12941177, 0.31764707, 0.27058825, 1)
+theme_override_colors/font_hover_color = Color(0.7294118, 0.8235294, 0.64705884, 1)
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_8xr5c")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_7rdqf")
+theme_override_styles/hover = SubResource("StyleBoxFlat_penmj")
+text = "Quit
+"
+script = ExtResource("1_8xr5c")
+emit_signal_ = true
+signal_to_emit = "quit_pressed"

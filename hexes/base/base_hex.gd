@@ -18,6 +18,8 @@ class_name BaseHex
 ## 4. Open HexManager.gd, find the list of hex packed scene vars and add a new line "var EXAMPLE_HEX : PackedScene = load("res://hexes/example/example_hex.tscn")".
 ## 5. You're done! To create special behaviors for your hex, override the functions in base hex (eg tick()). Remember to call the base behavior functions (eg tick_base()) if you want the overriden functions to also do the base functionality. 
 
+@export var hex_element:HexManager.HexElement
+
 ## Directions (using Vector2 instead of enum so you can add with them, also declared in HexManager for easy access)
 const NW := Vector2i(-1,1)
 const NORTH := Vector2i(0,1)

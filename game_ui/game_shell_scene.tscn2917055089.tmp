@@ -5,18 +5,10 @@
 [ext_resource type="Texture2D" uid="uid://dej4gdp3m2iub" path="res://z_assets/sprites/ui/happy_bar_over.png" id="4_a66jl"]
 [ext_resource type="Texture2D" uid="uid://kpm0jca7rlrl" path="res://z_assets/sprites/ui/happy_progress.png" id="5_ja3q7"]
 [ext_resource type="Texture2D" uid="uid://dmqvcex57r3dc" path="res://z_assets/sprites/ui/energy_bar_over.png" id="6_hbhn4"]
-[ext_resource type="Script" uid="uid://bqkfxp5husaqc" path="res://game_ui/trackers.gd" id="7_6the3"]
 [ext_resource type="Script" uid="uid://dne5abww6im5t" path="res://game_ui/building_popup.gd" id="7_6the3"]
 [ext_resource type="Texture2D" uid="uid://cew31dprjbxtl" path="res://z_assets/sprites/ui/hammer.png" id="7_eilcp"]
 [ext_resource type="Texture2D" uid="uid://b2jv1g64sbwr" path="res://z_assets/sprites/ui/energy_progress.png" id="7_o8tbw"]
 [ext_resource type="PackedScene" uid="uid://dpfgtpxrxum1r" path="res://shell_scenes/pause.tscn" id="10_ja3q7"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6the3"]
-bg_color = Color(1, 0.79607844, 0.2784314, 1)
-corner_radius_top_left = 32
-corner_radius_top_right = 32
-corner_radius_bottom_right = 32
-corner_radius_bottom_left = 32
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o1dak"]
 bg_color = Color(0.282353, 0.705882, 0.227451, 1)
@@ -32,6 +24,13 @@ bg_color = Color(0.282353, 0.705882, 0.227451, 1)
 bg_color = Color(0.282566, 0.706913, 0.22648, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0n0x8"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6the3"]
+bg_color = Color(1, 0.79607844, 0.2784314, 1)
+corner_radius_top_left = 32
+corner_radius_top_right = 32
+corner_radius_bottom_right = 32
+corner_radius_bottom_left = 32
 
 [node name="GameShellScene" type="Node" unique_id=1945027471]
 
@@ -70,6 +69,50 @@ offset_bottom = 66.0
 grow_horizontal = 0
 grow_vertical = 2
 
+[node name="MarginContainer" type="MarginContainer" parent="UI/BuildingUI" unique_id=564947610]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -121.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="BuildingContainer" type="VBoxContainer" parent="UI/BuildingUI/MarginContainer" unique_id=186569349]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+
+[node name="FlyButton" type="Button" parent="UI/BuildingUI/MarginContainer/BuildingContainer" unique_id=378834193]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+theme_override_styles/pressed = SubResource("StyleBoxFlat_o1dak")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ndf5c")
+toggle_mode = true
+text = "Fly | +🪰"
+metadata/id = "fly"
+
+[node name="FlowerButton" type="Button" parent="UI/BuildingUI/MarginContainer/BuildingContainer" unique_id=1242161716]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+theme_override_styles/pressed = SubResource("StyleBoxFlat_thr5o")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_k45jv")
+toggle_mode = true
+text = "Flower | +😄"
+metadata/id = "flower"
+
+[node name="LilypadButton" type="Button" parent="UI/BuildingUI/MarginContainer/BuildingContainer" unique_id=1378464808]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+theme_override_styles/pressed = SubResource("StyleBoxFlat_bu0qf")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_0n0x8")
+toggle_mode = true
+text = "Lilypad | +⚡"
+metadata/id = "lilypad"
+
 [node name="Bars" type="VBoxContainer" parent="UI" unique_id=1710765985]
 offset_right = 256.0
 offset_bottom = 132.0
@@ -98,27 +141,28 @@ offset_left = -313.0
 offset_bottom = 132.0
 grow_horizontal = 0
 
-[node name="Trackers" type="VBoxContainer" parent="UI/ResourceUI" unique_id=360727991]
+[node name="DaysCounter" type="Label" parent="UI/ResourceUI" unique_id=1762370653]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 10
-script = ExtResource("7_6the3")
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0.129412, 0.317647, 0.270588, 1)
+theme_override_font_sizes/font_size = 24
+text = "Days Remaining: 30"
 
-[node name="DayCounter" type="Label" parent="UI/ResourceUI/Trackers" unique_id=669273260]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/ResourceUI" unique_id=360727991]
 layout_mode = 2
-size_flags_horizontal = 8
-theme_override_colors/font_color = Color(0.12941177, 0.31764707, 0.27058825, 1)
-theme_override_font_sizes/font_size = 20
-text = "Day: 1"
+size_flags_horizontal = 10
 
-[node name="FrogCounter" type="Label" parent="UI/ResourceUI/Trackers" unique_id=435688995]
+[node name="FrogCounter" type="Label" parent="UI/ResourceUI/VBoxContainer" unique_id=435688995]
 layout_mode = 2
 size_flags_horizontal = 10
 size_flags_vertical = 0
 theme_override_colors/font_color = Color(0, 0.686275, 0, 1)
 theme_override_font_sizes/font_size = 24
-text = "🐸: 0/0"
+text = "🐸: 0"
 
-[node name="FlyCounter" type="Label" parent="UI/ResourceUI/Trackers" unique_id=489392848]
+[node name="FlyCounter" type="Label" parent="UI/ResourceUI/VBoxContainer" unique_id=489392848]
 layout_mode = 2
 size_flags_horizontal = 10
 size_flags_vertical = 0
@@ -133,6 +177,8 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = -10.0
+offset_bottom = -10.0
 grow_horizontal = 0
 grow_vertical = 0
 script = ExtResource("7_6the3")
@@ -149,105 +195,21 @@ offset_left = -100.0
 offset_top = -100.0
 grow_horizontal = 0
 grow_vertical = 0
-pivot_offset = Vector2(100, 100)
 theme_override_styles/panel = SubResource("StyleBoxFlat_6the3")
 
-[node name="BuildScrollContainer" type="ScrollContainer" parent="UI/BuildingPopup" unique_id=774979865]
-visible = false
+[node name="BuildButton" type="TextureButton" parent="UI/BuildingPopup/BuildingPopupPanel" unique_id=1876302381]
 layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -168.0
-offset_top = -380.0
-offset_right = -23.0
-offset_bottom = -105.0
-grow_horizontal = 0
-grow_vertical = 0
-horizontal_scroll_mode = 0
-vertical_scroll_mode = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/BuildingPopup/BuildScrollContainer" unique_id=86368604]
-layout_mode = 2
-
-[node name="FlyButton" type="Button" parent="UI/BuildingPopup/BuildScrollContainer/VBoxContainer" unique_id=378834193]
-custom_minimum_size = Vector2(100, 0)
-layout_mode = 2
-theme_override_font_sizes/font_size = 20
-theme_override_styles/pressed = SubResource("StyleBoxFlat_o1dak")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_ndf5c")
-toggle_mode = true
-text = "Fly | +🪰"
-metadata/id = "fly"
-
-[node name="FlowerButton" type="Button" parent="UI/BuildingPopup/BuildScrollContainer/VBoxContainer" unique_id=1242161716]
-layout_mode = 2
-theme_override_font_sizes/font_size = 20
-theme_override_styles/pressed = SubResource("StyleBoxFlat_thr5o")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_k45jv")
-toggle_mode = true
-text = "Flower | +😄"
-metadata/id = "flower"
-
-[node name="LilypadButton" type="Button" parent="UI/BuildingPopup/BuildScrollContainer/VBoxContainer" unique_id=1378464808]
-custom_minimum_size = Vector2(100, 0)
-layout_mode = 2
-theme_override_font_sizes/font_size = 20
-theme_override_styles/pressed = SubResource("StyleBoxFlat_bu0qf")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_0n0x8")
-toggle_mode = true
-text = "Lilypad | +⚡"
-metadata/id = "lilypad"
-
-[node name="Button" type="Button" parent="UI/BuildingPopup/BuildScrollContainer/VBoxContainer" unique_id=1564599277]
-layout_mode = 2
-text = "Test Button"
-
-[node name="Button2" type="Button" parent="UI/BuildingPopup/BuildScrollContainer/VBoxContainer" unique_id=1786294106]
-layout_mode = 2
-text = "Test Button"
-
-[node name="Button3" type="Button" parent="UI/BuildingPopup/BuildScrollContainer/VBoxContainer" unique_id=473275641]
-layout_mode = 2
-text = "Test Button"
-
-[node name="Button4" type="Button" parent="UI/BuildingPopup/BuildScrollContainer/VBoxContainer" unique_id=644610316]
-layout_mode = 2
-text = "Test Button
-"
-
-[node name="Button5" type="Button" parent="UI/BuildingPopup/BuildScrollContainer/VBoxContainer" unique_id=792676753]
-layout_mode = 2
-text = "Test Button"
-
-[node name="Button6" type="Button" parent="UI/BuildingPopup/BuildScrollContainer/VBoxContainer" unique_id=1151302957]
-layout_mode = 2
-text = "Test Button"
-
-[node name="Button7" type="Button" parent="UI/BuildingPopup/BuildScrollContainer/VBoxContainer" unique_id=1305256551]
-layout_mode = 2
-text = "Test Button"
-
-[node name="Button8" type="Button" parent="UI/BuildingPopup/BuildScrollContainer/VBoxContainer" unique_id=1678381063]
-layout_mode = 2
-text = "Test Button"
-
-[node name="BuildButton" type="TextureButton" parent="UI/BuildingPopup" unique_id=1876302381]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -87.0
-offset_top = -87.0
-offset_right = -12.0
-offset_bottom = -12.0
-grow_horizontal = 0
-grow_vertical = 0
-pivot_offset = Vector2(10, 0)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -37.5
+offset_top = -37.5
+offset_right = 37.5
+offset_bottom = 37.5
+grow_horizontal = 2
+grow_vertical = 2
 texture_normal = ExtResource("7_eilcp")
 texture_pressed = ExtResource("7_eilcp")
 ignore_texture_size = true
@@ -257,4 +219,4 @@ stretch_mode = 5
 visible = false
 z_index = 101
 
-[connection signal="pressed" from="UI/BuildingPopup/BuildButton" to="UI/BuildingPopup" method="_on_build_button_pressed"]
+[connection signal="pressed" from="UI/BuildingPopup/BuildingPopupPanel/BuildButton" to="UI/BuildingPopup" method="_on_build_button_pressed"]
