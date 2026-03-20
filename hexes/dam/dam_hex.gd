@@ -26,11 +26,13 @@ func find_touching_dams() -> Array[BaseHex]:
 
 #sending defense from flood
 func send_defend_tiles() -> Array[BaseHex]:
+	prints("grid_coords: ",self.data.grid_coords)
 	var defended_tiles : Array[BaseHex] = []
 	if defense:
 		defended_tiles = [self]
 		var southward : Vector2 = Vector2.ZERO
-		for i in DEFENSE_RANGE:
+		for i in min(DEFENSE_RANGE,GameInfo.level_radius-abs(self.data.grid_coords.x)+self.data.grid_coords.y):
+			prints("Defense range: ",DEFENSE_RANGE,"calculated limit :",GameInfo.level_radius-abs(self.data.grid_coords.x)+self.data.grid_coords.y)
 			southward += HexManager.SOUTH
 			defended_tiles.append(get_hex_rel(southward))
 	

@@ -8,7 +8,7 @@ extends Node2D
 ## Directions (using Vector2 instead of enum so you can add with them, also declared in BaseHex for easy access)
 const NW = Vector2(-1,1)
 const NORTH = Vector2(0,1)
-const NE = Vector2(0,1)
+const NE = Vector2(-1,1)
 const SE = Vector2(1,-1)
 const SOUTH = Vector2(0,-1)
 const SW = Vector2(-1,0)
