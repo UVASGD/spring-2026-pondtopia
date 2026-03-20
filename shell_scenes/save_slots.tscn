@@ -1,11 +1,13 @@
-[gd_scene format=3 uid="uid://dd71ltua8vpqj"]
+[gd_scene format=3 uid="uid://d3x3n85nj4t6y"]
 
-[ext_resource type="Texture2D" uid="uid://p614qa2bt4ch" path="res://z_assets/sprites/main_menu/main_menu_frog.png" id="1_gqxyi"]
-[ext_resource type="Script" uid="uid://bj5ye56nvni8h" path="res://shell_scenes/shell_scene_button.gd" id="1_u5tdt"]
+[ext_resource type="Script" uid="uid://cpvl1fw8f083l" path="res://shell_scenes/save_slots.gd" id="1_4cstd"]
+[ext_resource type="Script" uid="uid://bj5ye56nvni8h" path="res://shell_scenes/shell_scene_button.gd" id="1_oxt1w"]
+[ext_resource type="Texture2D" uid="uid://p614qa2bt4ch" path="res://z_assets/sprites/main_menu/main_menu_frog.png" id="2_4cstd"]
 
-[node name="MainMenu" type="Control" unique_id=1283535406]
+[node name="SaveSlots" type="Control" unique_id=1283535406]
 layout_mode = 3
 anchors_preset = 0
+script = ExtResource("1_4cstd")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1322681973]
 layout_mode = 1
@@ -36,56 +38,55 @@ theme_override_constants/separation = 100
 layout_mode = 2
 theme_override_constants/separation = 25
 
-[node name="New Game" type="Button" parent="VBoxContainer/HBoxContainer/ButtonsContainer" unique_id=2099464037]
+[node name="Save1" type="Button" parent="VBoxContainer/HBoxContainer/ButtonsContainer" unique_id=2099464037]
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
-text = "New City"
-script = ExtResource("1_u5tdt")
+text = "Save 1"
+script = ExtResource("1_oxt1w")
 emit_signal_ = true
 switch_scene = true
-allow_quick_key = true
 signal_to_emit = "start_game_pressed"
+signal_arguments = [1]
 emit_order = 1
 switch_to = "game"
 
-[node name="Continue" type="Button" parent="VBoxContainer/HBoxContainer/ButtonsContainer" unique_id=1278931718]
+[node name="Save2" type="Button" parent="VBoxContainer/HBoxContainer/ButtonsContainer" unique_id=1278931718]
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
-text = "  Continue  "
-script = ExtResource("1_u5tdt")
+text = "Save 2"
+script = ExtResource("1_oxt1w")
 emit_signal_ = true
 switch_scene = true
+signal_to_emit = "start_game_pressed"
+signal_arguments = [2]
 emit_order = 1
-switch_to = "save"
+switch_to = "game"
 
-[node name="Options" type="Button" parent="VBoxContainer/HBoxContainer/ButtonsContainer" unique_id=902455310]
+[node name="Save3" type="Button" parent="VBoxContainer/HBoxContainer/ButtonsContainer" unique_id=902455310]
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
-text = "Options"
-script = ExtResource("1_u5tdt")
-switch_scene = true
-switch_to = "options"
-
-[node name="Credits" type="Button" parent="VBoxContainer/HBoxContainer/ButtonsContainer" unique_id=2009996100]
-layout_mode = 2
-theme_override_font_sizes/font_size = 40
-text = "Credits"
-script = ExtResource("1_u5tdt")
-switch_scene = true
-switch_to = "credits"
-
-[node name="Quit" type="Button" parent="VBoxContainer/HBoxContainer/ButtonsContainer" unique_id=1045350316]
-layout_mode = 2
-theme_override_font_sizes/font_size = 40
-text = "Quit"
-script = ExtResource("1_u5tdt")
+text = "Save 3"
+script = ExtResource("1_oxt1w")
 emit_signal_ = true
-signal_to_emit = "quit_pressed"
+switch_scene = true
+signal_to_emit = "start_game_pressed"
+signal_arguments = [3]
+emit_order = 1
+switch_to = "game"
+
+[node name="Back" type="Button" parent="VBoxContainer/HBoxContainer/ButtonsContainer" unique_id=1045350316]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "          Back          "
+script = ExtResource("1_oxt1w")
+switch_scene = true
+allow_quick_key = true
+switch_to = "main_menu"
 
 [node name="TextureRect" type="TextureRect" parent="VBoxContainer/HBoxContainer" unique_id=1603106351]
 layout_mode = 2
 size_flags_horizontal = 10
-texture = ExtResource("1_gqxyi")
+texture = ExtResource("2_4cstd")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1719388801]
 position = Vector2(2, 4)

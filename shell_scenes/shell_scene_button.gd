@@ -23,6 +23,8 @@ extends Node
 @export_group("Signal Emission")
 ## The name of the signal in SignalBus to emit.
 @export var signal_to_emit : String
+## The arguments to be sent with the signal
+@export var signal_arguments : Array = []
 ## Whether to emit the signal before or after the scene switch.
 @export_enum("Before:0", "After:1") var emit_order : int = 0
 
@@ -54,7 +56,7 @@ func _on_pressed() :
 		emit_assigned_signal()
 
 func emit_assigned_signal() :
-	SignalBus.emit_signal(signal_to_emit)
+		SignalBus.emit_signal(signal_to_emit, signal_arguments)
 
 func switch_scene_() :
 	if just_close_overlay_panel :

@@ -7,7 +7,7 @@ extends Node
 
 # Signals for shell scene buttons
 signal quit_pressed
-signal start_game_pressed
+signal start_game_pressed(args : Array)
 signal skip_to_win_pressed
 
 func signal_test() : # this is just to make the warning messages go away. Never call this method.

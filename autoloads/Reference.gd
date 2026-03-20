@@ -24,6 +24,7 @@ var main_menu : PackedScene = preload("uid://dd71ltua8vpqj")
 var options : PackedScene = preload("uid://cltaghkxnswjy")
 var startup : PackedScene = preload("uid://d176ir76ayfrc")
 var victory : PackedScene = preload("uid://bthyueckt3nn")
+var save : PackedScene = preload("uid://d3x3n85nj4t6y")
 
 @export_group("Temp")
 
