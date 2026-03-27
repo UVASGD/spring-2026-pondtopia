@@ -5,7 +5,6 @@
 [ext_resource type="Texture2D" uid="uid://dej4gdp3m2iub" path="res://z_assets/sprites/ui/happy_bar_over.png" id="4_a66jl"]
 [ext_resource type="Texture2D" uid="uid://kpm0jca7rlrl" path="res://z_assets/sprites/ui/happy_progress.png" id="5_ja3q7"]
 [ext_resource type="Texture2D" uid="uid://dmqvcex57r3dc" path="res://z_assets/sprites/ui/energy_bar_over.png" id="6_hbhn4"]
-[ext_resource type="Script" uid="uid://bqkfxp5husaqc" path="res://game_ui/trackers.gd" id="7_6the3"]
 [ext_resource type="Script" uid="uid://dne5abww6im5t" path="res://game_ui/building_popup.gd" id="7_6the3"]
 [ext_resource type="Texture2D" uid="uid://cew31dprjbxtl" path="res://z_assets/sprites/ui/hammer.png" id="7_eilcp"]
 [ext_resource type="Texture2D" uid="uid://b2jv1g64sbwr" path="res://z_assets/sprites/ui/energy_progress.png" id="7_o8tbw"]
@@ -101,7 +100,6 @@ grow_horizontal = 0
 [node name="Trackers" type="VBoxContainer" parent="UI/ResourceUI" unique_id=360727991]
 layout_mode = 2
 size_flags_horizontal = 10
-script = ExtResource("7_6the3")
 
 [node name="DayCounter" type="Label" parent="UI/ResourceUI/Trackers" unique_id=669273260]
 layout_mode = 2
