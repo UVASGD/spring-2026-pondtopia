@@ -26,7 +26,8 @@ var MIGRATED_HEX : PackedScene = load("res://hexes/migrated/migrated_hex.tscn")
 var FRUIT_HEX : PackedScene = load("res://hexes/fruit/fruit_hex.tscn")
 var FLY_HEX : PackedScene = load("res://hexes/fly/fly_hex.tscn")
 var DAM_HEX : PackedScene = load("res://hexes/dam/dam_hex.tscn")
-var HOUSE_HEX : PackedScene = load("res://hexes/house/HousingTile.tscn")
+var HOUSE_HEX : PackedScene = load("res://hexes/house/house_hex.tscn")
+var FLOWER_HEX : PackedScene = load("res://hexes/decor/decoration_hex.tscn")
 
 ## When set to false, all methods in region Modify will be returned immediately
 var _allow_modify_actions : bool = false

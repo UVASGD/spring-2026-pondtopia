@@ -118,6 +118,20 @@ func on_selected_base() :
 	sprites.modulate.b = 0
 	sprites.modulate.r = 0
 	hex_options.show()
+	
+	# trying out building buttons stuff
+	if GameInfo.cur_selected_tile != "":
+		try_deselect()
+		remove_from_map()
+		match GameInfo.cur_selected_tile:
+			"fly":
+				HexManager.create_hex(data.grid_coords, HexManager.FLY_HEX, CREATE_TYPE.INSTANT)
+			"flower":
+				HexManager.create_hex(data.grid_coords, HexManager.FLOWER_HEX, CREATE_TYPE.INSTANT)
+			"house":
+				HexManager.create_hex(data.grid_coords, HexManager.HOUSE_HEX, CREATE_TYPE.INSTANT)
+			"dam":
+				HexManager.create_hex(data.grid_coords, HexManager.DAM_HEX, CREATE_TYPE.INSTANT)
 
 func on_deselected_base() :
 	sprites.modulate.b = 1
