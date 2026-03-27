@@ -13,12 +13,19 @@ const SE = Vector2(1,-1)
 const SOUTH = Vector2(0,-1)
 const SW = Vector2(-1,0)
 
+enum HexElement {
+  EARTH,
+  WOOD,
+  WATER,
+}
+
 ## Preloaded hex packed scenes for instantiating hexes
 ## These should be preloaded constants but preloading them causes a cyclic error.
 var BASE_HEX : PackedScene = load("res://hexes/base/base_hex.tscn")
 var MIGRATED_HEX : PackedScene = load("res://hexes/migrated/migrated_hex.tscn")
 var FRUIT_HEX : PackedScene = load("res://hexes/fruit/fruit_hex.tscn")
 var FLY_HEX : PackedScene = load("res://hexes/fly/fly_hex.tscn")
+var DAM_HEX : PackedScene = load("res://hexes/dam/dam_hex.tscn")
 var HOUSE_HEX : PackedScene = load("res://hexes/house/HousingTile.tscn")
 
 ## When set to false, all methods in region Modify will be returned immediately

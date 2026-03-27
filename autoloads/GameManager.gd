@@ -35,7 +35,7 @@ func start_game() :
 	HexManager._allow_modify_actions = true
 	var size = 2
 	for coord in HexManager.get_coords_in_hexagon(size) :
-		HexManager.create_hex(coord, HexManager.FRUIT_HEX, BaseHex.CREATE_TYPE.FADE_IN, [randi_range(0,3)])
+		HexManager.create_hex(coord, HexManager.BASE_HEX, BaseHex.CREATE_TYPE.FADE_IN, [randi_range(0,3)])
 	
 	# start day tracking timer
 	tick_counter = 0
