@@ -8,7 +8,8 @@
 [ext_resource type="Script" uid="uid://dne5abww6im5t" path="res://game_ui/building_popup.gd" id="7_6the3"]
 [ext_resource type="Texture2D" uid="uid://cew31dprjbxtl" path="res://z_assets/sprites/ui/hammer.png" id="7_eilcp"]
 [ext_resource type="Texture2D" uid="uid://b2jv1g64sbwr" path="res://z_assets/sprites/ui/energy_progress.png" id="7_o8tbw"]
-[ext_resource type="PackedScene" uid="uid://dpfgtpxrxum1r" path="res://shell_scenes/pause.tscn" id="10_ja3q7"]
+[ext_resource type="AudioStream" uid="uid://b8h2b86kbfk05" path="res://z_assets/music/Frog.ogg" id="10_aag77"]
+[ext_resource type="PackedScene" uid="uid://dpfgtpxrxum1r" path="res://game_ui/pause/pause.tscn" id="10_ja3q7"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6the3"]
 bg_color = Color(1, 0.79607844, 0.2784314, 1)
@@ -261,5 +262,10 @@ stretch_mode = 5
 [node name="Pause" parent="." unique_id=816710642 instance=ExtResource("10_ja3q7")]
 visible = false
 z_index = 101
+
+[node name="Music" type="AudioStreamPlayer2D" parent="." unique_id=1553037568]
+stream = ExtResource("10_aag77")
+autoplay = true
+bus = &"Music"
 
 [connection signal="pressed" from="UI/BuildingPopup/BuildButton" to="UI/BuildingPopup" method="_on_build_button_pressed"]
