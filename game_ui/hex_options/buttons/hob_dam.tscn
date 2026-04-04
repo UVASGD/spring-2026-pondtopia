@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://tcalicqsbksl"]
+
+[ext_resource type="Script" uid="uid://ek3x6taumoiw" path="res://game_ui/hex_options/buttons/hex_options_button.gd" id="1_e4o7o"]
+
+[node name="HobDam" type="Control" unique_id=1882064536]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_e4o7o")
+action_name = "dam"
+
+[node name="Button" type="Button" parent="." unique_id=1716975341]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+text = "🍉"
