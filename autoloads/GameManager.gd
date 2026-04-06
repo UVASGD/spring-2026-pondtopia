@@ -20,7 +20,6 @@ func _physics_process(_delta: float) -> void:
 
 func tick(_delta: float) :
 	time_since_last_tick += _delta
-	#print("time since last tick: %f" % time_since_last_tick)
 	if time_since_last_tick > tick_duration :
 		time_since_last_tick -= tick_duration
 		HexManager.tick()
@@ -34,18 +33,22 @@ func tick(_delta: float) :
 func start_game(args: Array) :
 	if !SaveManager.load_game(args[0]):
 		HexManager._allow_modify_actions = true
-		var size = 2
-		for coord in HexManager.get_coords_in_hexagon(size) :
-			HexManager.create_hex(coord, HexManager.BASE_HEX, BaseHex.CREATE_TYPE.FADE_IN, [randi_range(0,3)])
+		for coord in HexManager.get_coords_in_hexagon(GameInfo.level_radius):
+			HexManager.create_hex(coord, HexManager.FRUIT_HEX, BaseHex.CREATE_TYPE.FADE_IN, [randi_range(0,3)])
 	
-	# start day tracking timer
+	# start day tracking timer, randomize disaster order
 	tick_counter = 0
+	GameInfo.game_running = true
+	GameInfo.disaster_arr.shuffle()
+	GameInfo.disaster_arr.append("meteor")
 			
 	SaveManager.city_name = "City %d" % args[0]
 
 func end_game() :
 	HexManager.remove_all_hexes()
 	HexManager._allow_modify_actions = false
+	
+	GameInfo.game_running = false
 
 func quit_game() :
 	get_tree().quit()

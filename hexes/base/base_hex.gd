@@ -118,6 +118,20 @@ func on_selected_base() :
 	sprites.modulate.b = 0
 	sprites.modulate.r = 0
 	hex_options.show()
+	
+	# trying out building buttons stuff
+	if GameInfo.cur_selected_tile != "":
+		try_deselect()
+		remove_from_map()
+		match GameInfo.cur_selected_tile:
+			"fly":
+				HexManager.create_hex(data.grid_coords, HexManager.FLY_HEX, CREATE_TYPE.INSTANT)
+			"flower":
+				HexManager.create_hex(data.grid_coords, HexManager.FLOWER_HEX, CREATE_TYPE.INSTANT)
+			"house":
+				HexManager.create_hex(data.grid_coords, HexManager.HOUSE_HEX, CREATE_TYPE.INSTANT)
+			"dam":
+				HexManager.create_hex(data.grid_coords, HexManager.DAM_HEX, CREATE_TYPE.INSTANT)
 
 func on_deselected_base() :
 	sprites.modulate.b = 1
@@ -144,6 +158,11 @@ func on_hex_options_button_pressed_base(button_action_name : String) :
 				try_deselect()
 				remove_from_map()
 				HexManager.create_hex(data.grid_coords, HexManager.FLY_HEX, CREATE_TYPE.INSTANT)
+		"dam":
+			if GameInfo.num_flies >= 200:
+				try_deselect()
+				remove_from_map()
+				HexManager.create_hex(data.grid_coords, HexManager.DAM_HEX, CREATE_TYPE.INSTANT)
 
 func on_added_to_map_base(_type: CREATE_TYPE, _extra_params: Array) :
 	match _type :
