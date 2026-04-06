@@ -1,12 +1,13 @@
 extends BaseHex
-class_name FlyHex
+class_name HousingTile
 
-const FLIES_ADDED:int = 25
+const FROG_CAP_INCREASE:int = 5
 
 func on_added_to_map(_type: CREATE_TYPE, _extra_params : Array):
 	# cost
 	GameInfo.num_flies -= 100
 	on_added_to_map_base(_type, _extra_params)
+	GameInfo.frog_capacity += FROG_CAP_INCREASE
 
-func tick():
-	GameInfo.num_flies += FLIES_ADDED
+#func tick():
+	#GameInfo.frog_capacity += FROG_CAP_INCREASE
