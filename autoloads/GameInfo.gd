@@ -11,6 +11,7 @@ var num_frogs: int = 1
 var frog_capacity: int = 10
 var day_num: int = 1
 var day_length: int = 1 # in seconds
+var level_radius : int = 2 #radius of level hexagon in hexes
 var cur_selected_tile: String = ""
 var disaster_arr = ["fire", "flood", "earthquake"]
 var disaster_num: int = 0

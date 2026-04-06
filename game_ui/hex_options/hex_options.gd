@@ -26,6 +26,7 @@ const button_dict : Dictionary = {
 	"delete" = preload("res://game_ui/hex_options/buttons/hob_delete.tscn"),
 	"clear" = preload("res://game_ui/hex_options/buttons/hob_clear.tscn"),
 	"fly" = preload("res://hexes/fly/fly_hex.tscn"),
+	"dam" = preload("res://game_ui/hex_options/buttons/hob_dam.tscn")
 }
 
 var hex : BaseHex
