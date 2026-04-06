@@ -1,0 +1,162 @@
+[gd_scene format=3 uid="uid://ylsx6vptt73i"]
+
+[ext_resource type="PackedScene" uid="uid://dc83jmo6m1p6v" path="res://game_ui/options/volume_slider.tscn" id="1_kw8cu"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kmg32"]
+bg_color = Color(0.9254902, 0.92156863, 0.8352941, 1)
+corner_radius_top_left = 32
+corner_radius_top_right = 32
+corner_radius_bottom_right = 32
+corner_radius_bottom_left = 32
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_fyfly"]
+color = Color(0.45882353, 0.45882353, 0.4117647, 1)
+thickness = 8
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_h6ta1"]
+color = Color(0.7294118, 0.8235294, 0.64705884, 1)
+thickness = 8
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_uqerw"]
+color = Color(0.7294118, 0.8235294, 0.64705884, 1)
+thickness = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fyfly"]
+bg_color = Color(0.7294118, 0.8235294, 0.64705884, 1)
+corner_radius_top_left = 32
+corner_radius_top_right = 32
+corner_radius_bottom_right = 32
+corner_radius_bottom_left = 32
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h6ta1"]
+bg_color = Color(0.45882353, 0.45882353, 0.4117647, 1)
+corner_radius_top_left = 32
+corner_radius_top_right = 32
+corner_radius_bottom_right = 32
+corner_radius_bottom_left = 32
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uqerw"]
+bg_color = Color(0.45882353, 0.45882353, 0.4117647, 1)
+corner_radius_top_left = 32
+corner_radius_top_right = 32
+corner_radius_bottom_right = 32
+corner_radius_bottom_left = 32
+
+[sub_resource type="GDScript" id="GDScript_8enpd"]
+
+[node name="Options" type="Control" unique_id=667572769]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_top = -3.0
+offset_right = -1.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="PanelContainer" parent="." unique_id=90721861]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -599.0
+offset_top = -332.0
+offset_right = 584.0
+offset_bottom = 340.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_kmg32")
+
+[node name="Title" type="Label" parent="." unique_id=1066550794]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -82.0
+offset_top = 30.0
+offset_right = 82.0
+offset_bottom = 79.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.12941177, 0.31764707, 0.27058825, 1)
+theme_override_font_sizes/font_size = 64
+text = "Options"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VolumeSliders" type="VBoxContainer" parent="." unique_id=1114705623]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -341.25
+offset_top = -34.75
+offset_right = 341.25
+offset_bottom = 34.75
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Master" type="Label" parent="VolumeSliders" unique_id=318412413]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.12941177, 0.31764707, 0.27058825, 1)
+theme_override_font_sizes/font_size = 24
+text = "Master"
+
+[node name="MasterSlider" parent="VolumeSliders" unique_id=1363435795 instance=ExtResource("1_kw8cu")]
+layout_mode = 2
+theme_override_styles/slider = SubResource("StyleBoxLine_fyfly")
+theme_override_styles/grabber_area = SubResource("StyleBoxLine_h6ta1")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxLine_uqerw")
+bus_name = "Master"
+
+[node name="SFX" type="Label" parent="VolumeSliders" unique_id=338097457]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.12941177, 0.31764707, 0.27058825, 1)
+theme_override_font_sizes/font_size = 24
+text = "SFX"
+
+[node name="SFXSlider" parent="VolumeSliders" unique_id=395299086 instance=ExtResource("1_kw8cu")]
+layout_mode = 2
+theme_override_styles/slider = SubResource("StyleBoxLine_fyfly")
+theme_override_styles/grabber_area = SubResource("StyleBoxLine_h6ta1")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxLine_uqerw")
+bus_name = "SFX"
+
+[node name="Music" type="Label" parent="VolumeSliders" unique_id=1769742452]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.12941177, 0.31764707, 0.27058825, 1)
+theme_override_font_sizes/font_size = 24
+text = "Music"
+
+[node name="MusicSlider" parent="VolumeSliders" unique_id=810883656 instance=ExtResource("1_kw8cu")]
+layout_mode = 2
+theme_override_styles/slider = SubResource("StyleBoxLine_fyfly")
+theme_override_styles/grabber_area = SubResource("StyleBoxLine_h6ta1")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxLine_uqerw")
+bus_name = "Music"
+
+[node name="BackButton" type="Button" parent="." unique_id=979068386]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -141.5
+offset_top = -99.0
+offset_right = 141.5
+offset_bottom = -15.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.12941177, 0.31764707, 0.27058825, 1)
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_fyfly")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_h6ta1")
+theme_override_styles/hover = SubResource("StyleBoxFlat_uqerw")
+text = "Back"
+script = SubResource("GDScript_8enpd")

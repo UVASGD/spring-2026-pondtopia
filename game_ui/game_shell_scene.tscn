@@ -9,6 +9,9 @@
 [ext_resource type="Texture2D" uid="uid://cew31dprjbxtl" path="res://z_assets/sprites/ui/hammer.png" id="7_eilcp"]
 [ext_resource type="Script" uid="uid://bqkfxp5husaqc" path="res://game_ui/trackers.gd" id="7_ja3q7"]
 [ext_resource type="Texture2D" uid="uid://b2jv1g64sbwr" path="res://z_assets/sprites/ui/energy_progress.png" id="7_o8tbw"]
+[ext_resource type="AudioStream" uid="uid://b8h2b86kbfk05" path="res://z_assets/music/Frog.ogg" id="10_aag77"]
+[ext_resource type="PackedScene" uid="uid://dpfgtpxrxum1r" path="res://game_ui/pause/pause.tscn" id="10_ja3q7"]
+[ext_resource type="PackedScene" uid="uid://ylsx6vptt73i" path="res://game_ui/options/popup_options.tscn" id="11_aag77"]
 [ext_resource type="Script" uid="uid://7s0gtce54peh" path="res://game_ui/building_button_select.gd" id="9_aag77"]
 [ext_resource type="PackedScene" uid="uid://dpfgtpxrxum1r" path="res://shell_scenes/pause.tscn" id="10_ja3q7"]
 
@@ -37,6 +40,11 @@ bg_color = Color(0.282566, 0.706913, 0.22648, 1)
 [sub_resource type="ButtonGroup" id="ButtonGroup_aag77"]
 
 [node name="GameShellScene" type="Node" unique_id=1945027471]
+
+[node name="Music" type="AudioStreamPlayer2D" parent="." unique_id=1553037568]
+stream = ExtResource("10_aag77")
+autoplay = true
+bus = &"Music"
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=793561251]
 script = ExtResource("1_6the3")
@@ -263,9 +271,16 @@ texture_pressed = ExtResource("7_eilcp")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="Pause" parent="." unique_id=816710642 instance=ExtResource("10_ja3q7")]
+[node name="Overlays" type="Node" parent="." unique_id=2131685382]
+
+[node name="Pause" parent="Overlays" unique_id=816710642 instance=ExtResource("10_ja3q7")]
 visible = false
-z_index = 101
+z_index = 100
+
+[node name="Options" parent="Overlays/Pause" unique_id=667572769 instance=ExtResource("11_aag77")]
+visible = false
+z_index = 200
+layout_mode = 1
 
 [connection signal="toggled" from="UI/BuildingPopup/BuildScrollContainer/BuildButtonContainer/FlyButton" to="UI/BuildingPopup/BuildScrollContainer/BuildButtonContainer" method="_on_button_toggled" binds= ["fly"]]
 [connection signal="toggled" from="UI/BuildingPopup/BuildScrollContainer/BuildButtonContainer/FlowerButton" to="UI/BuildingPopup/BuildScrollContainer/BuildButtonContainer" method="_on_button_toggled" binds= ["flower"]]

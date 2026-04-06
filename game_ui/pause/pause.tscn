@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dpfgtpxrxum1r"]
 
 [ext_resource type="Script" uid="uid://bj5ye56nvni8h" path="res://shell_scenes/shell_scene_button.gd" id="1_8xr5c"]
-[ext_resource type="Script" uid="uid://dow28i7obnaa" path="res://shell_scenes/pause.gd" id="1_penmj"]
+[ext_resource type="Script" uid="uid://dow28i7obnaa" path="res://game_ui/pause/pause.gd" id="1_penmj"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_msatf"]
 bg_color = Color(0.7294118, 0.8235294, 0.64705884, 1)
@@ -123,3 +123,5 @@ text = "Quit
 script = ExtResource("1_8xr5c")
 emit_signal_ = true
 signal_to_emit = "quit_pressed"
+
+[connection signal="pressed" from="TextureRect/VBoxContainer/HBoxContainer/ButtonsContainer/Options" to="." method="_on_options_pressed"]
