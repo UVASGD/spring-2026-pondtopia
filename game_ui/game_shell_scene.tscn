@@ -9,11 +9,10 @@
 [ext_resource type="Texture2D" uid="uid://cew31dprjbxtl" path="res://z_assets/sprites/ui/hammer.png" id="7_eilcp"]
 [ext_resource type="Script" uid="uid://bqkfxp5husaqc" path="res://game_ui/trackers.gd" id="7_ja3q7"]
 [ext_resource type="Texture2D" uid="uid://b2jv1g64sbwr" path="res://z_assets/sprites/ui/energy_progress.png" id="7_o8tbw"]
+[ext_resource type="Script" uid="uid://7s0gtce54peh" path="res://game_ui/building_button_select.gd" id="9_aag77"]
 [ext_resource type="AudioStream" uid="uid://b8h2b86kbfk05" path="res://z_assets/music/Frog.ogg" id="10_aag77"]
 [ext_resource type="PackedScene" uid="uid://dpfgtpxrxum1r" path="res://game_ui/pause/pause.tscn" id="10_ja3q7"]
 [ext_resource type="PackedScene" uid="uid://ylsx6vptt73i" path="res://game_ui/options/popup_options.tscn" id="11_aag77"]
-[ext_resource type="Script" uid="uid://7s0gtce54peh" path="res://game_ui/building_button_select.gd" id="9_aag77"]
-[ext_resource type="PackedScene" uid="uid://dpfgtpxrxum1r" path="res://shell_scenes/pause.tscn" id="10_ja3q7"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6the3"]
 bg_color = Color(1, 0.79607844, 0.2784314, 1)
