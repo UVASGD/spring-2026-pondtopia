@@ -30,14 +30,13 @@ func tick(_delta: float) :
 				GameInfo.day_num += 1
 				tick_counter = 0
 			tick_counter += 1
-			
 			# start a disaster
 			if GameInfo.day_num % 7 == 0 and tick_counter == 1: # only runs once per day
 				var cur_disaster = GameInfo.disaster_arr[GameInfo.disaster_num]
-				print(cur_disaster)
+				DisasterManager.smite_those_frogs(cur_disaster)
 				GameInfo.disaster_num += 1
 			if GameInfo.disaster_num > 3: GameInfo.disaster_num = 3
-		
+					
 func start_game() :
 	HexManager._allow_modify_actions = true
 	for coord in HexManager.get_coords_in_hexagon(GameInfo.level_radius) :

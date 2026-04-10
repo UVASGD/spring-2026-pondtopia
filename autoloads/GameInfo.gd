@@ -13,5 +13,5 @@ var day_num: int = 1
 var day_length: int = 1 # in seconds
 var level_radius : int = 2 #radius of level hexagon in hexes
 var cur_selected_tile: String = ""
-var disaster_arr = ["fire", "flood", "earthquake"]
+var disaster_arr = ["flood", "flood", "flood"]
 var disaster_num: int = 0
