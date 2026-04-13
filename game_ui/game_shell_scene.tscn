@@ -63,22 +63,11 @@ allow_quick_key = true
 signal_to_emit = "skip_to_win_pressed"
 switch_to = "victory"
 
-[node name="BuildingUI" type="Control" parent="UI" unique_id=1802666193]
-layout_mode = 3
-anchors_preset = 6
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = -313.0
-offset_top = -66.0
-offset_bottom = 66.0
-grow_horizontal = 0
-grow_vertical = 2
-
 [node name="Bars" type="VBoxContainer" parent="UI" unique_id=1710765985]
-offset_right = 256.0
-offset_bottom = 132.0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 266.0
+offset_bottom = 142.0
 
 [node name="HappyBar" type="TextureProgressBar" parent="UI/Bars" unique_id=1698050509]
 layout_mode = 2
@@ -100,8 +89,10 @@ texture_progress_offset = Vector2(77, 12)
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -313.0
-offset_bottom = 132.0
+offset_left = -323.0
+offset_top = 10.0
+offset_right = -10.0
+offset_bottom = 142.0
 grow_horizontal = 0
 
 [node name="Trackers" type="VBoxContainer" parent="UI/ResourceUI" unique_id=360727991]
@@ -190,7 +181,7 @@ theme_override_font_sizes/font_size = 20
 theme_override_styles/pressed = SubResource("StyleBoxFlat_o1dak")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_ndf5c")
 toggle_mode = true
-text = "Fly | +🪰"
+text = "Fly | + "
 metadata/id = "fly"
 
 [node name="FlowerButton" type="Button" parent="UI/BuildingPopup/BuildScrollContainer/BuildButtonContainer" unique_id=1242161716]
