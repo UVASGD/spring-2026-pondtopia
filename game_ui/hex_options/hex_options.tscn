@@ -18,13 +18,16 @@ script = ExtResource("2_gb543")
 radius = 110.0
 
 [node name="HobDelete" parent="CircleContainer" unique_id=1042006475 instance=ExtResource("3_edrnc")]
+visible = false
 layout_mode = 2
 
 [node name="HobClear" parent="CircleContainer" unique_id=657124553 instance=ExtResource("4_gnejw")]
 layout_mode = 2
 
 [node name="HobFly" parent="CircleContainer" unique_id=486253108 instance=ExtResource("5_gnejw")]
+visible = false
 layout_mode = 2
 
 [node name="HobDam" parent="CircleContainer" unique_id=1882064536 instance=ExtResource("6_g3jwk")]
+visible = false
 layout_mode = 2
