@@ -117,7 +117,7 @@ func tick_base() :
 func on_selected_base() :
 	sprites.modulate.b = 0
 	sprites.modulate.r = 0
-	hex_options.show()
+	# hex_options.show()
 	
 	# trying out building buttons stuff
 	if GameInfo.cur_selected_tile != "":
