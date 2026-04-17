@@ -10,7 +10,6 @@
 [ext_resource type="Script" uid="uid://bqkfxp5husaqc" path="res://game_ui/trackers.gd" id="7_ja3q7"]
 [ext_resource type="Texture2D" uid="uid://b2jv1g64sbwr" path="res://z_assets/sprites/ui/energy_progress.png" id="7_o8tbw"]
 [ext_resource type="Script" uid="uid://7s0gtce54peh" path="res://game_ui/building_button_select.gd" id="9_aag77"]
-[ext_resource type="AudioStream" uid="uid://b8h2b86kbfk05" path="res://z_assets/music/Frog.ogg" id="10_aag77"]
 [ext_resource type="PackedScene" uid="uid://dpfgtpxrxum1r" path="res://game_ui/pause/pause.tscn" id="10_ja3q7"]
 [ext_resource type="PackedScene" uid="uid://ylsx6vptt73i" path="res://game_ui/options/popup_options.tscn" id="11_aag77"]
 
@@ -35,11 +34,6 @@ corner_radius_bottom_left = 4
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ndf5c"]
 
 [node name="GameShellScene" type="Node" unique_id=1945027471]
-
-[node name="Music" type="AudioStreamPlayer2D" parent="." unique_id=1553037568]
-stream = ExtResource("10_aag77")
-autoplay = true
-bus = &"Music"
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=793561251]
 script = ExtResource("1_6the3")
