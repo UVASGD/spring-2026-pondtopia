@@ -126,6 +126,8 @@ func on_selected_base() :
 		match GameInfo.cur_selected_tile:
 			"fly":
 				HexManager.create_hex(data.grid_coords, HexManager.FLY_HEX, CREATE_TYPE.INSTANT)
+			"dataCenter":
+				HexManager.create_hex(data.grid_coords, HexManager.DATA_CENTER_HEX, CREATE_TYPE.INSTANT)
 			"flower":
 				HexManager.create_hex(data.grid_coords, HexManager.FLOWER_HEX, CREATE_TYPE.INSTANT)
 			"house":

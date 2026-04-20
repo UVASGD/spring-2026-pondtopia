@@ -187,6 +187,14 @@ toggle_mode = true
 text = "Fly | +🪰"
 metadata/id = "fly"
 
+[node name="DataCenterButton" type="Button" parent="UI/BuildingPopup/BuildScrollContainer/BuildButtonContainer" unique_id=1786294106]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+theme_override_styles/pressed = SubResource("StyleBoxFlat_o1dak")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ndf5c")
+toggle_mode = true
+text = "Data Center"
+
 [node name="FlowerButton" type="Button" parent="UI/BuildingPopup/BuildScrollContainer/BuildButtonContainer" unique_id=1242161716]
 layout_mode = 2
 theme_override_font_sizes/font_size = 20
@@ -213,14 +221,6 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_o1dak")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_ndf5c")
 toggle_mode = true
 text = "Dam"
-
-[node name="Button2" type="Button" parent="UI/BuildingPopup/BuildScrollContainer/BuildButtonContainer" unique_id=1786294106]
-layout_mode = 2
-theme_override_font_sizes/font_size = 20
-theme_override_styles/pressed = SubResource("StyleBoxFlat_o1dak")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_ndf5c")
-toggle_mode = true
-text = "Test Button"
 
 [node name="Button3" type="Button" parent="UI/BuildingPopup/BuildScrollContainer/BuildButtonContainer" unique_id=473275641]
 layout_mode = 2
@@ -302,6 +302,7 @@ z_index = 200
 layout_mode = 1
 
 [connection signal="toggled" from="UI/BuildingPopup/BuildScrollContainer/BuildButtonContainer/FlyButton" to="UI/BuildingPopup/BuildScrollContainer/BuildButtonContainer" method="_on_button_toggled" binds= ["fly"]]
+[connection signal="toggled" from="UI/BuildingPopup/BuildScrollContainer/BuildButtonContainer/DataCenterButton" to="UI/BuildingPopup/BuildScrollContainer/BuildButtonContainer" method="_on_button_toggled" binds= ["dataCenter"]]
 [connection signal="toggled" from="UI/BuildingPopup/BuildScrollContainer/BuildButtonContainer/FlowerButton" to="UI/BuildingPopup/BuildScrollContainer/BuildButtonContainer" method="_on_button_toggled" binds= ["flower"]]
 [connection signal="toggled" from="UI/BuildingPopup/BuildScrollContainer/BuildButtonContainer/HouseButton" to="UI/BuildingPopup/BuildScrollContainer/BuildButtonContainer" method="_on_button_toggled" binds= ["house"]]
 [connection signal="toggled" from="UI/BuildingPopup/BuildScrollContainer/BuildButtonContainer/DamButton" to="UI/BuildingPopup/BuildScrollContainer/BuildButtonContainer" method="_on_button_toggled" binds= ["dam"]]
