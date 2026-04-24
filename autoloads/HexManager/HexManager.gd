@@ -113,6 +113,7 @@ func create_hex(grid_coords: Vector2i, hex_scene : PackedScene, type: BaseHex.CR
 		return
 	# instantiate
 	var hex : BaseHex = hex_scene.instantiate()
+	hex.data.hex_scene_type = hex_scene
 	# set parent
 	add_child(hex)
 	# set debug id

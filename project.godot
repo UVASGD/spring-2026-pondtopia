@@ -39,6 +39,7 @@ Music="*uid://lso2au48o787"
 
 [display]
 
+window/size/mode=3
 window/stretch/mode="canvas_items"
 
 [gui]

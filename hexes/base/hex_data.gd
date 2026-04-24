@@ -5,3 +5,4 @@ class_name HexData
 
 ## The coordinates of the spot on the map that this hex holds. The hex may not necessarily be at the associated real position.
 var grid_coords : Vector2i
+var hex_scene_type : PackedScene
