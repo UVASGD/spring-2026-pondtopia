@@ -5,15 +5,14 @@
 [ext_resource type="Texture2D" uid="uid://dej4gdp3m2iub" path="res://z_assets/sprites/ui/happy_bar_over.png" id="4_a66jl"]
 [ext_resource type="Texture2D" uid="uid://kpm0jca7rlrl" path="res://z_assets/sprites/ui/happy_progress.png" id="5_ja3q7"]
 [ext_resource type="Texture2D" uid="uid://dmqvcex57r3dc" path="res://z_assets/sprites/ui/energy_bar_over.png" id="6_hbhn4"]
-[ext_resource type="Script" uid="uid://dne5abww6im5t" path="res://game_ui/building_popup.gd" id="7_6the3"]
+[ext_resource type="Script" path="res://game_ui/building_popup.gd" id="7_6the3"]
 [ext_resource type="Texture2D" uid="uid://cew31dprjbxtl" path="res://z_assets/sprites/ui/hammer.png" id="7_eilcp"]
 [ext_resource type="Script" uid="uid://bqkfxp5husaqc" path="res://game_ui/trackers.gd" id="7_ja3q7"]
 [ext_resource type="Texture2D" uid="uid://b2jv1g64sbwr" path="res://z_assets/sprites/ui/energy_progress.png" id="7_o8tbw"]
+[ext_resource type="Script" uid="uid://7s0gtce54peh" path="res://game_ui/building_button_select.gd" id="9_aag77"]
 [ext_resource type="AudioStream" uid="uid://b8h2b86kbfk05" path="res://z_assets/music/Frog.ogg" id="10_aag77"]
 [ext_resource type="PackedScene" uid="uid://dpfgtpxrxum1r" path="res://game_ui/pause/pause.tscn" id="10_ja3q7"]
 [ext_resource type="PackedScene" uid="uid://ylsx6vptt73i" path="res://game_ui/options/popup_options.tscn" id="11_aag77"]
-[ext_resource type="Script" uid="uid://7s0gtce54peh" path="res://game_ui/building_button_select.gd" id="9_aag77"]
-[ext_resource type="PackedScene" uid="uid://dpfgtpxrxum1r" path="res://shell_scenes/pause.tscn" id="10_ja3q7"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6the3"]
 bg_color = Color(1, 0.79607844, 0.2784314, 1)
@@ -222,10 +221,11 @@ layout_mode = 2
 toggle_mode = true
 text = "Dam"
 
-[node name="Button2" type="Button" parent="UI/BuildingPopup/BuildScrollContainer/BuildButtonContainer" unique_id=1786294106]
+[node name="BberthaButton" type="Button" parent="UI/BuildingPopup/BuildScrollContainer/BuildButtonContainer" unique_id=1786294106]
 layout_mode = 2
+toggle_mode = true
 button_group = SubResource("ButtonGroup_aag77")
-text = "Test Button"
+text = "Big Bertha"
 
 [node name="Button3" type="Button" parent="UI/BuildingPopup/BuildScrollContainer/BuildButtonContainer" unique_id=473275641]
 layout_mode = 2
@@ -286,4 +286,5 @@ layout_mode = 1
 [connection signal="toggled" from="UI/BuildingPopup/BuildScrollContainer/BuildButtonContainer/FlowerButton" to="UI/BuildingPopup/BuildScrollContainer/BuildButtonContainer" method="_on_button_toggled" binds= ["flower"]]
 [connection signal="toggled" from="UI/BuildingPopup/BuildScrollContainer/BuildButtonContainer/HouseButton" to="UI/BuildingPopup/BuildScrollContainer/BuildButtonContainer" method="_on_button_toggled" binds= ["house"]]
 [connection signal="toggled" from="UI/BuildingPopup/BuildScrollContainer/BuildButtonContainer/DamButton" to="UI/BuildingPopup/BuildScrollContainer/BuildButtonContainer" method="_on_button_toggled" binds= ["dam"]]
+[connection signal="toggled" from="UI/BuildingPopup/BuildScrollContainer/BuildButtonContainer/BberthaButton" to="UI/BuildingPopup/BuildScrollContainer/BuildButtonContainer" method="_on_button_toggled" binds= ["bbertha"]]
 [connection signal="pressed" from="UI/BuildingPopup/BuildButton" to="UI/BuildingPopup" method="_on_build_button_pressed"]

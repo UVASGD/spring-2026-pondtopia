@@ -19,6 +19,7 @@ class_name BaseHex
 ## 5. You're done! To create special behaviors for your hex, override the functions in base hex (eg tick()). Remember to call the base behavior functions (eg tick_base()) if you want the overriden functions to also do the base functionality. 
 
 @export var hex_element:HexManager.HexElement
+@export var hex_category:HexManager.HexCategory
 
 ## Directions (using Vector2 instead of enum so you can add with them, also declared in HexManager for easy access)
 const NW := Vector2i(-1,1)
@@ -162,7 +163,12 @@ func on_hex_options_button_pressed_base(button_action_name : String) :
 			if GameInfo.num_flies >= 200:
 				try_deselect()
 				remove_from_map()
-				HexManager.create_hex(data.grid_coords, HexManager.DAM_HEX, CREATE_TYPE.INSTANT)
+				HexManager.create_hex(data.grid_coords, HexManager.BBERTHA_HEX, CREATE_TYPE.INSTANT)
+		"bbertha":
+			if GameInfo.num_flies >= 5000:
+				try_deselect()
+				remove_from_map()
+				HexManager.create_hex(data.grid_coords, HexManager.BBERTHA_HEX, CREATE_TYPE.INSTANT)
 
 func on_added_to_map_base(_type: CREATE_TYPE, _extra_params: Array) :
 	match _type :
