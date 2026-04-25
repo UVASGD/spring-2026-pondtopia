@@ -9,6 +9,7 @@ extends Node
 const tick_duration : float = 1.0 #in seconds
 var time_since_last_tick : float = 0
 var tick_counter : int = 0
+var last_disaster_day: int
 
 func _ready() -> void:
 	SignalBus.quit_pressed.connect(quit_game)
@@ -37,8 +38,18 @@ func tick(_delta: float) :
 				var cur_disaster = GameInfo.disaster_arr[GameInfo.disaster_num]
 				DisasterManager.smite_those_frogs(cur_disaster)
 				GameInfo.disaster_num += 1
+				last_disaster_day = GameInfo.day_num
+			if GameInfo.day_num == last_disaster_day + 1 and tick_counter == 1: # new frogs move in at the start of each week
+					# if more frogs want to move in than the fro capacity allows num_frogs = frog_capacity
+					if GameInfo.num_frogs + GameInfo.frog_move_in_rate > GameInfo.frog_capacity:
+						GameInfo.num_frogs = GameInfo.frog_capacity
+					GameInfo.num_frogs += GameInfo.frog_move_in_rate
+			if GameInfo.num_houses % 3 == 0: # 3 more frogs can move in per week per 3 housing tiles
+				GameInfo.frog_move_in_rate += 3
+			if GameInfo.happiness < 50:
+				GameInfo.frog_move_in_rate = 1
 			if GameInfo.disaster_num > 3: GameInfo.disaster_num = 3
-	BarsManager.updateHappy()
+	#BarsManager.updateHappy()
 
 
 func start_game() :
@@ -55,6 +66,9 @@ func start_game() :
 	GameInfo.num_frogs = 1
 	GameInfo.frog_capacity = 10
 	GameInfo.day_num = 1
+	GameInfo.happiness = 100
+	GameInfo.energy = 100
+	BarsManager.updateHappy()
 
 
 func end_game() :

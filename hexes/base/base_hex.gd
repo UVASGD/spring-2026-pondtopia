@@ -137,8 +137,28 @@ func on_selected_base() :
 			print("hex cost: ", hex_object.data.cost)
 			print("no fliessssssssssssssssssssss")
 		else:
+			for hexgrab in HexManager.HEXGRAB:
+				if HexManager.HEXGRAB[hexgrab] == hex_scene:
+					hex_object.data.hextype = hexgrab
+					break
+			if !can_remove_hex(hex_object):
+				return
 			remove_from_map()
 			HexManager.create_hex(data.grid_coords,hex_scene,CREATE_TYPE.INSTANT)
+			BarsManager.updateHappy()
+
+func can_remove_hex(hex:BaseHex) -> bool:
+	match hex.data.hextype:
+		HexManager.HexType.ARCADEHEX:
+			if !hex.check_house_nearby():
+				return false
+		HexManager.HexType.DATACENTERHEX:
+			if hex.has_neighbors():
+				return false
+		HexManager.HexType.HOUSEHEX:
+			if hex.nearby_work_hexes():
+				return false
+	return true
 
 func on_deselected_base() :
 	sprites.modulate.b = 1

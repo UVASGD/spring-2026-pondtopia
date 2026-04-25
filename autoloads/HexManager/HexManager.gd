@@ -170,17 +170,18 @@ func create_hex(grid_coords: Vector2i, hex_scene : PackedScene, type: BaseHex.CR
 	var hex : BaseHex = hex_scene.instantiate()
 	# set parent
 	add_child(hex)
+	# register
+	_register_hex_at(hex, grid_coords)
 	# set debug id
 	hex.debug_id = next_debug_id
 	next_debug_id += 1
-	# register
-	_register_hex_at(hex, grid_coords)
 	# call on_added_to_map for unique behavior
-	hex.on_added_to_map(type, extra_params)
 	for hexgrab in HEXGRAB:
 		if HEXGRAB[hexgrab] == hex_scene:
 			hex.data.hextype = hexgrab
 			break
+	
+	hex.on_added_to_map(type, extra_params)
 
 	return hex
 
