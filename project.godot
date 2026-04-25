@@ -17,7 +17,7 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 config/name="froggy"
 run/main_scene="uid://dajeyyd76x0vu"
 config/features=PackedStringArray("4.6", "Forward Plus")
-config/icon="uid://nh1lglgwsqrs"
+config/icon="res://icon.svg"
 
 [audio]
 
@@ -34,13 +34,13 @@ ShellSceneManager="*uid://cikmhh7uipt2u"
 Ref="*uid://ciyveyuo2ihr0"
 GameInfo="*uid://q515awnoredo"
 SignalBus="*uid://jvqt7a3wcl26"
+DisasterManager="*uid://ba50dfh1h6mt6"
 Music="*uid://lso2au48o787"
-DisasterManager="*uid://pkfp37tugyrn"
-BarsManager="*uid://2m7waxyysisi"
 
 [display]
 
-window/size/mode=2
+window/size/viewport_width=1920
+window/size/viewport_height=1080
 window/stretch/mode="canvas_items"
 
 [gui]
