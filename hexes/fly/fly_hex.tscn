@@ -7,7 +7,7 @@
 
 [sub_resource type="Resource" id="Resource_cmftc"]
 script = ExtResource("2_bry2g")
-cost = 100
+cost = 25
 hextype = 3
 metadata/_custom_type_script = "uid://c3gsow6w27hem"
 

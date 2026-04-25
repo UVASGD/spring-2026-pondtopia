@@ -12,10 +12,9 @@ func on_added_to_map(_type: CREATE_TYPE, _extra_params : Array):
 ## Check for adjacent work tiles
 func nearby_work_hexes() -> bool:
 	var nearby_hexes = self.get_adjacent_hexes()
-	if nearby_hexes.size() == 0:
-		return false
 	for hex in nearby_hexes:
 		if hex.hex_category == HexManager.HexCategory.WORK:
+			print("MUSH HOUSE: Work tiles near Mushroom house. Cannot place")
 			return true
 	return false
 

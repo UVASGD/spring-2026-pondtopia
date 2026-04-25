@@ -7,7 +7,7 @@
 
 [sub_resource type="Resource" id="Resource_246br"]
 script = ExtResource("2_86251")
-cost = 100
+cost = 50
 hextype = 5
 metadata/_custom_type_script = "uid://c3gsow6w27hem"
 

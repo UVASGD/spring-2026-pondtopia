@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://d3jpumftq76jo"]
 
-[ext_resource type="Script" uid="uid://jg3y7eveambo" path="res://hexes/bbertha/bbertha_hex.gd" id="1_oyd78"]
+[ext_resource type="Script" uid="uid://vttyvnb33twr" path="res://hexes/bbertha/bbertha_hex.gd" id="1_oyd78"]
 [ext_resource type="Script" uid="uid://c3gsow6w27hem" path="res://hexes/base/hex_data.gd" id="2_0btu5"]
 [ext_resource type="Texture2D" uid="uid://8uvrpaf3fp8e" path="res://icon.svg" id="2_qqw7x"]
 [ext_resource type="PackedScene" uid="uid://otoc08ucd8fq" path="res://game_ui/hex_options/hex_options.tscn" id="3_108la"]
@@ -8,7 +8,7 @@
 
 [sub_resource type="Resource" id="Resource_bnbnu"]
 script = ExtResource("2_0btu5")
-cost = 1500
+cost = 100
 hextype = 7
 metadata/_custom_type_script = "uid://c3gsow6w27hem"
 

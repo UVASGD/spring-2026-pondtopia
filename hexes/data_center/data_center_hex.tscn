@@ -8,12 +8,13 @@
 
 [sub_resource type="Resource" id="Resource_40r1y"]
 script = ExtResource("2_hla8w")
-cost = 100
+cost = 500
 hextype = 10
 metadata/_custom_type_script = "uid://c3gsow6w27hem"
 
 [node name="DataCenterHex" type="Node2D" unique_id=1285704343]
 script = ExtResource("1_bq2h0")
+hex_element = 2
 hex_category = 1
 data = SubResource("Resource_40r1y")
 

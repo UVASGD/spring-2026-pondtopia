@@ -148,17 +148,29 @@ func on_selected_base() :
 			BarsManager.updateHappy()
 
 func can_remove_hex(hex:BaseHex) -> bool:
+	var type = hex.data.hextype
 	match hex.data.hextype:
 		HexManager.HexType.ARCADEHEX:
 			if !hex.check_house_nearby():
 				return false
 		HexManager.HexType.DATACENTERHEX:
 			if hex.has_neighbors():
+				print("DATA CENTER: Data center has neighbors. Cannot place")
 				return false
 		HexManager.HexType.HOUSEHEX:
 			if hex.nearby_work_hexes():
 				return false
+		HexManager.HexType.SOUPSHOPHEX:
+			if !hex.nearby_decor_tiles():
+				return false
 	return true
+
+## Returns true if there are any adjacent hexes that are NOT an empty hex
+func has_neighbors() -> bool:
+	for hex in self.get_adjacent_hexes():
+		if hex.hex_category != HexManager.HexCategory.BASE or hex.hex_category != HexManager.HexCategory.EMPTY:
+			return true
+	return false
 
 func on_deselected_base() :
 	sprites.modulate.b = 1

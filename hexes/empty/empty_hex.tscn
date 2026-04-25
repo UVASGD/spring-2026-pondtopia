@@ -1,13 +1,20 @@
-[gd_scene format=3 uid="uid://cjxpkmrvylng8"]
+[gd_scene format=3 uid="uid://b8kamoa05rx5m"]
 
-[ext_resource type="Script" uid="uid://d10piyhocj0rb" path="res://hexes/fruit/fruit_hex.gd" id="1_6c8ni"]
-[ext_resource type="Texture2D" uid="uid://ccm3c45v5ub63" path="res://z_assets/sprites/Frutis.png" id="1_o3l72"]
-[ext_resource type="Texture2D" uid="uid://b1fy6lrw0qevl" path="res://z_assets/sprites/hexes/hex_tilemap.png" id="3_l5do4"]
-[ext_resource type="PackedScene" uid="uid://otoc08ucd8fq" path="res://game_ui/hex_options/hex_options.tscn" id="4_gn56h"]
+[ext_resource type="Script" uid="uid://ekgcvf1oht2g" path="res://hexes/empty/empty_hex.gd" id="1_se0gs"]
+[ext_resource type="Script" uid="uid://c3gsow6w27hem" path="res://hexes/base/hex_data.gd" id="2_axln5"]
+[ext_resource type="Texture2D" uid="uid://b1fy6lrw0qevl" path="res://z_assets/sprites/hexes/hex_tilemap.png" id="2_jy136"]
+[ext_resource type="PackedScene" uid="uid://otoc08ucd8fq" path="res://game_ui/hex_options/hex_options.tscn" id="4_hxqq1"]
+
+[sub_resource type="Resource" id="Resource_i03qw"]
+script = ExtResource("2_axln5")
+hextype = 15
+metadata/_custom_type_script = "uid://c3gsow6w27hem"
 
 [node name="FruitHex" type="Node2D" unique_id=229729213]
-script = ExtResource("1_6c8ni")
-hex_category = 4
+script = ExtResource("1_se0gs")
+hex_element = 4
+hex_category = 5
+data = SubResource("Resource_i03qw")
 
 [node name="HexBoundsMarkers" type="Node2D" parent="." unique_id=522562309]
 scale = Vector2(38, 38)
@@ -81,16 +88,9 @@ gizmo_extents = 0.0
 [node name="HexSprite" type="Sprite2D" parent="Sprites" unique_id=1398648652]
 rotation = 0.5235988
 scale = Vector2(1, 1.15)
-texture = ExtResource("3_l5do4")
+texture = ExtResource("2_jy136")
 hframes = 10
 vframes = 10
 frame = 2
 
-[node name="FruitSprite" type="Sprite2D" parent="Sprites" unique_id=851043240]
-visible = false
-scale = Vector2(0.3, 0.3)
-texture = ExtResource("1_o3l72")
-hframes = 2
-vframes = 2
-
-[node name="HexOptions" parent="." unique_id=2025673578 instance=ExtResource("4_gn56h")]
+[node name="HexOptions" parent="." unique_id=2025673578 instance=ExtResource("4_hxqq1")]

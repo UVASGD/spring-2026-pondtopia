@@ -17,7 +17,8 @@ enum HexElement {
   	EARTH,
   	WOOD,
   	WATER,
-	ULTIMATE
+	ULTIMATE,
+	EMPTY
 }
 
 enum HexCategory {
@@ -25,7 +26,8 @@ enum HexCategory {
 	WORK,
 	DECORATION,
 	EMERGENCY,
-	BASE
+	BASE,
+	EMPTY
 }
 
 ## Preloaded hex packed scenes for instantiating hexes
@@ -46,7 +48,8 @@ enum HexType {
 	SOUPSHOPHEX,
 	STUMPHOUSEHEX,
 	ARCADEHEX,
-	SHRINEHEX
+	SHRINEHEX,
+	EMPTYHEX
 }
 
 var BASE_HEX : PackedScene = load("res://hexes/base/base_hex.tscn")
@@ -65,6 +68,7 @@ var SOUPSHOP_HEX : PackedScene = load("res://hexes/soup/soup_hex.tscn")
 var STUMPHOUSE_HEX : PackedScene = load("res://hexes/stump_house/stump_house_hex.tscn")
 var ARCADE_HEX : PackedScene = load("res://hexes/arcade/arcade_hex.tscn")
 var SHRINE_HEX : PackedScene = load("res://hexes/shrine/shrine_hex.tscn")
+var EMPTY_HEX : PackedScene = load("res://hexes/empty/empty_hex.tscn")
 
 var HEXGRAB : Dictionary[HexType,PackedScene] = {
 	HexType.BASEHEX : load("res://hexes/base/base_hex.tscn"),
@@ -81,7 +85,8 @@ var HEXGRAB : Dictionary[HexType,PackedScene] = {
 	HexType.SOUPSHOPHEX : load("res://hexes/soup/soup_hex.tscn"),
 	HexType.ARCADEHEX : load("res://hexes/arcade/arcade_hex.tscn"),
 	HexType.SHRINEHEX : load("res://hexes/shrine/shrine_hex.tscn"),
-	HexType.STUMPHOUSEHEX : load("res://hexes/stump_house/stump_house_hex.tscn")
+	HexType.STUMPHOUSEHEX : load("res://hexes/stump_house/stump_house_hex.tscn"),
+	HexType.EMPTYHEX : load("res://hexes/empty/empty_hex.tscn")
 }
 
 ## When set to false, all methods in region Modify will be returned immediately

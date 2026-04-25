@@ -3,7 +3,7 @@ class_name BBerthaHex
 
 #TODO: change this number if we decide upon a tile requirement
 const DEFENSE_REQUIREMENT : int = 0
-const DEFENSE_RANGE : int = 3
+const DEFENSE_RANGE : int = 2
 var defense : bool = false
 
 
