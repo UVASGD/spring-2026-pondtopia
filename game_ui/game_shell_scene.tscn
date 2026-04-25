@@ -268,6 +268,11 @@ layout_mode = 2
 toggle_mode = true
 text = "Shrine"
 
+[node name="LeafButton" type="Button" parent="UI/BuildingPopup/BuildScrollContainer/BuildButtonContainer" unique_id=776256695]
+layout_mode = 2
+toggle_mode = true
+text = "Leaf"
+
 [node name="BuildButton" type="TextureButton" parent="UI/BuildingPopup" unique_id=1876302381]
 layout_mode = 1
 anchors_preset = 3
@@ -302,7 +307,6 @@ layout_mode = 1
 [connection signal="toggled" from="UI/BuildingPopup/BuildScrollContainer/BuildButtonContainer/FlowerButton" to="UI/BuildingPopup/BuildScrollContainer/BuildButtonContainer" method="_on_button_toggled" binds= ["flower"]]
 [connection signal="toggled" from="UI/BuildingPopup/BuildScrollContainer/BuildButtonContainer/MushHouseButton" to="UI/BuildingPopup/BuildScrollContainer/BuildButtonContainer" method="_on_button_toggled" binds= ["house"]]
 [connection signal="toggled" from="UI/BuildingPopup/BuildScrollContainer/BuildButtonContainer/DamButton" to="UI/BuildingPopup/BuildScrollContainer/BuildButtonContainer" method="_on_button_toggled" binds= ["dam"]]
-[connection signal="toggled" from="UI/BuildingPopup/BuildScrollContainer/BuildButtonContainer/LeafButton" to="UI/BuildingPopup/BuildScrollContainer/BuildButtonContainer" method="_on_button_toggled" binds= ["leaf"]]
 [connection signal="toggled" from="UI/BuildingPopup/BuildScrollContainer/BuildButtonContainer/BBerthaButton" to="UI/BuildingPopup/BuildScrollContainer/BuildButtonContainer" method="_on_button_toggled" binds= ["bbertha"]]
 [connection signal="toggled" from="UI/BuildingPopup/BuildScrollContainer/BuildButtonContainer/SprinklerButton" to="UI/BuildingPopup/BuildScrollContainer/BuildButtonContainer" method="_on_button_toggled" binds= ["sprinkler"]]
 [connection signal="toggled" from="UI/BuildingPopup/BuildScrollContainer/BuildButtonContainer/DataCenterButton" to="UI/BuildingPopup/BuildScrollContainer/BuildButtonContainer" method="_on_button_toggled" binds= ["datacenter"]]
@@ -310,4 +314,5 @@ layout_mode = 1
 [connection signal="toggled" from="UI/BuildingPopup/BuildScrollContainer/BuildButtonContainer/StumpHouseButton" to="UI/BuildingPopup/BuildScrollContainer/BuildButtonContainer" method="_on_button_toggled" binds= ["stump"]]
 [connection signal="toggled" from="UI/BuildingPopup/BuildScrollContainer/BuildButtonContainer/SoupShopButton" to="UI/BuildingPopup/BuildScrollContainer/BuildButtonContainer" method="_on_button_toggled" binds= ["soup"]]
 [connection signal="toggled" from="UI/BuildingPopup/BuildScrollContainer/BuildButtonContainer/ShrineButton" to="UI/BuildingPopup/BuildScrollContainer/BuildButtonContainer" method="_on_button_toggled" binds= ["shrine"]]
+[connection signal="toggled" from="UI/BuildingPopup/BuildScrollContainer/BuildButtonContainer/LeafButton" to="UI/BuildingPopup/BuildScrollContainer/BuildButtonContainer" method="_on_button_toggled" binds= ["leaf"]]
 [connection signal="pressed" from="UI/BuildingPopup/BuildButton" to="UI/BuildingPopup" method="_on_build_button_pressed"]

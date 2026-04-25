@@ -1,6 +1,7 @@
 extends Node
 
 const FLOOD_CHANCE = 0.5
+const FIRE_CHANCE = 0.5
 
 func smite_those_frogs(cur_disaster: String):
 	match cur_disaster:
@@ -21,6 +22,7 @@ func smite_those_frogs(cur_disaster: String):
 					hex.remove_from_map()
 			
 		"fire":
+			var defended = []
 			for hex in HexManager.hex_list:
 				if hex.data.hextype == HexManager.HexType.SPRINKLERHEX:
 					for defended_hex in hex.send_defend_tiles():
@@ -36,6 +38,7 @@ func smite_those_frogs(cur_disaster: String):
 						hex.remove_from_map()
 					
 		"earthquake":
+			var defended = []
 			for hex in HexManager.hex_list:
 				if hex.data.hextype == HexManager.HexType.LEAFHEX:
 					for defended_hex in hex.send_defend_tiles():
@@ -67,6 +70,7 @@ func smite_those_frogs(cur_disaster: String):
 					
 			
 		"meteor":
+			var defended = []
 			for hex in HexManager.hex_list:
 				if hex.data.hextype == HexManager.HexType.DAMHEX:
 					for defended_hex in hex.send_defend_tiles():

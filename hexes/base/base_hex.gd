@@ -19,6 +19,8 @@ class_name BaseHex
 ## 5. You're done! To create special behaviors for your hex, override the functions in base hex (eg tick()). Remember to call the base behavior functions (eg tick_base()) if you want the overriden functions to also do the base functionality. 
 
 @export var hex_element:HexManager.HexElement
+@export var hex_category:HexManager.HexCategory
+@export var data : HexData = HexData.new()
 
 ## Directions (using Vector2 instead of enum so you can add with them, also declared in HexManager for easy access)
 const NW := Vector2i(-1,1)
@@ -51,8 +53,6 @@ var _is_highlighted : bool = false
 @onready var hex_options : HexOptions = $HexOptions
 ## This node holds the sprites that make up the hex.
 @onready var sprites : Node2D = $Sprites
-## This resource holds all of the hex data.
-@onready var data : HexData = HexData.new()
 
 ## Intended for overriding!
 ## Calling ready in extended versions of BaseHex will override this function. Make sure to call ready_base().
@@ -120,7 +120,7 @@ func on_selected_base() :
 	hex_options.show()
 	
 	# trying out building buttons stuff
-	if GameInfo.cur_selected_tile != "":
+	if GameInfo.cur_selected_tile != HexManager.HexType.BASEHEX:
 		try_deselect()
 		var hex_scene : PackedScene = HexManager.HEXGRAB[GameInfo.cur_selected_tile]
 		var hex_object : BaseHex = hex_scene.instantiate()

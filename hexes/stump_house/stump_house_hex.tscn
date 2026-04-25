@@ -1,12 +1,12 @@
 [gd_scene format=3 uid="uid://jktwy88bv0cq"]
 
 [ext_resource type="Script" uid="uid://bp8a1h582gtk4" path="res://hexes/stump_house/stump_house_hex.gd" id="1_jn56p"]
-[ext_resource type="Script" uid="uid://c3gsow6w27hem" path="res://hexes/base/hex_data.gd" id="2_ap06y"]
+[ext_resource type="Script" uid="uid://c3gsow6w27hem" path="res://hexes/base/hex_data.gd" id="2_jn56p"]
 [ext_resource type="Texture2D" uid="uid://c3cqnw5p7vn40" path="res://z_assets/sprites/hexes/toad_stump_hex_sprite.png" id="3_jn56p"]
 [ext_resource type="PackedScene" uid="uid://otoc08ucd8fq" path="res://game_ui/hex_options/hex_options.tscn" id="4_1rymq"]
 
-[sub_resource type="Resource" id="Resource_246br"]
-script = ExtResource("2_ap06y")
+[sub_resource type="Resource" id="Resource_681kc"]
+script = ExtResource("2_jn56p")
 cost = 100
 hextype = 12
 metadata/_custom_type_script = "uid://c3gsow6w27hem"
@@ -14,7 +14,7 @@ metadata/_custom_type_script = "uid://c3gsow6w27hem"
 [node name="house_hex" type="Node2D" unique_id=757595770]
 script = ExtResource("1_jn56p")
 hex_element = 1
-data = SubResource("Resource_246br")
+data = SubResource("Resource_681kc")
 metadata/_custom_type_script = "uid://c503q2ov4usp0"
 
 [node name="Sprites" type="Node2D" parent="." unique_id=565859216]

@@ -20,6 +20,14 @@ enum HexElement {
 	ULTIMATE
 }
 
+enum HexCategory {
+	HOUSING,
+	WORK,
+	DECORATION,
+	EMERGENCY,
+	BASE
+}
+
 ## Preloaded hex packed scenes for instantiating hexes
 ## These should be preloaded constants but preloading them causes a cyclic error.
 

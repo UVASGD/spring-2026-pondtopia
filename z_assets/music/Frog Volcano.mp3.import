@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://c1qe8j3umu0ry"
+path="res://.godot/imported/Frog Volcano.mp3-8be2c2a61c778cf371a669475e8b3964.mp3str"
+
+[deps]
+
+source_file="res://z_assets/music/Frog Volcano.mp3"
+dest_files=["res://.godot/imported/Frog Volcano.mp3-8be2c2a61c778cf371a669475e8b3964.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,18 +1,27 @@
 [gd_scene format=3 uid="uid://dw6oojklkkuox"]
 
-[ext_resource type="Texture2D" uid="uid://b7y0ib27lu5gb" path="res://z_assets/sprites/hexes/empty_hex_sprite.png" id="1_0xwml"]
-[ext_resource type="Script" uid="uid://m6nlomfift5i" path="res://hexes/data_center/data_center_hex.gd" id="1_bq2h0"]
+[ext_resource type="Script" uid="uid://btgkccdeso6p7" path="res://hexes/data_center/data_center_hex.gd" id="1_bq2h0"]
+[ext_resource type="Script" uid="uid://c3gsow6w27hem" path="res://hexes/base/hex_data.gd" id="2_hla8w"]
 [ext_resource type="Texture2D" uid="uid://8uvrpaf3fp8e" path="res://icon.svg" id="2_m6elm"]
+[ext_resource type="Texture2D" uid="uid://cnmf6ygokvn76" path="res://z_assets/sprites/hexes/data_center_hex_sprite.png" id="3_hla8w"]
 [ext_resource type="PackedScene" uid="uid://otoc08ucd8fq" path="res://game_ui/hex_options/hex_options.tscn" id="3_m6elm"]
+
+[sub_resource type="Resource" id="Resource_40r1y"]
+script = ExtResource("2_hla8w")
+cost = 100
+hextype = 10
+metadata/_custom_type_script = "uid://c3gsow6w27hem"
 
 [node name="DataCenterHex" type="Node2D" unique_id=1285704343]
 script = ExtResource("1_bq2h0")
+hex_category = 1
+data = SubResource("Resource_40r1y")
 
 [node name="Sprites" type="Node2D" parent="." unique_id=1440780456]
 
 [node name="Sprite2D" type="Sprite2D" parent="Sprites" unique_id=464651349]
-scale = Vector2(0.15, 0.165)
-texture = ExtResource("1_0xwml")
+scale = Vector2(0.07, 0.075)
+texture = ExtResource("3_hla8w")
 
 [node name="Sprite2D2" type="Sprite2D" parent="Sprites" unique_id=578614031]
 position = Vector2(-9.536743e-07, -17)
