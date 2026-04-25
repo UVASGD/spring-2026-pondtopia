@@ -21,7 +21,7 @@ func smite_those_frogs(cur_disaster: String):
 				if temp < FLOOD_CHANCE:
 					var hex_coords = hex.data.grid_coords
 					hex.remove_from_map()
-					HexManager.create_hex(hex_coords, HexManager.FRUIT_HEX)
+					HexManager.create_hex(hex_coords, HexManager.FRUIT_HEX, BaseHex.CREATE_TYPE.FADE_IN, [randi_range(0,3)])
 			
 		"fire":
 			var defended = []
@@ -39,7 +39,7 @@ func smite_those_frogs(cur_disaster: String):
 					if hex.hex_element == HexManager.HexElement.WOOD:
 						var hex_coords = hex.data.grid_coords
 						hex.remove_from_map()
-						HexManager.create_hex(hex_coords, HexManager.FRUIT_HEX)
+						HexManager.create_hex(hex_coords, HexManager.FRUIT_HEX, BaseHex.CREATE_TYPE.FADE_IN, [randi_range(0,3)])
 					
 		"earthquake":
 			var defended = []
@@ -87,5 +87,5 @@ func smite_those_frogs(cur_disaster: String):
 			for hex in at_risk:
 				var hex_coords = hex.data.grid_coords
 				hex.remove_from_map()
-				HexManager.create_hex(hex_coords, HexManager.FRUIT_HEX)
+				HexManager.create_hex(hex_coords, HexManager.FRUIT_HEX, BaseHex.CREATE_TYPE.FADE_IN, [randi_range(0,3)])
 			 
