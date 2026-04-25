@@ -3,20 +3,13 @@ extends Node
 const PATH = ["user://SaveData", ".tres"]
 const SaveData = preload("res://autoloads/SaveData.gd")
 
-enum HEX_TYPE {
-	BASE,
-	FRUIT,
-	MIGRATED,
-	FLY,
-	DAM
-}
-
-var HEX_DICT : Dictionary[HEX_TYPE, PackedScene] = {
-	HEX_TYPE.BASE : HexManager.BASE_HEX,
-	HEX_TYPE.FRUIT: HexManager.FRUIT_HEX,
-	HEX_TYPE.MIGRATED: HexManager.MIGRATED_HEX,
-	HEX_TYPE.FLY: HexManager.FLY_HEX,
-	HEX_TYPE.DAM: HexManager.DAM_HEX
+var HEX_DICT : Dictionary[String, PackedScene] = {
+	"BaseHex" : HexManager.BASE_HEX,
+	"FruitHex" : HexManager.FRUIT_HEX,
+	"MigratedHex" : HexManager.MIGRATED_HEX,
+	"FlyHex" : HexManager.FLY_HEX,
+	"DamHex" : HexManager.DAM_HEX,
+	"HousingTile" : HexManager.HOUSE_HEX
 }
 
 var current_save : int
@@ -32,27 +25,26 @@ func load_game(save_num : int):
 	return load_file(path)
 
 func load_city_names():
-	var names : Array[String] = []
+	var names : Array = []
 	for i in range(3):
-		var path = PATH[0] + str(i+1) + PATH[1]
+		var path = PATH[0] + str(i) + PATH[1]
 		var loaded_save = ResourceLoader.load(path,"",ResourceLoader.CACHE_MODE_REUSE)
 		if loaded_save == null:
 			names.append("Save %d" % (i+1))
 		else:
-			names.append(loaded_save.city_name)
+			var arr : Array = [loaded_save.city_name, loaded_save.day, loaded_save.num_flies]
+			names.append(arr)
 	return names
 
 #saving a specific file for a given path
 func save_file(save_path : String):
-	print("Saving to path: " + save_path)
-	
 	var data = SaveData.new()
 	
 	data.num_flies = GameInfo.num_flies
+	data.day = GameInfo.day_num
 	var hexes : Array = []
 	for hex in HexManager.hex_list:
 		hexes.append(hex.data)
-		print(hex.data, hex.data.grid_coords, HEX_TYPE.find_key(hex.data.hex_type))
 	data.hex_list = hexes
 	data.city_name = city_name
 	
@@ -63,21 +55,15 @@ func load_file(save_path : String):
 	var loaded_save = ResourceLoader.load(save_path,"",ResourceLoader.CACHE_MODE_REUSE)
 	if loaded_save == null : return false
 	city_name = loaded_save.city_name
+	GameInfo.day_num = loaded_save.day
 	GameInfo.num_flies = loaded_save.num_flies
 	#hex map loading
 	HexManager._allow_modify_actions = true
 	for i in loaded_save.hex_list:
-		print(i.grid_coords, HEX_TYPE.find_key(i.hex_type))
-		HexManager.create_hex(i.grid_coords,HEX_DICT[i.hex_type],BaseHex.CREATE_TYPE.INSTANT)#,i.extra_params)
+		HexManager.create_hex(i.grid_coords,HEX_DICT[i.hex_type],BaseHex.CREATE_TYPE.INSTANT,i._extra_params)
 	GameInfo.num_flies = loaded_save.num_flies
 	return true
 
-# Debug func REMOVE
-func _unhandled_key_input(event: InputEvent) -> void:
-	if event.pressed and event.keycode == KEY_SPACE:
-		save_game()
-		print("Game Saved! (I think...)")
-	if event.pressed and event.keycode == KEY_SHIFT:
-		for i in range(3):
-			var path = PATH[0] + str(i+1) + PATH[1]
-			DirAccess.remove_absolute(path)
+func delete_save(num : int):
+	var path = PATH[0] + str(num) + PATH[1]
+	DirAccess.remove_absolute(path)

@@ -25,9 +25,10 @@ func tick(_delta: float) :
 		HexManager.tick()
 		
 		# day tracking
-		if tick_counter == GameInfo.day_length:
+		if tick_counter == GameInfo.day_length and GameInfo.game_running:
 			GameInfo.day_num += 1
 			tick_counter = 0
+			SaveManager.save_game()
 		tick_counter += 1
 		
 func start_game(args: Array) :

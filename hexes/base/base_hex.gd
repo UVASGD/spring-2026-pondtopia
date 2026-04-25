@@ -176,6 +176,9 @@ func on_added_to_map_base(_type: CREATE_TYPE, _extra_params: Array) :
 			tween.tween_property(self, "modulate:a", 1, 0.8)
 		_ : #default, do same as instant
 			position = real_pos()
+	
+	data.hex_type = get_script().get_global_name()
+	data._extra_params = _extra_params
 
 func on_moved_base(_type: MOVE_TYPE, _extra_params: Array) :
 	match _type :

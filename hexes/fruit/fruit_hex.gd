@@ -6,11 +6,14 @@ enum TYPE {
 }
 
 var type : TYPE
+var params : Array
 
 func on_added_to_map(_type: CREATE_TYPE, _extra_params : Array):
+	params = _extra_params
 	if _extra_params.size() == 0 :
 		set_type(TYPE.ORANGE)
 	else :
+		print(_extra_params, set_type(_extra_params[0] as TYPE))
 		match _extra_params :
 			"orange" :
 				set_type(TYPE.ORANGE)

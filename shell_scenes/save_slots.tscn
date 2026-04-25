@@ -3,6 +3,15 @@
 [ext_resource type="Script" uid="uid://cpvl1fw8f083l" path="res://shell_scenes/save_slots.gd" id="1_4cstd"]
 [ext_resource type="Script" uid="uid://bj5ye56nvni8h" path="res://shell_scenes/shell_scene_button.gd" id="1_oxt1w"]
 [ext_resource type="Texture2D" uid="uid://p614qa2bt4ch" path="res://z_assets/sprites/main_menu/main_menu_frog.png" id="2_4cstd"]
+[ext_resource type="Theme" uid="uid://c2ad1naasnhr3" path="res://z_assets/other/button_theme.tres" id="2_36yid"]
+[ext_resource type="FontFile" uid="uid://b68gogaqrgpht" path="res://z_assets/other/NukaMono.ttf" id="5_37k4t"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_37k4t"]
+bg_color = Color(0.16470589, 0.31764707, 0.26666668, 1)
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
 
 [node name="SaveSlots" type="Control" unique_id=1283535406]
 layout_mode = 3
@@ -35,58 +44,193 @@ size_flags_vertical = 6
 theme_override_constants/separation = 100
 
 [node name="ButtonsContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer" unique_id=380992561]
+custom_minimum_size = Vector2(400, 0)
 layout_mode = 2
-theme_override_constants/separation = 25
+theme_override_constants/separation = 32
 
 [node name="Save1" type="Button" parent="VBoxContainer/HBoxContainer/ButtonsContainer" unique_id=2099464037]
+custom_minimum_size = Vector2(0, 76)
 layout_mode = 2
-theme_override_font_sizes/font_size = 40
+theme = ExtResource("2_36yid")
+toggle_mode = true
 text = "Save 1"
-script = ExtResource("1_oxt1w")
-emit_signal_ = true
-switch_scene = true
-signal_to_emit = "start_game_pressed"
-signal_arguments = [1]
-emit_order = 1
-switch_to = "game"
 
 [node name="Save2" type="Button" parent="VBoxContainer/HBoxContainer/ButtonsContainer" unique_id=1278931718]
+custom_minimum_size = Vector2(0, 76)
 layout_mode = 2
-theme_override_font_sizes/font_size = 40
+theme = ExtResource("2_36yid")
+toggle_mode = true
 text = "Save 2"
-script = ExtResource("1_oxt1w")
-emit_signal_ = true
-switch_scene = true
-signal_to_emit = "start_game_pressed"
-signal_arguments = [2]
-emit_order = 1
-switch_to = "game"
 
 [node name="Save3" type="Button" parent="VBoxContainer/HBoxContainer/ButtonsContainer" unique_id=902455310]
+custom_minimum_size = Vector2(0, 76)
 layout_mode = 2
-theme_override_font_sizes/font_size = 40
+theme = ExtResource("2_36yid")
+toggle_mode = true
 text = "Save 3"
-script = ExtResource("1_oxt1w")
-emit_signal_ = true
-switch_scene = true
-signal_to_emit = "start_game_pressed"
-signal_arguments = [3]
-emit_order = 1
-switch_to = "game"
 
 [node name="Back" type="Button" parent="VBoxContainer/HBoxContainer/ButtonsContainer" unique_id=1045350316]
+custom_minimum_size = Vector2(0, 76)
 layout_mode = 2
-theme_override_font_sizes/font_size = 40
-text = "          Back          "
+theme = ExtResource("2_36yid")
+text = "Back"
 script = ExtResource("1_oxt1w")
 switch_scene = true
 allow_quick_key = true
 switch_to = "main_menu"
 
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer/HBoxContainer" unique_id=1603106351]
+[node name="RightBox" type="Control" parent="VBoxContainer/HBoxContainer" unique_id=166688639]
+custom_minimum_size = Vector2(400, 400)
 layout_mode = 2
+
+[node name="ColorRect" type="Panel" parent="VBoxContainer/HBoxContainer/RightBox" unique_id=1317972333]
+layout_mode = 0
+offset_right = 400.0
+offset_bottom = 400.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_37k4t")
+
+[node name="Continue" type="Control" parent="VBoxContainer/HBoxContainer/RightBox" unique_id=1057176122]
+visible = false
+texture_filter = 1
+custom_minimum_size = Vector2(400, 400)
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Title" type="RichTextLabel" parent="VBoxContainer/HBoxContainer/RightBox/Continue" unique_id=1771450746]
+texture_filter = 1
+layout_mode = 0
+offset_top = 15.0
+offset_right = 400.0
+offset_bottom = 115.0
+theme_override_colors/default_color = Color(0.54509807, 0.7254902, 0.4509804, 1)
+theme_override_fonts/normal_font = ExtResource("5_37k4t")
+theme_override_font_sizes/normal_font_size = 50
+text = "City Name"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GridContainer" type="GridContainer" parent="VBoxContainer/HBoxContainer/RightBox/Continue" unique_id=300240541]
+layout_mode = 0
+offset_top = 140.0
+offset_right = 400.0
+offset_bottom = 290.0
+theme_override_constants/h_separation = 0
+theme_override_constants/v_separation = 0
+columns = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/HBoxContainer/RightBox/Continue/GridContainer" unique_id=293984259]
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 2
+theme_override_colors/default_color = Color(0.54509807, 0.7254902, 0.4509804, 1)
+theme_override_fonts/normal_font = ExtResource("5_37k4t")
+theme_override_font_sizes/normal_font_size = 30
+text = "Day:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="VBoxContainer/HBoxContainer/RightBox/Continue/GridContainer" unique_id=577948977]
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 2
+theme_override_colors/default_color = Color(0.54509807, 0.7254902, 0.4509804, 1)
+theme_override_fonts/normal_font = ExtResource("5_37k4t")
+theme_override_font_sizes/normal_font_size = 30
+text = "Flies:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DayNum" type="RichTextLabel" parent="VBoxContainer/HBoxContainer/RightBox/Continue/GridContainer" unique_id=950157592]
+custom_minimum_size = Vector2(200, 100)
+layout_mode = 2
+theme_override_colors/default_color = Color(0.54509807, 0.7254902, 0.4509804, 1)
+theme_override_fonts/normal_font = ExtResource("5_37k4t")
+theme_override_font_sizes/normal_font_size = 40
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="FlyNum" type="RichTextLabel" parent="VBoxContainer/HBoxContainer/RightBox/Continue/GridContainer" unique_id=473079990]
+custom_minimum_size = Vector2(200, 100)
+layout_mode = 2
+theme_override_colors/default_color = Color(0.54509807, 0.7254902, 0.4509804, 1)
+theme_override_fonts/normal_font = ExtResource("5_37k4t")
+theme_override_font_sizes/normal_font_size = 40
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/RightBox/Continue" unique_id=190229467]
+layout_mode = 0
+offset_top = 275.0
+offset_right = 400.0
+offset_bottom = 400.0
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="Button" type="Button" parent="VBoxContainer/HBoxContainer/RightBox/Continue/Control" unique_id=205857501]
+custom_minimum_size = Vector2(185, 65)
+layout_mode = 2
+size_flags_vertical = 4
+theme = ExtResource("2_36yid")
+theme_override_font_sizes/font_size = 30
+text = "Play"
+
+[node name="Button2" type="Button" parent="VBoxContainer/HBoxContainer/RightBox/Continue/Control" unique_id=982914765]
+custom_minimum_size = Vector2(185, 65)
+layout_mode = 2
+size_flags_vertical = 4
+theme = ExtResource("2_36yid")
+theme_override_font_sizes/font_size = 30
+text = "Delete"
+
+[node name="NewSave" type="Control" parent="VBoxContainer/HBoxContainer/RightBox" unique_id=190261644]
+visible = false
+texture_filter = 1
+custom_minimum_size = Vector2(400, 400)
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Title" type="RichTextLabel" parent="VBoxContainer/HBoxContainer/RightBox/NewSave" unique_id=485173138]
+texture_filter = 1
+layout_mode = 0
+offset_top = 15.0
+offset_right = 400.0
+offset_bottom = 115.0
+theme_override_colors/default_color = Color(0.54509807, 0.7254902, 0.4509804, 1)
+theme_override_fonts/normal_font = ExtResource("5_37k4t")
+theme_override_font_sizes/normal_font_size = 50
+text = "New Save"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="VBoxContainer/HBoxContainer/RightBox/NewSave" unique_id=864594339]
+custom_minimum_size = Vector2(185, 65)
+layout_mode = 0
+offset_left = 107.0
+offset_top = 305.0
+offset_right = 292.0
+offset_bottom = 370.0
+size_flags_vertical = 4
+theme = ExtResource("2_36yid")
+theme_override_font_sizes/font_size = 30
+text = "Start"
+
+[node name="FrogImg" type="TextureRect" parent="VBoxContainer/HBoxContainer/RightBox" unique_id=1603106351]
+layout_mode = 0
+offset_right = 400.0
+offset_bottom = 400.0
 size_flags_horizontal = 10
 texture = ExtResource("2_4cstd")
+expand_mode = 4
+stretch_mode = 3
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1719388801]
 position = Vector2(2, 4)
+
+[connection signal="toggled" from="VBoxContainer/HBoxContainer/ButtonsContainer/Save1" to="." method="button_toggled" binds= [0]]
+[connection signal="toggled" from="VBoxContainer/HBoxContainer/ButtonsContainer/Save2" to="." method="button_toggled" binds= [1]]
+[connection signal="toggled" from="VBoxContainer/HBoxContainer/ButtonsContainer/Save3" to="." method="button_toggled" binds= [2]]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/RightBox/Continue/Control/Button" to="." method="on_play_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/RightBox/Continue/Control/Button2" to="." method="delete_save"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/RightBox/NewSave/Button" to="." method="on_play_pressed"]

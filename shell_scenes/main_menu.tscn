@@ -1,29 +1,8 @@
 [gd_scene format=3 uid="uid://dd71ltua8vpqj"]
 
+[ext_resource type="Theme" uid="uid://c2ad1naasnhr3" path="res://z_assets/other/button_theme.tres" id="1_4ange"]
 [ext_resource type="Texture2D" uid="uid://p614qa2bt4ch" path="res://z_assets/sprites/main_menu/main_menu_frog.png" id="1_gqxyi"]
 [ext_resource type="Script" uid="uid://bj5ye56nvni8h" path="res://shell_scenes/shell_scene_button.gd" id="1_u5tdt"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hh8ys"]
-content_margin_left = 20.0
-content_margin_top = 10.0
-content_margin_right = 20.0
-content_margin_bottom = 10.0
-bg_color = Color(0.7294118, 0.8235294, 0.64705884, 1)
-corner_radius_top_left = 32
-corner_radius_top_right = 32
-corner_radius_bottom_right = 32
-corner_radius_bottom_left = 32
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4ange"]
-content_margin_left = 20.0
-content_margin_top = 10.0
-content_margin_right = 20.0
-content_margin_bottom = 10.0
-bg_color = Color(0.45882353, 0.45882353, 0.4117647, 1)
-corner_radius_top_left = 32
-corner_radius_top_right = 32
-corner_radius_bottom_right = 32
-corner_radius_bottom_left = 32
 
 [node name="MainMenu" type="Control" unique_id=1283535406]
 layout_mode = 3
@@ -55,33 +34,15 @@ size_flags_vertical = 6
 theme_override_constants/separation = 100
 
 [node name="ButtonsContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer" unique_id=380992561]
+custom_minimum_size = Vector2(400, 0)
 layout_mode = 2
-theme_override_constants/separation = 25
-
-[node name="New Game" type="Button" parent="VBoxContainer/HBoxContainer/ButtonsContainer" unique_id=2099464037]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.12941177, 0.31764707, 0.27058825, 1)
-theme_override_font_sizes/font_size = 40
-theme_override_styles/normal = SubResource("StyleBoxFlat_hh8ys")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_4ange")
-theme_override_styles/hover = SubResource("StyleBoxFlat_4ange")
-text = "New City"
-script = ExtResource("1_u5tdt")
-emit_signal_ = true
-switch_scene = true
-allow_quick_key = true
-signal_to_emit = "start_game_pressed"
-emit_order = 1
-switch_to = "game"
+theme_override_constants/separation = 32
 
 [node name="Continue" type="Button" parent="VBoxContainer/HBoxContainer/ButtonsContainer" unique_id=1278931718]
+custom_minimum_size = Vector2(0, 76)
 layout_mode = 2
-theme_override_colors/font_color = Color(0.12941177, 0.31764707, 0.27058825, 1)
-theme_override_font_sizes/font_size = 40
-theme_override_styles/normal = SubResource("StyleBoxFlat_hh8ys")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_4ange")
-theme_override_styles/hover = SubResource("StyleBoxFlat_4ange")
-text = "  Continue  "
+theme = ExtResource("1_4ange")
+text = "Start"
 script = ExtResource("1_u5tdt")
 emit_signal_ = true
 switch_scene = true
@@ -89,45 +50,38 @@ emit_order = 1
 switch_to = "save"
 
 [node name="Options" type="Button" parent="VBoxContainer/HBoxContainer/ButtonsContainer" unique_id=902455310]
+custom_minimum_size = Vector2(0, 76)
 layout_mode = 2
-theme_override_colors/font_color = Color(0.12941177, 0.31764707, 0.27058825, 1)
-theme_override_font_sizes/font_size = 40
-theme_override_styles/normal = SubResource("StyleBoxFlat_hh8ys")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_4ange")
-theme_override_styles/hover = SubResource("StyleBoxFlat_4ange")
+theme = ExtResource("1_4ange")
 text = "Options"
 script = ExtResource("1_u5tdt")
 switch_scene = true
 switch_to = "options"
 
 [node name="Credits" type="Button" parent="VBoxContainer/HBoxContainer/ButtonsContainer" unique_id=2009996100]
+custom_minimum_size = Vector2(0, 76)
 layout_mode = 2
-theme_override_colors/font_color = Color(0.12941177, 0.31764707, 0.27058825, 1)
-theme_override_font_sizes/font_size = 40
-theme_override_styles/normal = SubResource("StyleBoxFlat_hh8ys")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_4ange")
-theme_override_styles/hover = SubResource("StyleBoxFlat_4ange")
+theme = ExtResource("1_4ange")
 text = "Credits"
 script = ExtResource("1_u5tdt")
 switch_scene = true
 switch_to = "credits"
 
 [node name="Quit" type="Button" parent="VBoxContainer/HBoxContainer/ButtonsContainer" unique_id=1045350316]
+custom_minimum_size = Vector2(0, 76)
 layout_mode = 2
-theme_override_colors/font_color = Color(0.12941177, 0.31764707, 0.27058825, 1)
-theme_override_font_sizes/font_size = 40
-theme_override_styles/normal = SubResource("StyleBoxFlat_hh8ys")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_4ange")
-theme_override_styles/hover = SubResource("StyleBoxFlat_4ange")
+theme = ExtResource("1_4ange")
 text = "Quit"
 script = ExtResource("1_u5tdt")
 emit_signal_ = true
 signal_to_emit = "quit_pressed"
 
 [node name="TextureRect" type="TextureRect" parent="VBoxContainer/HBoxContainer" unique_id=1603106351]
+custom_minimum_size = Vector2(400, 400)
 layout_mode = 2
-size_flags_horizontal = 10
 texture = ExtResource("1_gqxyi")
+expand_mode = 4
+stretch_mode = 3
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1719388801]
 position = Vector2(2, 4)
