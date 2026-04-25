@@ -4,8 +4,9 @@
 [ext_resource type="Texture2D" uid="uid://8uvrpaf3fp8e" path="res://icon.svg" id="2_fa6rc"]
 [ext_resource type="PackedScene" uid="uid://otoc08ucd8fq" path="res://game_ui/hex_options/hex_options.tscn" id="3_4ixg0"]
 
-[node name="BaseHex" type="Node2D" unique_id=432663569]
+[node name="dam_hex" type="Node2D" unique_id=432663569]
 script = ExtResource("1_p54tl")
+hex_category = 3
 
 [node name="Sprites" type="Node2D" parent="." unique_id=1788531617]
 
@@ -52,6 +53,7 @@ scale = Vector2(10, 10)
 gizmo_extents = 0.0
 
 [node name="East" type="Marker2D" parent="HexBoundsMarkers/Corners" unique_id=1802291294]
+visible = false
 position = Vector2(2, 0)
 scale = Vector2(10, 10)
 gizmo_extents = 0.0

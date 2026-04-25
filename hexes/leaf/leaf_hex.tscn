@@ -1,13 +1,12 @@
-[gd_scene format=3 uid="uid://b2fhdtqtvq6fv"]
+[gd_scene format=3 uid="uid://c8kur8txp7nkl"]
 
-[ext_resource type="Script" uid="uid://c503q2ov4usp0" path="res://hexes/base/base_hex.gd" id="1_bnqpj"]
-[ext_resource type="Texture2D" uid="uid://8uvrpaf3fp8e" path="res://icon.svg" id="1_kg2gx"]
-[ext_resource type="PackedScene" uid="uid://otoc08ucd8fq" path="res://game_ui/hex_options/hex_options.tscn" id="3_20gfp"]
-[ext_resource type="Texture2D" uid="uid://b7y0ib27lu5gb" path="res://z_assets/sprites/hexes/empty_hex_sprite.png" id="3_p5w71"]
+[ext_resource type="Script" uid="uid://bf35avki3weyr" path="res://hexes/leaf/leaf_hex.gd" id="1_m22tp"]
+[ext_resource type="Texture2D" uid="uid://8uvrpaf3fp8e" path="res://icon.svg" id="2_7aed5"]
+[ext_resource type="Texture2D" uid="uid://bqcdogxv0gup6" path="res://z_assets/sprites/hexes/leaf_hex_sprite.png" id="3_uq4qs"]
+[ext_resource type="PackedScene" uid="uid://otoc08ucd8fq" path="res://game_ui/hex_options/hex_options.tscn" id="3_xxrbc"]
 
 [node name="BaseHex" type="Node2D" unique_id=432663569]
-script = ExtResource("1_bnqpj")
-hex_category = 4
+script = ExtResource("1_m22tp")
 
 [node name="Sprites" type="Node2D" parent="." unique_id=1788531617]
 
@@ -17,26 +16,26 @@ visible = false
 [node name="Sprite2D2" type="Sprite2D" parent="Sprites/TempOtherSprites" unique_id=1281072366]
 position = Vector2(-9.536743e-07, -17)
 scale = Vector2(0.03, 0.03)
-texture = ExtResource("1_kg2gx")
+texture = ExtResource("2_7aed5")
 
 [node name="Sprite2D3" type="Sprite2D" parent="Sprites/TempOtherSprites" unique_id=1031892425]
 position = Vector2(-15, -8.999999)
 scale = Vector2(0.03, 0.03)
-texture = ExtResource("1_kg2gx")
+texture = ExtResource("2_7aed5")
 
 [node name="Sprite2D4" type="Sprite2D" parent="Sprites/TempOtherSprites" unique_id=743338923]
 position = Vector2(14.919998, -9.08)
 scale = Vector2(0.03, 0.03)
-texture = ExtResource("1_kg2gx")
+texture = ExtResource("2_7aed5")
 
 [node name="Sprite2D5" type="Sprite2D" parent="Sprites/TempOtherSprites" unique_id=114663123]
 position = Vector2(-14.999999, 8.999998)
 scale = Vector2(0.03, 0.03)
-texture = ExtResource("1_kg2gx")
+texture = ExtResource("2_7aed5")
 
 [node name="Sprite2D" type="Sprite2D" parent="Sprites" unique_id=1927785233]
-scale = Vector2(0.15, 0.165)
-texture = ExtResource("3_p5w71")
+scale = Vector2(0.56, 0.59)
+texture = ExtResource("3_uq4qs")
 
 [node name="HexBoundsMarkers" type="Node2D" parent="." unique_id=519870482]
 scale = Vector2(38, 38)
@@ -105,7 +104,7 @@ position = Vector2(-1.5, -0.866)
 scale = Vector2(10, 10)
 gizmo_extents = 0.0
 
-[node name="HexOptions" parent="." unique_id=2025673578 instance=ExtResource("3_20gfp")]
+[node name="HexOptions" parent="." unique_id=2025673578 instance=ExtResource("3_xxrbc")]
 
 [node name="Label" type="Label" parent="." unique_id=1987564325]
 offset_left = -9.0
