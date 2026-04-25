@@ -48,7 +48,6 @@ var FLY_HEX : PackedScene = load("res://hexes/fly/fly_hex.tscn")
 var DAM_HEX : PackedScene = load("res://hexes/dam/dam_hex.tscn")
 var HOUSE_HEX : PackedScene = load("res://hexes/house/house_hex.tscn")
 var FLOWER_HEX : PackedScene = load("res://hexes/decor/decoration_hex.tscn")
-var DATA_CENTER_HEX : PackedScene = load("res://hexes/data_center/data_center_hex.tscn")
 var LEAF_HEX : PackedScene = load("res://hexes/leaf/leaf_hex.tscn")
 var BBERTHA_HEX : PackedScene = load("res://hexes/bbertha/bbertha_hex.tscn")
 
