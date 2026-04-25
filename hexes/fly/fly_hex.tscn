@@ -6,7 +6,6 @@
 
 [node name="FlyHex" type="Node2D" unique_id=432663569]
 script = ExtResource("1_vcn42")
-hex_category = 1
 
 [node name="Sprites" type="Node2D" parent="." unique_id=724530356]
 

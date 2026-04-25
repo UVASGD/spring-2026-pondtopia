@@ -47,13 +47,12 @@ func send_defend_tiles() -> Array[BaseHex]:
 				southward += HexManager.SOUTH
 				defended_tiles.append(get_hex_rel(southward))
 	
-	#TODO: delete when done testing
 	for i : BaseHex in defended_tiles:
 		i.sprites.rotate(PI/4)
+	
 	return defended_tiles
 
 func tick():
-	#TODO: delete when done testing
 	send_defend_tiles()
 
 #running check to see if any connected dam tiles need to be "untriggered"

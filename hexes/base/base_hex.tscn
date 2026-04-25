@@ -7,7 +7,6 @@
 
 [node name="BaseHex" type="Node2D" unique_id=432663569]
 script = ExtResource("1_bnqpj")
-hex_category = 4
 
 [node name="Sprites" type="Node2D" parent="." unique_id=1788531617]
 

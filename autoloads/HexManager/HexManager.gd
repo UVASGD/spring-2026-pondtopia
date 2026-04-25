@@ -19,28 +19,8 @@ enum HexElement {
   WATER,
 }
 
-enum HexCategory {
-	HOUSING,
-	WORK,
-	DECORATION,
-	EMERGENCY,
-	BASE
-}
-
 ## Preloaded hex packed scenes for instantiating hexes
 ## These should be preloaded constants but preloading them causes a cyclic error.
-
-enum HexType {
-	BASEHEX,
-	MIGRATEDHEX,
-	FRUITHEX,
-	FLYHEX,
-	DAMHEX,
-	HOUSEHEX,
-	FLOWERHEX,
-	BBERTHAHEX
-}
-
 var BASE_HEX : PackedScene = load("res://hexes/base/base_hex.tscn")
 var MIGRATED_HEX : PackedScene = load("res://hexes/migrated/migrated_hex.tscn")
 var FRUIT_HEX : PackedScene = load("res://hexes/fruit/fruit_hex.tscn")
@@ -48,6 +28,7 @@ var FLY_HEX : PackedScene = load("res://hexes/fly/fly_hex.tscn")
 var DAM_HEX : PackedScene = load("res://hexes/dam/dam_hex.tscn")
 var HOUSE_HEX : PackedScene = load("res://hexes/house/house_hex.tscn")
 var FLOWER_HEX : PackedScene = load("res://hexes/decor/decoration_hex.tscn")
+var DATA_CENTER_HEX : PackedScene = load("res://hexes/data_center/data_center_hex.tscn")
 var LEAF_HEX : PackedScene = load("res://hexes/leaf/leaf_hex.tscn")
 var BBERTHA_HEX : PackedScene = load("res://hexes/bbertha/bbertha_hex.tscn")
 
@@ -155,8 +136,6 @@ func create_hex(grid_coords: Vector2i, hex_scene : PackedScene, type: BaseHex.CR
 	_register_hex_at(hex, grid_coords)
 	# call on_added_to_map for unique behavior
 	hex.on_added_to_map(type, extra_params)
-	hex.data.hex_scene_type = hex_scene
-
 	return hex
 
 ## See create_hex().

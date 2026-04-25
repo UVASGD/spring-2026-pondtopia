@@ -6,7 +6,6 @@
 
 [node name="DecorationHex" type="Node2D" unique_id=1683856524]
 script = ExtResource("1_5o4xw")
-hex_category = 2
 metadata/_custom_type_script = "uid://c503q2ov4usp0"
 
 [node name="Sprites" type="Node2D" parent="." unique_id=937847172]
