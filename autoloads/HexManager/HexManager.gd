@@ -29,6 +29,19 @@ var DAM_HEX : PackedScene = load("res://hexes/dam/dam_hex.tscn")
 var HOUSE_HEX : PackedScene = load("res://hexes/house/house_hex.tscn")
 var FLOWER_HEX : PackedScene = load("res://hexes/decor/decoration_hex.tscn")
 var DATA_CENTER_HEX : PackedScene = load("res://hexes/data_center/data_center_hex.tscn")
+var LEAF_HEX : PackedScene = load("res://hexes/leaf/leaf_hex.tscn")
+var BBERTHA_HEX : PackedScene = load("res://hexes/bbertha/bbertha_hex.tscn")
+
+var HEXGRAB : Dictionary[HexType,PackedScene] = {
+	HexType.BASEHEX : load("res://hexes/base/base_hex.tscn"),
+	HexType.MIGRATEDHEX : load("res://hexes/migrated/migrated_hex.tscn"),
+	HexType.FRUITHEX : load("res://hexes/fruit/fruit_hex.tscn"),
+	HexType.FLYHEX : load("res://hexes/fly/fly_hex.tscn"),
+	HexType.DAMHEX : load("res://hexes/dam/dam_hex.tscn"),
+	HexType.HOUSEHEX : load("res://hexes/house/house_hex.tscn"),
+	HexType.FLOWERHEX : load("res://hexes/decor/decoration_hex.tscn"),
+	HexType.BBERTHAHEX : load("res://hexes/bbertha/bbertha_hex.tscn")
+}
 
 ## When set to false, all methods in region Modify will be returned immediately
 var _allow_modify_actions : bool = false
