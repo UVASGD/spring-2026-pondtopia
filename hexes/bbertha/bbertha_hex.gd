@@ -3,13 +3,11 @@ class_name BBerthaHex
 
 #TODO: change this number if we decide upon a tile requirement
 const DEFENSE_REQUIREMENT : int = 0
-const DEFENSE_RANGE : int = 1
+const DEFENSE_RANGE : int = 3
 var defense : bool = false
 
 
 func on_added_to_map(_type: CREATE_TYPE, _extra_params : Array):
-	# cost
-	GameInfo.num_flies -= 5000
 	on_added_to_map_base(_type, _extra_params)
 	var contiguous_dam : Array[BaseHex] = await find_touching_berthas()
 	if contiguous_dam.size() >= DEFENSE_REQUIREMENT:

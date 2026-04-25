@@ -9,7 +9,7 @@ func smite_those_frogs(cur_disaster: String):
 	match cur_disaster:
 		"flood":
 			for hex in HexManager.hex_list:
-				if hex.get_script().get_global_name() == "DamHex":
+				if hex.data.hextype == HexManager.HexType.DAMHEX:
 					for defended_hex in hex.send_defend_tiles():
 						defended.append(defended_hex)
 			
@@ -25,8 +25,7 @@ func smite_those_frogs(cur_disaster: String):
 			
 		"fire":
 			for hex in HexManager.hex_list:
-				# TODO: change LEAF_HEX to sprinkler
-				if hex.hex_scene_type == HexManager.LEAF_HEX:
+				if hex.data.hextype == HexManager.HexType.SPRINKLERHEX:
 					for defended_hex in hex.send_defend_tiles():
 						defended.append(defended_hex)
 			var at_risk = []
@@ -41,7 +40,7 @@ func smite_those_frogs(cur_disaster: String):
 					
 		"earthquake":
 			for hex in HexManager.hex_list:
-				if hex.data.hex_scene_type == HexManager.LEAF_HEX:
+				if hex.data.hextype == HexManager.HexType.LEAFHEX:
 					for defended_hex in hex.send_defend_tiles():
 						defended.append(defended_hex)
 			var at_risk = []
@@ -64,15 +63,15 @@ func smite_those_frogs(cur_disaster: String):
 					var hex_coords = hex.data.grid_coords
 					temp_hex.remove_from_map()
 					hex.remove_from_map()
-					HexManager.create_hex(temp_hex_coords, hex.data.hex_scene_type, BaseHex.CREATE_TYPE.FADE_IN)
-					HexManager.create_hex(hex_coords, temp_hex.data.hex_scene_type, BaseHex.CREATE_TYPE.FADE_IN)
+					HexManager.create_hex(temp_hex_coords, HexManager.HEXGRAB[hex.data.hextype], BaseHex.CREATE_TYPE.FADE_IN)
+					HexManager.create_hex(hex_coords, HexManager.HEXGRAB[temp_hex.data.hextype], BaseHex.CREATE_TYPE.FADE_IN)
 					count += 1
 				else: break
 					
 			
 		"meteor":
 			for hex in HexManager.hex_list:
-				if hex.get_script().get_global_name() == "DamHex":
+				if hex.data.hextype == HexManager.HexType.DAMHEX:
 					for defended_hex in hex.send_defend_tiles():
 						defended.append(defended_hex)
 			

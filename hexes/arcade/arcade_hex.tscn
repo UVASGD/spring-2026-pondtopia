@@ -1,29 +1,28 @@
-[gd_scene format=3 uid="uid://cihdlvk3kltth"]
+[gd_scene format=3 uid="uid://duexri31ep5yg"]
 
-[ext_resource type="Script" uid="uid://cxfy0d0uyaq5n" path="res://hexes/decor/decoration_hex.gd" id="1_5o4xw"]
-[ext_resource type="Texture2D" uid="uid://1awj4js02567" path="res://z_assets/sprites/hexes/Relaxationtile.png" id="2_ao7nc"]
-[ext_resource type="Script" uid="uid://c3gsow6w27hem" path="res://hexes/base/hex_data.gd" id="2_xmk1g"]
-[ext_resource type="PackedScene" uid="uid://otoc08ucd8fq" path="res://game_ui/hex_options/hex_options.tscn" id="3_xmk1g"]
+[ext_resource type="Script" uid="uid://depygvnav1o5q" path="res://hexes/arcade/arcade_hex.gd" id="1_e5dgx"]
+[ext_resource type="Script" uid="uid://c3gsow6w27hem" path="res://hexes/base/hex_data.gd" id="2_t1iv6"]
+[ext_resource type="Texture2D" uid="uid://bour1oo6061p2" path="res://z_assets/sprites/hexes/arcade_hex_sprite.png" id="3_t1iv6"]
+[ext_resource type="PackedScene" uid="uid://otoc08ucd8fq" path="res://game_ui/hex_options/hex_options.tscn" id="4_bbr1v"]
 
-[sub_resource type="Resource" id="Resource_7djcy"]
-script = ExtResource("2_xmk1g")
+[sub_resource type="Resource" id="Resource_im12q"]
+script = ExtResource("2_t1iv6")
 cost = 100
-hextype = 6
+hextype = 13
 metadata/_custom_type_script = "uid://c3gsow6w27hem"
 
 [node name="DecorationHex" type="Node2D" unique_id=1683856524]
-script = ExtResource("1_5o4xw")
-hex_element = 2
+script = ExtResource("1_e5dgx")
 hex_category = 2
-data = SubResource("Resource_7djcy")
+data = SubResource("Resource_im12q")
 metadata/_custom_type_script = "uid://c503q2ov4usp0"
 
 [node name="Sprites" type="Node2D" parent="." unique_id=937847172]
 
 [node name="Sprite2D" type="Sprite2D" parent="Sprites" unique_id=2131538710]
-position = Vector2(-0.50000095, -2.0000043)
-scale = Vector2(0.286, 0.31599995)
-texture = ExtResource("2_ao7nc")
+position = Vector2(-0.50000095, 2.999996)
+scale = Vector2(0.075, 0.08)
+texture = ExtResource("3_t1iv6")
 
 [node name="HexBoundsMarkers" type="Node2D" parent="." unique_id=1672460390]
 scale = Vector2(38, 38)
@@ -98,4 +97,4 @@ offset_top = -8.0
 offset_right = 31.0
 offset_bottom = 15.0
 
-[node name="HexOptions" parent="." unique_id=2025673578 instance=ExtResource("3_xmk1g")]
+[node name="HexOptions" parent="." unique_id=2025673578 instance=ExtResource("4_bbr1v")]

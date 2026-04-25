@@ -18,6 +18,20 @@ func _on_button_toggled(toggled_on: bool, building_tile: String) -> void:
 				sendtype = HexManager.HexType.DAMHEX
 			"bbertha":
 				sendtype = HexManager.HexType.BBERTHAHEX
+			"leaf":
+				sendtype = HexManager.HexType.LEAFHEX
+			"sprinkler":
+				sendtype = HexManager.HexType.SPRINKLERHEX
+			"datacenter":
+				sendtype = HexManager.HexType.DATACENTERHEX
+			"arcade":
+				sendtype = HexManager.HexType.ARCADEHEX
+			"shrine":
+				sendtype = HexManager.HexType.SHRINEHEX
+			"stump":
+				sendtype = HexManager.HexType.STUMPHOUSEHEX
+			"soup":
+				sendtype = HexManager.HexType.SOUPSHOPHEX
 		GameInfo.cur_selected_tile = sendtype
 		print(GameInfo.cur_selected_tile)
 	else:

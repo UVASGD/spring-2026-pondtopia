@@ -4,9 +4,12 @@
 [ext_resource type="Script" uid="uid://c3gsow6w27hem" path="res://hexes/base/hex_data.gd" id="2_0btu5"]
 [ext_resource type="Texture2D" uid="uid://8uvrpaf3fp8e" path="res://icon.svg" id="2_qqw7x"]
 [ext_resource type="PackedScene" uid="uid://otoc08ucd8fq" path="res://game_ui/hex_options/hex_options.tscn" id="3_108la"]
+[ext_resource type="Texture2D" uid="uid://dgeb3dx4224jk" path="res://z_assets/sprites/hexes/bbertha_hex_sprite.png" id="4_bnbnu"]
 
 [sub_resource type="Resource" id="Resource_bnbnu"]
 script = ExtResource("2_0btu5")
+cost = 1500
+hextype = 7
 metadata/_custom_type_script = "uid://c3gsow6w27hem"
 
 [node name="bbertha_hex" type="Node2D" unique_id=432663569]
@@ -40,8 +43,8 @@ scale = Vector2(0.03, 0.03)
 texture = ExtResource("2_qqw7x")
 
 [node name="Sprite2D" type="Sprite2D" parent="Sprites" unique_id=1927785233]
-scale = Vector2(0.15, 0.15)
-texture = ExtResource("2_qqw7x")
+scale = Vector2(0.55, 0.58)
+texture = ExtResource("4_bnbnu")
 
 [node name="HexBoundsMarkers" type="Node2D" parent="." unique_id=519870482]
 scale = Vector2(38, 38)

@@ -1,10 +1,5 @@
 extends BaseHex
-class_name FlyHex
-
-const FLIES_ADDED:int = 25
+class_name ArcadeHex
 
 func on_added_to_map(_type: CREATE_TYPE, _extra_params : Array):
 	on_added_to_map_base(_type, _extra_params)
-
-func tick():
-	GameInfo.num_flies += FLIES_ADDED
