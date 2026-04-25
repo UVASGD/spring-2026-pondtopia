@@ -53,7 +53,7 @@ var _is_highlighted : bool = false
 ## This node holds the sprites that make up the hex.
 @onready var sprites : Node2D = $Sprites
 ## This resource holds all of the hex data.
-@onready var data : HexData = HexData.new()
+@export var data : HexData = HexData.new()
 
 ## Intended for overriding!
 ## Calling ready in extended versions of BaseHex will override this function. Make sure to call ready_base().
@@ -121,18 +121,22 @@ func on_selected_base() :
 	hex_options.show()
 	
 	# trying out building buttons stuff
-	if GameInfo.cur_selected_tile != "":
+	if GameInfo.cur_selected_tile != HexManager.HexType.BASEHEX:
 		try_deselect()
 		remove_from_map()
-		match GameInfo.cur_selected_tile:
-			"fly":
-				HexManager.create_hex(data.grid_coords, HexManager.FLY_HEX, CREATE_TYPE.INSTANT)
-			"flower":
-				HexManager.create_hex(data.grid_coords, HexManager.FLOWER_HEX, CREATE_TYPE.INSTANT)
-			"house":
-				HexManager.create_hex(data.grid_coords, HexManager.HOUSE_HEX, CREATE_TYPE.INSTANT)
-			"dam":
-				HexManager.create_hex(data.grid_coords, HexManager.DAM_HEX, CREATE_TYPE.INSTANT)
+		var hex_scene : PackedScene = HexManager.HEXGRAB[GameInfo.cur_selected_tile]
+		var hex_object : BaseHex = hex_scene.instantiate()
+		var hexcategory = hex_object.hex_category
+		if hexcategory == HexManager.HexCategory.WORK && GameInfo.happiness < 20:
+			pass #don't make it
+		elif hexcategory == HexManager.HexCategory.HOUSING && GameInfo.happiness < 10:
+			pass #nopers
+		elif hex_object.data.energy_cost < GameInfo.energy:
+			pass #not enough energy
+		elif hex_object.data.cost < GameInfo.num_flies:
+			pass #not enough money
+		else:
+			HexManager.create_hex(data.grid_coords,hex_scene,CREATE_TYPE.INSTANT)
 
 func on_deselected_base() :
 	sprites.modulate.b = 1
