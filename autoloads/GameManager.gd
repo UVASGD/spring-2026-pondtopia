@@ -36,7 +36,8 @@ func tick(_delta: float) :
 				DisasterManager.smite_those_frogs(cur_disaster)
 				GameInfo.disaster_num += 1
 			if GameInfo.disaster_num > 3: GameInfo.disaster_num = 3
-					
+	BarsManager.updateHappy()
+	
 func start_game() :
 	HexManager._allow_modify_actions = true
 	for coord in HexManager.get_coords_in_hexagon(GameInfo.level_radius) :

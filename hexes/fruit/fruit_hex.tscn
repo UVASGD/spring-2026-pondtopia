@@ -7,6 +7,7 @@
 
 [node name="FruitHex" type="Node2D" unique_id=229729213]
 script = ExtResource("1_6c8ni")
+hex_category = 4
 
 [node name="HexBoundsMarkers" type="Node2D" parent="." unique_id=522562309]
 scale = Vector2(38, 38)
