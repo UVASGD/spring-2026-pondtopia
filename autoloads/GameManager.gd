@@ -15,8 +15,10 @@ func _ready() -> void:
 	SignalBus.skip_to_win_pressed.connect(end_game)
 	SignalBus.start_game_pressed.connect(start_game)
 
+
 func _physics_process(_delta: float) -> void:
 	tick(_delta)
+
 
 func tick(_delta: float) :
 	time_since_last_tick += _delta
@@ -36,7 +38,9 @@ func tick(_delta: float) :
 				DisasterManager.smite_those_frogs(cur_disaster)
 				GameInfo.disaster_num += 1
 			if GameInfo.disaster_num > 3: GameInfo.disaster_num = 3
-					
+	BarsManager.updateHappy()
+
+
 func start_game() :
 	HexManager._allow_modify_actions = true
 	for coord in HexManager.get_coords_in_hexagon(GameInfo.level_radius) :
@@ -52,14 +56,17 @@ func start_game() :
 	GameInfo.frog_capacity = 10
 	GameInfo.day_num = 1
 
+
 func end_game() :
 	HexManager.remove_all_hexes()
 	HexManager._allow_modify_actions = false
 	
 	GameInfo.game_running = false
 
+
 func quit_game() :
 	get_tree().quit()
+
 
 #reading from selected save_path to regenerate the game
 func load_file(save_path : String):
