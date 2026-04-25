@@ -7,6 +7,7 @@
 
 [node name="DataCenterHex" type="Node2D" unique_id=1285704343]
 script = ExtResource("1_bq2h0")
+hex_element = 2
 
 [node name="Sprites" type="Node2D" parent="." unique_id=1440780456]
 
