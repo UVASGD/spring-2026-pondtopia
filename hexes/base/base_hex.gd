@@ -132,6 +132,8 @@ func on_selected_base() :
 				HexManager.create_hex(data.grid_coords, HexManager.HOUSE_HEX, CREATE_TYPE.INSTANT)
 			"dam":
 				HexManager.create_hex(data.grid_coords, HexManager.DAM_HEX, CREATE_TYPE.INSTANT)
+			"leaf":
+				HexManager.create_hex(data.grid_coords, HexManager.LEAF_HEX, CREATE_TYPE.INSTANT)
 
 func on_deselected_base() :
 	sprites.modulate.b = 1

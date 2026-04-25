@@ -28,6 +28,7 @@ var FLY_HEX : PackedScene = load("res://hexes/fly/fly_hex.tscn")
 var DAM_HEX : PackedScene = load("res://hexes/dam/dam_hex.tscn")
 var HOUSE_HEX : PackedScene = load("res://hexes/house/house_hex.tscn")
 var FLOWER_HEX : PackedScene = load("res://hexes/decor/decoration_hex.tscn")
+var LEAF_HEX : PackedScene = load("res://hexes/leaf/leaf_hex.tscn")
 
 ## When set to false, all methods in region Modify will be returned immediately
 var _allow_modify_actions : bool = false
@@ -113,7 +114,6 @@ func create_hex(grid_coords: Vector2i, hex_scene : PackedScene, type: BaseHex.CR
 		return
 	# instantiate
 	var hex : BaseHex = hex_scene.instantiate()
-	hex.data.hex_scene_type = hex_scene
 	# set parent
 	add_child(hex)
 	# set debug id
@@ -123,6 +123,8 @@ func create_hex(grid_coords: Vector2i, hex_scene : PackedScene, type: BaseHex.CR
 	_register_hex_at(hex, grid_coords)
 	# call on_added_to_map for unique behavior
 	hex.on_added_to_map(type, extra_params)
+	hex.data.hex_scene_type = hex_scene
+
 	return hex
 
 ## See create_hex().
