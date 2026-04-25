@@ -19,6 +19,8 @@ class_name BaseHex
 ## 5. You're done! To create special behaviors for your hex, override the functions in base hex (eg tick()). Remember to call the base behavior functions (eg tick_base()) if you want the overriden functions to also do the base functionality. 
 
 @export var hex_element:HexManager.HexElement
+@export var hex_category:HexManager.HexCategory
+@export var data : HexData = HexData.new()
 
 ## Directions (using Vector2 instead of enum so you can add with them, also declared in HexManager for easy access)
 const NW := Vector2i(-1,1)
@@ -51,8 +53,6 @@ var _is_highlighted : bool = false
 @onready var hex_options : HexOptions = $HexOptions
 ## This node holds the sprites that make up the hex.
 @onready var sprites : Node2D = $Sprites
-## This resource holds all of the hex data.
-@onready var data : HexData = HexData.new()
 
 ## Intended for overriding!
 ## Calling ready in extended versions of BaseHex will override this function. Make sure to call ready_base().
@@ -120,18 +120,57 @@ func on_selected_base() :
 	hex_options.show()
 	
 	# trying out building buttons stuff
-	if GameInfo.cur_selected_tile != "":
+	if GameInfo.cur_selected_tile != HexManager.HexType.BASEHEX:
 		try_deselect()
-		remove_from_map()
-		match GameInfo.cur_selected_tile:
-			"fly":
-				HexManager.create_hex(data.grid_coords, HexManager.FLY_HEX, CREATE_TYPE.INSTANT)
-			"flower":
-				HexManager.create_hex(data.grid_coords, HexManager.FLOWER_HEX, CREATE_TYPE.INSTANT)
-			"house":
-				HexManager.create_hex(data.grid_coords, HexManager.HOUSE_HEX, CREATE_TYPE.INSTANT)
-			"dam":
-				HexManager.create_hex(data.grid_coords, HexManager.DAM_HEX, CREATE_TYPE.INSTANT)
+		var hex_scene : PackedScene = HexManager.HEXGRAB[GameInfo.cur_selected_tile]
+		var hex_object : BaseHex = hex_scene.instantiate()
+		var hexcategory = hex_object.hex_category
+		if hexcategory == HexManager.HexCategory.WORK && GameInfo.happiness < 20:
+			print("no happy work")
+		elif hexcategory == HexManager.HexCategory.HOUSING && GameInfo.happiness < 10:
+			print("no happy house")
+		elif hex_object.data.energy_cost > GameInfo.energy:
+			print("Energy: ", GameInfo.energy)
+			print("no energy")
+		elif hex_object.data.cost > GameInfo.num_flies:
+			print("Flies: ", GameInfo.num_flies)
+			print("hex cost: ", hex_object.data.cost)
+			print("no fliessssssssssssssssssssss")
+		else:
+			for hexgrab in HexManager.HEXGRAB:
+				if HexManager.HEXGRAB[hexgrab] == hex_scene:
+					hex_object.data.hextype = hexgrab
+					break
+			if !can_remove_hex(hex_object):
+				return
+			remove_from_map()
+			HexManager.create_hex(data.grid_coords,hex_scene,CREATE_TYPE.INSTANT)
+			BarsManager.updateHappy()
+
+func can_remove_hex(hex:BaseHex) -> bool:
+	var type = hex.data.hextype
+	match hex.data.hextype:
+		HexManager.HexType.ARCADEHEX:
+			if !hex.check_house_nearby():
+				return false
+		HexManager.HexType.DATACENTERHEX:
+			if hex.has_neighbors():
+				print("DATA CENTER: Data center has neighbors. Cannot place")
+				return false
+		HexManager.HexType.HOUSEHEX:
+			if hex.nearby_work_hexes():
+				return false
+		HexManager.HexType.SOUPSHOPHEX:
+			if !hex.nearby_decor_tiles():
+				return false
+	return true
+
+## Returns true if there are any adjacent hexes that are NOT an empty hex
+func has_neighbors() -> bool:
+	for hex in self.get_adjacent_hexes():
+		if hex.hex_category != HexManager.HexCategory.BASE or hex.hex_category != HexManager.HexCategory.EMPTY:
+			return true
+	return false
 
 func on_deselected_base() :
 	sprites.modulate.b = 1

@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://lso2au48o787"]
+
+[ext_resource type="Script" uid="uid://bq3qemee5jfk2" path="res://autoloads/MusicManager.gd" id="1_xif82"]
+[ext_resource type="AudioStream" uid="uid://boa85tknhnbpx" path="res://z_assets/music/Bustling Frog Town.mp3" id="2_6y0k3"]
+
+[node name="MusicManager" type="Node2D" unique_id=997902599]
+script = ExtResource("1_xif82")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=926753062]
+stream = ExtResource("2_6y0k3")
+bus = &"Music"
+
+[connection signal="finished" from="AudioStreamPlayer2D" to="." method="_on_audio_stream_player_2d_finished"]

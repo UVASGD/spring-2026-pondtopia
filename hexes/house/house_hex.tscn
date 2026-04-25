@@ -1,11 +1,20 @@
 [gd_scene format=3 uid="uid://bvym4jqx4oo2q"]
 
-[ext_resource type="Script" uid="uid://b8beifbohoqeb" path="res://hexes/house/housing_tile.gd" id="1_gbvc3"]
+[ext_resource type="Script" uid="uid://b8beifbohoqeb" path="res://hexes/house/house_hex.gd" id="1_gbvc3"]
+[ext_resource type="Script" uid="uid://c3gsow6w27hem" path="res://hexes/base/hex_data.gd" id="2_86251"]
 [ext_resource type="Texture2D" uid="uid://cmju6qf2bf4bd" path="res://z_assets/sprites/hexes/house_hex_sprite.png" id="2_gbvc3"]
 [ext_resource type="PackedScene" uid="uid://otoc08ucd8fq" path="res://game_ui/hex_options/hex_options.tscn" id="3_246br"]
 
+[sub_resource type="Resource" id="Resource_246br"]
+script = ExtResource("2_86251")
+cost = 50
+hextype = 5
+metadata/_custom_type_script = "uid://c3gsow6w27hem"
+
 [node name="house_hex" type="Node2D" unique_id=757595770]
 script = ExtResource("1_gbvc3")
+hex_element = 1
+data = SubResource("Resource_246br")
 metadata/_custom_type_script = "uid://c503q2ov4usp0"
 
 [node name="Sprites" type="Node2D" parent="." unique_id=565859216]

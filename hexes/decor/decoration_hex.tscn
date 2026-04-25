@@ -2,10 +2,20 @@
 
 [ext_resource type="Script" uid="uid://cxfy0d0uyaq5n" path="res://hexes/decor/decoration_hex.gd" id="1_5o4xw"]
 [ext_resource type="Texture2D" uid="uid://1awj4js02567" path="res://z_assets/sprites/hexes/Relaxationtile.png" id="2_ao7nc"]
+[ext_resource type="Script" uid="uid://c3gsow6w27hem" path="res://hexes/base/hex_data.gd" id="2_xmk1g"]
 [ext_resource type="PackedScene" uid="uid://otoc08ucd8fq" path="res://game_ui/hex_options/hex_options.tscn" id="3_xmk1g"]
+
+[sub_resource type="Resource" id="Resource_7djcy"]
+script = ExtResource("2_xmk1g")
+cost = 75
+hextype = 6
+metadata/_custom_type_script = "uid://c3gsow6w27hem"
 
 [node name="DecorationHex" type="Node2D" unique_id=1683856524]
 script = ExtResource("1_5o4xw")
+hex_element = 2
+hex_category = 2
+data = SubResource("Resource_7djcy")
 metadata/_custom_type_script = "uid://c503q2ov4usp0"
 
 [node name="Sprites" type="Node2D" parent="." unique_id=937847172]

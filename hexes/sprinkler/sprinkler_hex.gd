@@ -1,0 +1,14 @@
+extends BaseHex
+class_name SprinklerHex
+
+var defended_tiles : Array[BaseHex] = []
+
+func on_added_to_map(_type: CREATE_TYPE, _extra_params : Array):
+	on_added_to_map_base(_type, _extra_params)
+
+# sending defense from fire
+func send_defend_tiles() -> Array[BaseHex]:
+	defended_tiles = [self]
+	for hex in self.get_adjacent_hexes():
+		defended_tiles.append(hex)
+	return defended_tiles

@@ -2,15 +2,17 @@
 
 [ext_resource type="Script" uid="uid://demh67b4ckedd" path="res://game_ui/game_camera.gd" id="1_6the3"]
 [ext_resource type="Script" uid="uid://bj5ye56nvni8h" path="res://shell_scenes/shell_scene_button.gd" id="2_ja3q7"]
+[ext_resource type="Script" uid="uid://bcuf46drt5q5v" path="res://game_ui/bars.gd" id="3_y54yx"]
 [ext_resource type="Texture2D" uid="uid://dej4gdp3m2iub" path="res://z_assets/sprites/ui/happy_bar_over.png" id="4_a66jl"]
 [ext_resource type="Texture2D" uid="uid://kpm0jca7rlrl" path="res://z_assets/sprites/ui/happy_progress.png" id="5_ja3q7"]
 [ext_resource type="Texture2D" uid="uid://dmqvcex57r3dc" path="res://z_assets/sprites/ui/energy_bar_over.png" id="6_hbhn4"]
-[ext_resource type="Script" uid="uid://dne5abww6im5t" path="res://game_ui/building_popup.gd" id="7_6the3"]
+[ext_resource type="Script" path="res://game_ui/building_popup.gd" id="7_6the3"]
 [ext_resource type="Texture2D" uid="uid://cew31dprjbxtl" path="res://z_assets/sprites/ui/hammer.png" id="7_eilcp"]
 [ext_resource type="Script" uid="uid://bqkfxp5husaqc" path="res://game_ui/trackers.gd" id="7_ja3q7"]
 [ext_resource type="Texture2D" uid="uid://b2jv1g64sbwr" path="res://z_assets/sprites/ui/energy_progress.png" id="7_o8tbw"]
 [ext_resource type="Script" uid="uid://7s0gtce54peh" path="res://game_ui/building_button_select.gd" id="9_aag77"]
-[ext_resource type="PackedScene" uid="uid://dpfgtpxrxum1r" path="res://shell_scenes/pause.tscn" id="10_ja3q7"]
+[ext_resource type="PackedScene" uid="uid://dpfgtpxrxum1r" path="res://game_ui/pause/pause.tscn" id="10_ja3q7"]
+[ext_resource type="PackedScene" uid="uid://ylsx6vptt73i" path="res://game_ui/options/popup_options.tscn" id="11_aag77"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6the3"]
 bg_color = Color(1, 0.79607844, 0.2784314, 1)
@@ -20,21 +22,17 @@ corner_radius_bottom_right = 32
 corner_radius_bottom_left = 32
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o1dak"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
 bg_color = Color(0.282353, 0.705882, 0.227451, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ndf5c"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_thr5o"]
-bg_color = Color(0.282353, 0.705882, 0.227451, 1)
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_k45jv"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bu0qf"]
-bg_color = Color(0.282566, 0.706913, 0.22648, 1)
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0n0x8"]
-
-[sub_resource type="ButtonGroup" id="ButtonGroup_aag77"]
 
 [node name="GameShellScene" type="Node" unique_id=1945027471]
 
@@ -76,6 +74,7 @@ grow_vertical = 2
 [node name="Bars" type="VBoxContainer" parent="UI" unique_id=1710765985]
 offset_right = 256.0
 offset_bottom = 132.0
+script = ExtResource("3_y54yx")
 
 [node name="HappyBar" type="TextureProgressBar" parent="UI/Bars" unique_id=1698050509]
 layout_mode = 2
@@ -85,6 +84,17 @@ texture_over = ExtResource("4_a66jl")
 texture_progress = ExtResource("5_ja3q7")
 texture_progress_offset = Vector2(77, 12)
 
+[node name="Happy" type="RichTextLabel" parent="UI/Bars/HappyBar" unique_id=674777296]
+layout_mode = 0
+offset_left = 74.0
+offset_top = 9.0
+offset_right = 245.0
+offset_bottom = 46.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+text = "100"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="EnergyBar" type="TextureProgressBar" parent="UI/Bars" unique_id=1172527547]
 layout_mode = 2
 max_value = 24.0
@@ -92,6 +102,17 @@ value = 24.0
 texture_over = ExtResource("6_hbhn4")
 texture_progress = ExtResource("7_o8tbw")
 texture_progress_offset = Vector2(77, 12)
+
+[node name="Energy" type="RichTextLabel" parent="UI/Bars/EnergyBar" unique_id=266168383]
+layout_mode = 0
+offset_left = 75.0
+offset_top = 9.0
+offset_right = 245.0
+offset_bottom = 45.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+text = "100"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="ResourceUI" type="HBoxContainer" parent="UI" unique_id=853063437]
 anchors_preset = 1
@@ -193,56 +214,88 @@ metadata/id = "fly"
 [node name="FlowerButton" type="Button" parent="UI/BuildingPopup/BuildScrollContainer/BuildButtonContainer" unique_id=1242161716]
 layout_mode = 2
 theme_override_font_sizes/font_size = 20
-theme_override_styles/pressed = SubResource("StyleBoxFlat_thr5o")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_k45jv")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_o1dak")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ndf5c")
 toggle_mode = true
 text = "Flower | +😄"
 metadata/id = "flower"
 
-[node name="HouseButton" type="Button" parent="UI/BuildingPopup/BuildScrollContainer/BuildButtonContainer" unique_id=1378464808]
+[node name="MushHouseButton" type="Button" parent="UI/BuildingPopup/BuildScrollContainer/BuildButtonContainer" unique_id=1378464808]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 20
-theme_override_styles/pressed = SubResource("StyleBoxFlat_bu0qf")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_0n0x8")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_o1dak")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ndf5c")
 toggle_mode = true
-text = "House | +🐸"
+text = "Mushroom House | +🐸"
 metadata/id = "lilypad"
 
 [node name="DamButton" type="Button" parent="UI/BuildingPopup/BuildScrollContainer/BuildButtonContainer" unique_id=1564599277]
 layout_mode = 2
+theme_override_font_sizes/font_size = 20
+theme_override_styles/pressed = SubResource("StyleBoxFlat_o1dak")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ndf5c")
 toggle_mode = true
 text = "Dam"
 
-[node name="Button2" type="Button" parent="UI/BuildingPopup/BuildScrollContainer/BuildButtonContainer" unique_id=1786294106]
+[node name="BBerthaButton" type="Button" parent="UI/BuildingPopup/BuildScrollContainer/BuildButtonContainer" unique_id=473275641]
 layout_mode = 2
-button_group = SubResource("ButtonGroup_aag77")
-text = "Test Button"
+theme_override_font_sizes/font_size = 20
+theme_override_styles/pressed = SubResource("StyleBoxFlat_o1dak")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ndf5c")
+toggle_mode = true
+text = "Big Bertha"
 
-[node name="Button3" type="Button" parent="UI/BuildingPopup/BuildScrollContainer/BuildButtonContainer" unique_id=473275641]
+[node name="SprinklerButton" type="Button" parent="UI/BuildingPopup/BuildScrollContainer/BuildButtonContainer" unique_id=644610316]
 layout_mode = 2
-text = "Test Button"
-
-[node name="Button4" type="Button" parent="UI/BuildingPopup/BuildScrollContainer/BuildButtonContainer" unique_id=644610316]
-layout_mode = 2
-text = "Test Button
+theme_override_font_sizes/font_size = 20
+theme_override_styles/pressed = SubResource("StyleBoxFlat_o1dak")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ndf5c")
+toggle_mode = true
+text = "Sprinkler
 "
 
-[node name="Button5" type="Button" parent="UI/BuildingPopup/BuildScrollContainer/BuildButtonContainer" unique_id=792676753]
+[node name="DataCenterButton" type="Button" parent="UI/BuildingPopup/BuildScrollContainer/BuildButtonContainer" unique_id=792676753]
 layout_mode = 2
-text = "Test Button"
+theme_override_font_sizes/font_size = 20
+theme_override_styles/pressed = SubResource("StyleBoxFlat_o1dak")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ndf5c")
+toggle_mode = true
+text = "Data Center"
 
-[node name="Button6" type="Button" parent="UI/BuildingPopup/BuildScrollContainer/BuildButtonContainer" unique_id=1151302957]
+[node name="ArcadeButton" type="Button" parent="UI/BuildingPopup/BuildScrollContainer/BuildButtonContainer" unique_id=1151302957]
 layout_mode = 2
-text = "Test Button"
+theme_override_font_sizes/font_size = 20
+theme_override_styles/pressed = SubResource("StyleBoxFlat_o1dak")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ndf5c")
+toggle_mode = true
+text = "Arcade"
 
-[node name="Button7" type="Button" parent="UI/BuildingPopup/BuildScrollContainer/BuildButtonContainer" unique_id=1305256551]
+[node name="StumpHouseButton" type="Button" parent="UI/BuildingPopup/BuildScrollContainer/BuildButtonContainer" unique_id=1305256551]
 layout_mode = 2
-text = "Test Button"
+theme_override_font_sizes/font_size = 20
+theme_override_styles/pressed = SubResource("StyleBoxFlat_o1dak")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ndf5c")
+toggle_mode = true
+text = "Stump House"
 
-[node name="Button8" type="Button" parent="UI/BuildingPopup/BuildScrollContainer/BuildButtonContainer" unique_id=1678381063]
+[node name="SoupShopButton" type="Button" parent="UI/BuildingPopup/BuildScrollContainer/BuildButtonContainer" unique_id=1678381063]
 layout_mode = 2
-text = "Test Button"
+theme_override_font_sizes/font_size = 20
+theme_override_styles/pressed = SubResource("StyleBoxFlat_o1dak")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ndf5c")
+toggle_mode = true
+text = "Soup Shop"
+
+[node name="ShrineButton" type="Button" parent="UI/BuildingPopup/BuildScrollContainer/BuildButtonContainer" unique_id=1796071252]
+layout_mode = 2
+toggle_mode = true
+text = "Shrine"
+
+[node name="LeafButton" type="Button" parent="UI/BuildingPopup/BuildScrollContainer/BuildButtonContainer" unique_id=776256695]
+layout_mode = 2
+toggle_mode = true
+text = "Leaf"
 
 [node name="BuildButton" type="TextureButton" parent="UI/BuildingPopup" unique_id=1876302381]
 layout_mode = 1
@@ -263,12 +316,27 @@ texture_pressed = ExtResource("7_eilcp")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="Pause" parent="." unique_id=816710642 instance=ExtResource("10_ja3q7")]
+[node name="Overlays" type="Node" parent="." unique_id=2131685382]
+
+[node name="Pause" parent="Overlays" unique_id=816710642 instance=ExtResource("10_ja3q7")]
 visible = false
-z_index = 101
+z_index = 100
+
+[node name="Options" parent="Overlays/Pause" unique_id=667572769 instance=ExtResource("11_aag77")]
+visible = false
+z_index = 200
+layout_mode = 1
 
 [connection signal="toggled" from="UI/BuildingPopup/BuildScrollContainer/BuildButtonContainer/FlyButton" to="UI/BuildingPopup/BuildScrollContainer/BuildButtonContainer" method="_on_button_toggled" binds= ["fly"]]
 [connection signal="toggled" from="UI/BuildingPopup/BuildScrollContainer/BuildButtonContainer/FlowerButton" to="UI/BuildingPopup/BuildScrollContainer/BuildButtonContainer" method="_on_button_toggled" binds= ["flower"]]
-[connection signal="toggled" from="UI/BuildingPopup/BuildScrollContainer/BuildButtonContainer/HouseButton" to="UI/BuildingPopup/BuildScrollContainer/BuildButtonContainer" method="_on_button_toggled" binds= ["house"]]
+[connection signal="toggled" from="UI/BuildingPopup/BuildScrollContainer/BuildButtonContainer/MushHouseButton" to="UI/BuildingPopup/BuildScrollContainer/BuildButtonContainer" method="_on_button_toggled" binds= ["house"]]
 [connection signal="toggled" from="UI/BuildingPopup/BuildScrollContainer/BuildButtonContainer/DamButton" to="UI/BuildingPopup/BuildScrollContainer/BuildButtonContainer" method="_on_button_toggled" binds= ["dam"]]
+[connection signal="toggled" from="UI/BuildingPopup/BuildScrollContainer/BuildButtonContainer/BBerthaButton" to="UI/BuildingPopup/BuildScrollContainer/BuildButtonContainer" method="_on_button_toggled" binds= ["bbertha"]]
+[connection signal="toggled" from="UI/BuildingPopup/BuildScrollContainer/BuildButtonContainer/SprinklerButton" to="UI/BuildingPopup/BuildScrollContainer/BuildButtonContainer" method="_on_button_toggled" binds= ["sprinkler"]]
+[connection signal="toggled" from="UI/BuildingPopup/BuildScrollContainer/BuildButtonContainer/DataCenterButton" to="UI/BuildingPopup/BuildScrollContainer/BuildButtonContainer" method="_on_button_toggled" binds= ["datacenter"]]
+[connection signal="toggled" from="UI/BuildingPopup/BuildScrollContainer/BuildButtonContainer/ArcadeButton" to="UI/BuildingPopup/BuildScrollContainer/BuildButtonContainer" method="_on_button_toggled" binds= ["arcade"]]
+[connection signal="toggled" from="UI/BuildingPopup/BuildScrollContainer/BuildButtonContainer/StumpHouseButton" to="UI/BuildingPopup/BuildScrollContainer/BuildButtonContainer" method="_on_button_toggled" binds= ["stump"]]
+[connection signal="toggled" from="UI/BuildingPopup/BuildScrollContainer/BuildButtonContainer/SoupShopButton" to="UI/BuildingPopup/BuildScrollContainer/BuildButtonContainer" method="_on_button_toggled" binds= ["soup"]]
+[connection signal="toggled" from="UI/BuildingPopup/BuildScrollContainer/BuildButtonContainer/ShrineButton" to="UI/BuildingPopup/BuildScrollContainer/BuildButtonContainer" method="_on_button_toggled" binds= ["shrine"]]
+[connection signal="toggled" from="UI/BuildingPopup/BuildScrollContainer/BuildButtonContainer/LeafButton" to="UI/BuildingPopup/BuildScrollContainer/BuildButtonContainer" method="_on_button_toggled" binds= ["leaf"]]
 [connection signal="pressed" from="UI/BuildingPopup/BuildButton" to="UI/BuildingPopup" method="_on_build_button_pressed"]
