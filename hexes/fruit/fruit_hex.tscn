@@ -87,7 +87,6 @@ vframes = 10
 frame = 2
 
 [node name="FruitSprite" type="Sprite2D" parent="Sprites" unique_id=851043240]
-visible = false
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("1_o3l72")
 hframes = 2

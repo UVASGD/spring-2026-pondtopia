@@ -53,25 +53,24 @@ func tick(_delta: float) :
 	#BarsManager.updateHappy()
 
 
-func start_game() :
-	HexManager._allow_modify_actions = true
-	for coord in HexManager.get_coords_in_hexagon(GameInfo.level_radius) :
-		HexManager.create_hex(coord, HexManager.FRUIT_HEX, BaseHex.CREATE_TYPE.FADE_IN, [randi_range(0,3)])
+func start_game(state : int) :
+	if !SaveManager.load_game(state):
+		HexManager._allow_modify_actions = true
+		for coord in HexManager.get_coords_in_hexagon(GameInfo.level_radius):
+			HexManager.create_hex(coord, HexManager.FRUIT_HEX, BaseHex.CREATE_TYPE.FADE_IN, [randi_range(0,3)])
+		
+		GameInfo.disaster_arr.shuffle()
+		GameInfo.disaster_arr.append("meteor")
+		GameInfo.num_flies = 200
+		GameInfo.num_frogs = 1
+		GameInfo.frog_capacity = 10
+		GameInfo.day_num = 1
+		GameInfo.happiness = 100
+		GameInfo.energy = 100
+		SaveManager.city_name = "City %d" % state
 	
-	# start day tracking timer, randomize disaster order, reset stats
 	tick_counter = 0
 	GameInfo.game_running = true
-	GameInfo.disaster_arr.shuffle()
-	GameInfo.disaster_arr.append("meteor")
-	GameInfo.num_flies = 200
-	GameInfo.num_frogs = 1
-	GameInfo.frog_capacity = 10
-	GameInfo.day_num = 1
-	GameInfo.happiness = 100
-	GameInfo.energy = 100
-	BarsManager.updateHappy()
-
-	SaveManager.city_name = "City %d" % args[0]
 
 func end_game() :
 	HexManager.remove_all_hexes()
@@ -83,7 +82,7 @@ func end_game() :
 func quit_game() :
 	get_tree().quit()
 
-
+"""
 #reading from selected save_path to regenerate the game
 func load_file(save_path : String):
 	#base hex scenes to prepare for create_hex reading from save
@@ -96,3 +95,4 @@ func load_file(save_path : String):
 	#hex map loading
 	for i in loaded_save.hex_list:
 		HexManager.create_hex(i.coords,hex_type_to_scene.get(i.type),BaseHex.CREATE_TYPE.INSTANT,i.extra_params)
+"""

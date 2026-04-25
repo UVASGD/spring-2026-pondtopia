@@ -1,10 +1,9 @@
 extends Control
 
-@onready var buttons = [$VBoxContainer/HBoxContainer/ButtonsContainer/Save1, $VBoxContainer/HBoxContainer/ButtonsContainer/Save2, $VBoxContainer/HBoxContainer/ButtonsContainer/Save3]
-@onready var test = $VBoxContainer/HBoxContainer/ButtonsContainer/Save1
-@onready var cont = $VBoxContainer/HBoxContainer/RightBox/Continue
-@onready var newSave = $VBoxContainer/HBoxContainer/RightBox/NewSave
-@onready var img = $VBoxContainer/HBoxContainer/RightBox/FrogImg
+@onready var buttons = [$ButtonsContainer/Save1, $ButtonsContainer/Save2, $ButtonsContainer/Save3]
+@onready var cont = $RightBox/Continue
+@onready var newSave = $RightBox/NewSave
+@onready var img = $Mascot
 
 var names : Array
 var states : Array[bool] = [false, false, false]
@@ -45,7 +44,7 @@ func button_toggled(pressed : bool, num : int) :
 
 func on_play_pressed() :
 	switch_scene_()
-	SignalBus.emit_signal("start_game_pressed", [cur_pressed])
+	SignalBus.emit_signal("start_game_pressed", cur_pressed)
 
 func switch_scene_() :
 	ShellSceneManager.close_overlay_panel()

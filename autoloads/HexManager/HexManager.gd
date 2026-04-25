@@ -186,6 +186,7 @@ func create_hex(grid_coords: Vector2i, hex_scene : PackedScene, type: BaseHex.CR
 			hex.data.hextype = hexgrab
 			break
 	
+	print(hex_scene, " with parameters: ", extra_params)
 	hex.on_added_to_map(type, extra_params)
 
 	return hex

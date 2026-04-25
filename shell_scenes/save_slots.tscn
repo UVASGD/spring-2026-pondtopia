@@ -2,9 +2,10 @@
 
 [ext_resource type="Script" uid="uid://cpvl1fw8f083l" path="res://shell_scenes/save_slots.gd" id="1_4cstd"]
 [ext_resource type="Script" uid="uid://bj5ye56nvni8h" path="res://shell_scenes/shell_scene_button.gd" id="1_oxt1w"]
-[ext_resource type="Texture2D" uid="uid://p614qa2bt4ch" path="res://z_assets/sprites/main_menu/main_menu_frog.png" id="2_4cstd"]
 [ext_resource type="Theme" uid="uid://c2ad1naasnhr3" path="res://z_assets/other/button_theme.tres" id="2_36yid"]
+[ext_resource type="Texture2D" uid="uid://dqpe8kuafptb0" path="res://z_assets/sprites/main_menu/pontopia_title.png" id="2_ya6r4"]
 [ext_resource type="FontFile" uid="uid://b68gogaqrgpht" path="res://z_assets/other/NukaMono.ttf" id="5_37k4t"]
+[ext_resource type="Texture2D" uid="uid://nh1lglgwsqrs" path="res://z_assets/sprites/main_menu/frog with construction hat.png" id="6_ya6r4"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_37k4t"]
 bg_color = Color(0.16470589, 0.31764707, 0.26666668, 1)
@@ -18,60 +19,65 @@ layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_4cstd")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1322681973]
+[node name="Mascot" type="TextureRect" parent="." unique_id=737798202]
+layout_mode = 0
+offset_left = 535.0
+offset_top = 107.00001
+offset_right = 1815.0
+offset_bottom = 1387.0
+scale = Vector2(0.45, 0.45)
+size_flags_horizontal = 10
+texture = ExtResource("6_ya6r4")
+
+[node name="Title" type="TextureRect" parent="." unique_id=1893183]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 237.0
-offset_top = 33.5
-offset_right = 943.0
-offset_bottom = 546.5
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 201.0
+offset_top = -300.0
+offset_right = 951.0
+offset_bottom = 550.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 10
+texture = ExtResource("2_ya6r4")
 
-[node name="Title" type="Label" parent="VBoxContainer" unique_id=1540126012]
-layout_mode = 2
-size_flags_horizontal = 4
-theme_override_colors/font_color = Color(0.129412, 0.317647, 0.270588, 1)
-theme_override_font_sizes/font_size = 64
-text = "Pondtopia"
-
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=245117347]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 6
-theme_override_constants/separation = 100
-
-[node name="ButtonsContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer" unique_id=380992561]
-custom_minimum_size = Vector2(400, 0)
-layout_mode = 2
+[node name="ButtonsContainer" type="VBoxContainer" parent="." unique_id=380992561]
+custom_minimum_size = Vector2(400, 76)
+layout_mode = 0
+offset_left = 140.0
+offset_top = 166.5
+offset_right = 540.0
+offset_bottom = 566.5
 theme_override_constants/separation = 32
 
-[node name="Save1" type="Button" parent="VBoxContainer/HBoxContainer/ButtonsContainer" unique_id=2099464037]
-custom_minimum_size = Vector2(0, 76)
+[node name="Save1" type="Button" parent="ButtonsContainer" unique_id=2099464037]
 layout_mode = 2
+size_flags_vertical = 3
 theme = ExtResource("2_36yid")
 toggle_mode = true
 text = "Save 1"
 
-[node name="Save2" type="Button" parent="VBoxContainer/HBoxContainer/ButtonsContainer" unique_id=1278931718]
-custom_minimum_size = Vector2(0, 76)
+[node name="Save2" type="Button" parent="ButtonsContainer" unique_id=1278931718]
 layout_mode = 2
+size_flags_vertical = 3
 theme = ExtResource("2_36yid")
 toggle_mode = true
 text = "Save 2"
 
-[node name="Save3" type="Button" parent="VBoxContainer/HBoxContainer/ButtonsContainer" unique_id=902455310]
-custom_minimum_size = Vector2(0, 76)
+[node name="Save3" type="Button" parent="ButtonsContainer" unique_id=902455310]
 layout_mode = 2
+size_flags_vertical = 3
 theme = ExtResource("2_36yid")
 toggle_mode = true
 text = "Save 3"
 
-[node name="Back" type="Button" parent="VBoxContainer/HBoxContainer/ButtonsContainer" unique_id=1045350316]
-custom_minimum_size = Vector2(0, 76)
+[node name="Back" type="Button" parent="ButtonsContainer" unique_id=1045350316]
 layout_mode = 2
+size_flags_vertical = 3
 theme = ExtResource("2_36yid")
 text = "Back"
 script = ExtResource("1_oxt1w")
@@ -79,17 +85,15 @@ switch_scene = true
 allow_quick_key = true
 switch_to = "main_menu"
 
-[node name="RightBox" type="Control" parent="VBoxContainer/HBoxContainer" unique_id=166688639]
+[node name="RightBox" type="Control" parent="." unique_id=166688639]
 custom_minimum_size = Vector2(400, 400)
-layout_mode = 2
+anchors_preset = 0
+offset_left = 612.0
+offset_top = 166.5
+offset_right = 1012.0
+offset_bottom = 566.5
 
-[node name="ColorRect" type="Panel" parent="VBoxContainer/HBoxContainer/RightBox" unique_id=1317972333]
-layout_mode = 0
-offset_right = 400.0
-offset_bottom = 400.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_37k4t")
-
-[node name="Continue" type="Control" parent="VBoxContainer/HBoxContainer/RightBox" unique_id=1057176122]
+[node name="Continue" type="Control" parent="RightBox" unique_id=1057176122]
 visible = false
 texture_filter = 1
 custom_minimum_size = Vector2(400, 400)
@@ -97,7 +101,13 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="Title" type="RichTextLabel" parent="VBoxContainer/HBoxContainer/RightBox/Continue" unique_id=1771450746]
+[node name="ColorRect" type="Panel" parent="RightBox/Continue" unique_id=173859260]
+layout_mode = 0
+offset_right = 400.0
+offset_bottom = 400.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_37k4t")
+
+[node name="Title" type="RichTextLabel" parent="RightBox/Continue" unique_id=1771450746]
 texture_filter = 1
 layout_mode = 0
 offset_top = 15.0
@@ -110,7 +120,7 @@ text = "City Name"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="GridContainer" type="GridContainer" parent="VBoxContainer/HBoxContainer/RightBox/Continue" unique_id=300240541]
+[node name="GridContainer" type="GridContainer" parent="RightBox/Continue" unique_id=300240541]
 layout_mode = 0
 offset_top = 140.0
 offset_right = 400.0
@@ -119,7 +129,7 @@ theme_override_constants/h_separation = 0
 theme_override_constants/v_separation = 0
 columns = 2
 
-[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/HBoxContainer/RightBox/Continue/GridContainer" unique_id=293984259]
+[node name="RichTextLabel" type="RichTextLabel" parent="RightBox/Continue/GridContainer" unique_id=293984259]
 custom_minimum_size = Vector2(200, 50)
 layout_mode = 2
 theme_override_colors/default_color = Color(0.54509807, 0.7254902, 0.4509804, 1)
@@ -129,7 +139,7 @@ text = "Day:"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="RichTextLabel2" type="RichTextLabel" parent="VBoxContainer/HBoxContainer/RightBox/Continue/GridContainer" unique_id=577948977]
+[node name="RichTextLabel2" type="RichTextLabel" parent="RightBox/Continue/GridContainer" unique_id=577948977]
 custom_minimum_size = Vector2(200, 50)
 layout_mode = 2
 theme_override_colors/default_color = Color(0.54509807, 0.7254902, 0.4509804, 1)
@@ -139,7 +149,7 @@ text = "Flies:"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="DayNum" type="RichTextLabel" parent="VBoxContainer/HBoxContainer/RightBox/Continue/GridContainer" unique_id=950157592]
+[node name="DayNum" type="RichTextLabel" parent="RightBox/Continue/GridContainer" unique_id=950157592]
 custom_minimum_size = Vector2(200, 100)
 layout_mode = 2
 theme_override_colors/default_color = Color(0.54509807, 0.7254902, 0.4509804, 1)
@@ -149,7 +159,7 @@ text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="FlyNum" type="RichTextLabel" parent="VBoxContainer/HBoxContainer/RightBox/Continue/GridContainer" unique_id=473079990]
+[node name="FlyNum" type="RichTextLabel" parent="RightBox/Continue/GridContainer" unique_id=473079990]
 custom_minimum_size = Vector2(200, 100)
 layout_mode = 2
 theme_override_colors/default_color = Color(0.54509807, 0.7254902, 0.4509804, 1)
@@ -159,7 +169,7 @@ text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Control" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/RightBox/Continue" unique_id=190229467]
+[node name="Control" type="HBoxContainer" parent="RightBox/Continue" unique_id=190229467]
 layout_mode = 0
 offset_top = 275.0
 offset_right = 400.0
@@ -167,7 +177,7 @@ offset_bottom = 400.0
 theme_override_constants/separation = 10
 alignment = 1
 
-[node name="Button" type="Button" parent="VBoxContainer/HBoxContainer/RightBox/Continue/Control" unique_id=205857501]
+[node name="Button" type="Button" parent="RightBox/Continue/Control" unique_id=205857501]
 custom_minimum_size = Vector2(185, 65)
 layout_mode = 2
 size_flags_vertical = 4
@@ -175,7 +185,7 @@ theme = ExtResource("2_36yid")
 theme_override_font_sizes/font_size = 30
 text = "Play"
 
-[node name="Button2" type="Button" parent="VBoxContainer/HBoxContainer/RightBox/Continue/Control" unique_id=982914765]
+[node name="Button2" type="Button" parent="RightBox/Continue/Control" unique_id=982914765]
 custom_minimum_size = Vector2(185, 65)
 layout_mode = 2
 size_flags_vertical = 4
@@ -183,7 +193,7 @@ theme = ExtResource("2_36yid")
 theme_override_font_sizes/font_size = 30
 text = "Delete"
 
-[node name="NewSave" type="Control" parent="VBoxContainer/HBoxContainer/RightBox" unique_id=190261644]
+[node name="NewSave" type="Control" parent="RightBox" unique_id=190261644]
 visible = false
 texture_filter = 1
 custom_minimum_size = Vector2(400, 400)
@@ -191,7 +201,13 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="Title" type="RichTextLabel" parent="VBoxContainer/HBoxContainer/RightBox/NewSave" unique_id=485173138]
+[node name="ColorRect" type="Panel" parent="RightBox/NewSave" unique_id=291343180]
+layout_mode = 0
+offset_right = 400.0
+offset_bottom = 400.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_37k4t")
+
+[node name="Title" type="RichTextLabel" parent="RightBox/NewSave" unique_id=485173138]
 texture_filter = 1
 layout_mode = 0
 offset_top = 15.0
@@ -204,7 +220,7 @@ text = "New Save"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Button" type="Button" parent="VBoxContainer/HBoxContainer/RightBox/NewSave" unique_id=864594339]
+[node name="Button" type="Button" parent="RightBox/NewSave" unique_id=864594339]
 custom_minimum_size = Vector2(185, 65)
 layout_mode = 0
 offset_left = 107.0
@@ -216,21 +232,12 @@ theme = ExtResource("2_36yid")
 theme_override_font_sizes/font_size = 30
 text = "Start"
 
-[node name="FrogImg" type="TextureRect" parent="VBoxContainer/HBoxContainer/RightBox" unique_id=1603106351]
-layout_mode = 0
-offset_right = 400.0
-offset_bottom = 400.0
-size_flags_horizontal = 10
-texture = ExtResource("2_4cstd")
-expand_mode = 4
-stretch_mode = 3
-
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1719388801]
 position = Vector2(2, 4)
 
-[connection signal="toggled" from="VBoxContainer/HBoxContainer/ButtonsContainer/Save1" to="." method="button_toggled" binds= [0]]
-[connection signal="toggled" from="VBoxContainer/HBoxContainer/ButtonsContainer/Save2" to="." method="button_toggled" binds= [1]]
-[connection signal="toggled" from="VBoxContainer/HBoxContainer/ButtonsContainer/Save3" to="." method="button_toggled" binds= [2]]
-[connection signal="pressed" from="VBoxContainer/HBoxContainer/RightBox/Continue/Control/Button" to="." method="on_play_pressed"]
-[connection signal="pressed" from="VBoxContainer/HBoxContainer/RightBox/Continue/Control/Button2" to="." method="delete_save"]
-[connection signal="pressed" from="VBoxContainer/HBoxContainer/RightBox/NewSave/Button" to="." method="on_play_pressed"]
+[connection signal="toggled" from="ButtonsContainer/Save1" to="." method="button_toggled" binds= [0]]
+[connection signal="toggled" from="ButtonsContainer/Save2" to="." method="button_toggled" binds= [1]]
+[connection signal="toggled" from="ButtonsContainer/Save3" to="." method="button_toggled" binds= [2]]
+[connection signal="pressed" from="RightBox/Continue/Control/Button" to="." method="on_play_pressed"]
+[connection signal="pressed" from="RightBox/Continue/Control/Button2" to="." method="delete_save"]
+[connection signal="pressed" from="RightBox/NewSave/Button" to="." method="on_play_pressed"]

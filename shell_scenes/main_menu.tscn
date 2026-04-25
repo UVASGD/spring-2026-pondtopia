@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://dd71ltua8vpqj"]
 
-[ext_resource type="Theme" uid="uid://c2ad1naasnhr3" path="res://z_assets/other/button_theme.tres" id="1_4ange"]
 [ext_resource type="Texture2D" uid="uid://dqpe8kuafptb0" path="res://z_assets/sprites/main_menu/pontopia_title.png" id="1_4ange"]
 [ext_resource type="Script" uid="uid://bj5ye56nvni8h" path="res://shell_scenes/shell_scene_button.gd" id="1_u5tdt"]
 [ext_resource type="Texture2D" uid="uid://nh1lglgwsqrs" path="res://z_assets/sprites/main_menu/frog with construction hat.png" id="2_hh8ys"]
+[ext_resource type="Theme" uid="uid://c2ad1naasnhr3" path="res://z_assets/other/button_theme.tres" id="4_w7w0d"]
 
 [node name="MainMenu" type="Control" unique_id=1283535406]
 layout_mode = 3
@@ -27,86 +27,60 @@ grow_vertical = 2
 size_flags_horizontal = 10
 texture = ExtResource("1_4ange")
 
-[node name="ButtonsContainer" type="VBoxContainer" parent="." unique_id=380992561]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -329.0
-offset_top = -181.0
-offset_right = -71.0
-offset_bottom = 280.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/separation = 20
+[node name="ButtonsContainer" type="VBoxContainer" parent="." unique_id=760935414]
+custom_minimum_size = Vector2(400, 76)
+layout_mode = 0
+offset_left = 140.0
+offset_top = 166.5
+offset_right = 540.0
+offset_bottom = 566.5
+theme_override_constants/separation = 32
 
-[node name="New Game" type="Button" parent="ButtonsContainer" unique_id=2099464037]
+[node name="Start" type="Button" parent="ButtonsContainer" unique_id=709712244]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.12941177, 0.31764707, 0.27058825, 1)
-theme_override_font_sizes/font_size = 40
-theme_override_styles/normal = SubResource("StyleBoxFlat_hh8ys")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_4ange")
-theme_override_styles/hover = SubResource("StyleBoxFlat_4ange")
-text = "New City"
-script = ExtResource("1_u5tdt")
-emit_signal_ = true
-switch_scene = true
-allow_quick_key = true
-signal_to_emit = "start_game_pressed"
-emit_order = 1
-switch_to = "game"
-
-[node name="Continue" type="Button" parent="ButtonsContainer" unique_id=1278931718]
-custom_minimum_size = Vector2(0, 76)
-layout_mode = 2
-theme = ExtResource("1_4ange")
+size_flags_vertical = 3
+theme = ExtResource("4_w7w0d")
 text = "Start"
 script = ExtResource("1_u5tdt")
-emit_signal_ = true
 switch_scene = true
-emit_order = 1
 switch_to = "save"
 
-[node name="Options" type="Button" parent="ButtonsContainer" unique_id=902455310]
-custom_minimum_size = Vector2(0, 76)
+[node name="Options" type="Button" parent="ButtonsContainer" unique_id=1266166778]
 layout_mode = 2
-theme = ExtResource("1_4ange")
+size_flags_vertical = 3
+theme = ExtResource("4_w7w0d")
 text = "Options"
 script = ExtResource("1_u5tdt")
 switch_scene = true
 switch_to = "options"
 
-[node name="Credits" type="Button" parent="ButtonsContainer" unique_id=2009996100]
-custom_minimum_size = Vector2(0, 76)
+[node name="Credits" type="Button" parent="ButtonsContainer" unique_id=1963933115]
 layout_mode = 2
-theme = ExtResource("1_4ange")
+size_flags_vertical = 3
+theme = ExtResource("4_w7w0d")
 text = "Credits"
 script = ExtResource("1_u5tdt")
 switch_scene = true
 switch_to = "credits"
 
-[node name="Quit" type="Button" parent="ButtonsContainer" unique_id=1045350316]
-custom_minimum_size = Vector2(0, 76)
+[node name="Back" type="Button" parent="ButtonsContainer" unique_id=1975594334]
 layout_mode = 2
-theme = ExtResource("1_4ange")
-text = "Quit"
+size_flags_vertical = 3
+theme = ExtResource("4_w7w0d")
+text = "Back"
 script = ExtResource("1_u5tdt")
 emit_signal_ = true
 signal_to_emit = "quit_pressed"
 
 [node name="Mascot" type="TextureRect" parent="." unique_id=1603106351]
-custom_minimum_size = Vector2(400, 400)
 layout_mode = 0
 offset_left = 535.0
 offset_top = 107.00001
 offset_right = 1815.0
 offset_bottom = 1387.0
 scale = Vector2(0.45, 0.45)
+size_flags_horizontal = 10
 texture = ExtResource("2_hh8ys")
-expand_mode = 4
-stretch_mode = 3
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1719388801]
 position = Vector2(2, 4)

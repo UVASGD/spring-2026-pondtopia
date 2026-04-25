@@ -148,7 +148,6 @@ func on_selected_base() :
 			BarsManager.updateHappy()
 
 func can_remove_hex(hex:BaseHex) -> bool:
-	var type = hex.data.hextype
 	match hex.data.hextype:
 		HexManager.HexType.ARCADEHEX:
 			if !hex.check_house_nearby():

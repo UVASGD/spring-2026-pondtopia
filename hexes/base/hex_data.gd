@@ -7,7 +7,7 @@ class_name HexData
 @export var grid_coords : Vector2i
 @export var hex_type : String
 @export var _extra_params : Array
-var grid_coords : Vector2i
+
 @export var cost : int
 @export var hextype : HexManager.HexType
 @export var energy_cost : int

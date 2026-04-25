@@ -4,7 +4,6 @@ extends Node
 signal happyUpdate(value : int)
 signal energyUpdate(value : int)
 
-# h = 50 + (30*d - (10*w + 5*r))
 func updateHappy():
 	var allhexes : Array[BaseHex] = HexManager.get_hexes_in_hexagon(GameInfo.level_radius)
 	var c : Array[int] = [0,0,0,0] # decoration, work, housing, emergencies

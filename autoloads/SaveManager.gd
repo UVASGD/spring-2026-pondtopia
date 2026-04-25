@@ -9,7 +9,7 @@ var HEX_DICT : Dictionary[String, PackedScene] = {
 	"MigratedHex" : HexManager.MIGRATED_HEX,
 	"FlyHex" : HexManager.FLY_HEX,
 	"DamHex" : HexManager.DAM_HEX,
-	"HousingTile" : HexManager.HOUSE_HEX
+	"HouseHex" : HexManager.HOUSE_HEX
 }
 
 var current_save : int
@@ -47,6 +47,14 @@ func save_file(save_path : String):
 		hexes.append(hex.data)
 	data.hex_list = hexes
 	data.city_name = city_name
+	data.day_num = GameInfo.day_num
+	data.num_flies = GameInfo.num_flies
+	data.disaster_arr = GameInfo.disaster_arr
+	data.num_frogs = GameInfo.num_frogs
+	data.frog_capacity = GameInfo.frog_capacity
+	data.day_num = GameInfo.day_num
+	data.happiness = GameInfo.happiness
+	data.energy = GameInfo.energy
 	
 	ResourceSaver.save(data, save_path)
 
@@ -57,10 +65,16 @@ func load_file(save_path : String):
 	city_name = loaded_save.city_name
 	GameInfo.day_num = loaded_save.day
 	GameInfo.num_flies = loaded_save.num_flies
+	GameInfo.disaster_arr = loaded_save.disaster_arr
+	GameInfo.num_frogs = loaded_save.num_frogs
+	GameInfo.frog_capacity = loaded_save.frog_capacity
+	GameInfo.day_num = loaded_save.day_num
+	GameInfo.happiness = loaded_save.happiness
+	GameInfo.energy = loaded_save.energy
 	#hex map loading
 	HexManager._allow_modify_actions = true
 	for i in loaded_save.hex_list:
-		HexManager.create_hex(i.grid_coords,HEX_DICT[i.hex_type],BaseHex.CREATE_TYPE.INSTANT,i._extra_params)
+		HexManager.create_hex(i.grid_coords,HexManager.HEXGRAB[i.hextype] ,BaseHex.CREATE_TYPE.INSTANT,i._extra_params)
 	GameInfo.num_flies = loaded_save.num_flies
 	return true
 
