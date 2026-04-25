@@ -1,5 +1,5 @@
 extends BaseHex
-class_name FlyHex
+class_name SoupHex
 
 const FLIES_ADDED:int = 25
 

@@ -14,13 +14,33 @@ const SOUTH = Vector2(0,-1)
 const SW = Vector2(-1,0)
 
 enum HexElement {
-  EARTH,
-  WOOD,
-  WATER,
+  	EARTH,
+  	WOOD,
+  	WATER,
+	ULTIMATE
 }
 
 ## Preloaded hex packed scenes for instantiating hexes
 ## These should be preloaded constants but preloading them causes a cyclic error.
+
+enum HexType {
+	BASEHEX,
+	MIGRATEDHEX,
+	FRUITHEX,
+	FLYHEX,
+	DAMHEX,
+	HOUSEHEX,
+	FLOWERHEX,
+	BBERTHAHEX,
+	LEAFHEX,
+	SPRINKLERHEX,
+	DATACENTERHEX,
+	SOUPSHOPHEX,
+	STUMPHOUSEHEX,
+	ARCADEHEX,
+	SHRINEHEX
+}
+
 var BASE_HEX : PackedScene = load("res://hexes/base/base_hex.tscn")
 var MIGRATED_HEX : PackedScene = load("res://hexes/migrated/migrated_hex.tscn")
 var FRUIT_HEX : PackedScene = load("res://hexes/fruit/fruit_hex.tscn")
@@ -31,6 +51,12 @@ var FLOWER_HEX : PackedScene = load("res://hexes/decor/decoration_hex.tscn")
 var DATA_CENTER_HEX : PackedScene = load("res://hexes/data_center/data_center_hex.tscn")
 var LEAF_HEX : PackedScene = load("res://hexes/leaf/leaf_hex.tscn")
 var BBERTHA_HEX : PackedScene = load("res://hexes/bbertha/bbertha_hex.tscn")
+var SPRINKLER_HEX : PackedScene = load("res://hexes/sprinkler/sprinkler_hex.tscn")
+var DATACENTER_HEX : PackedScene = load("res://hexes/data_center/data_center_hex.tscn")
+var SOUPSHOP_HEX : PackedScene = load("res://hexes/soup/soup_hex.tscn")
+var STUMPHOUSE_HEX : PackedScene = load("res://hexes/stump_house/stump_house_hex.tscn")
+var ARCADE_HEX : PackedScene = load("res://hexes/arcade/arcade_hex.tscn")
+var SHRINE_HEX : PackedScene = load("res://hexes/shrine/shrine_hex.tscn")
 
 var HEXGRAB : Dictionary[HexType,PackedScene] = {
 	HexType.BASEHEX : load("res://hexes/base/base_hex.tscn"),
@@ -40,7 +66,14 @@ var HEXGRAB : Dictionary[HexType,PackedScene] = {
 	HexType.DAMHEX : load("res://hexes/dam/dam_hex.tscn"),
 	HexType.HOUSEHEX : load("res://hexes/house/house_hex.tscn"),
 	HexType.FLOWERHEX : load("res://hexes/decor/decoration_hex.tscn"),
-	HexType.BBERTHAHEX : load("res://hexes/bbertha/bbertha_hex.tscn")
+	HexType.BBERTHAHEX : load("res://hexes/bbertha/bbertha_hex.tscn"),
+	HexType.LEAFHEX : load("res://hexes/leaf/leaf_hex.tscn"),
+	HexType.SPRINKLERHEX : load("res://hexes/sprinkler/sprinkler_hex.tscn"),
+	HexType.DATACENTERHEX : load("res://hexes/data_center/data_center_hex.tscn"),
+	HexType.SOUPSHOPHEX : load("res://hexes/soup/soup_hex.tscn"),
+	HexType.ARCADEHEX : load("res://hexes/arcade/arcade_hex.tscn"),
+	HexType.SHRINEHEX : load("res://hexes/shrine/shrine_hex.tscn"),
+	HexType.STUMPHOUSEHEX : load("res://hexes/stump_house/stump_house_hex.tscn")
 }
 
 ## When set to false, all methods in region Modify will be returned immediately
@@ -136,6 +169,11 @@ func create_hex(grid_coords: Vector2i, hex_scene : PackedScene, type: BaseHex.CR
 	_register_hex_at(hex, grid_coords)
 	# call on_added_to_map for unique behavior
 	hex.on_added_to_map(type, extra_params)
+	for hexgrab in HEXGRAB:
+		if HEXGRAB[hexgrab] == hex_scene:
+			hex.data.hextype = hexgrab
+			break
+
 	return hex
 
 ## See create_hex().

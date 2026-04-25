@@ -1,18 +1,18 @@
-[gd_scene format=3 uid="uid://bvym4jqx4oo2q"]
+[gd_scene format=3 uid="uid://jktwy88bv0cq"]
 
-[ext_resource type="Script" uid="uid://b8beifbohoqeb" path="res://hexes/house/house_hex.gd" id="1_gbvc3"]
-[ext_resource type="Script" uid="uid://c3gsow6w27hem" path="res://hexes/base/hex_data.gd" id="2_86251"]
-[ext_resource type="Texture2D" uid="uid://cmju6qf2bf4bd" path="res://z_assets/sprites/hexes/house_hex_sprite.png" id="2_gbvc3"]
-[ext_resource type="PackedScene" uid="uid://otoc08ucd8fq" path="res://game_ui/hex_options/hex_options.tscn" id="3_246br"]
+[ext_resource type="Script" uid="uid://bp8a1h582gtk4" path="res://hexes/stump_house/stump_house_hex.gd" id="1_jn56p"]
+[ext_resource type="Script" uid="uid://c3gsow6w27hem" path="res://hexes/base/hex_data.gd" id="2_ap06y"]
+[ext_resource type="Texture2D" uid="uid://c3cqnw5p7vn40" path="res://z_assets/sprites/hexes/toad_stump_hex_sprite.png" id="3_jn56p"]
+[ext_resource type="PackedScene" uid="uid://otoc08ucd8fq" path="res://game_ui/hex_options/hex_options.tscn" id="4_1rymq"]
 
 [sub_resource type="Resource" id="Resource_246br"]
-script = ExtResource("2_86251")
+script = ExtResource("2_ap06y")
 cost = 100
-hextype = 5
+hextype = 12
 metadata/_custom_type_script = "uid://c3gsow6w27hem"
 
 [node name="house_hex" type="Node2D" unique_id=757595770]
-script = ExtResource("1_gbvc3")
+script = ExtResource("1_jn56p")
 hex_element = 1
 data = SubResource("Resource_246br")
 metadata/_custom_type_script = "uid://c503q2ov4usp0"
@@ -22,7 +22,7 @@ metadata/_custom_type_script = "uid://c503q2ov4usp0"
 [node name="Sprite2D" type="Sprite2D" parent="Sprites" unique_id=950390583]
 position = Vector2(0, 4)
 scale = Vector2(0.08, 0.09)
-texture = ExtResource("2_gbvc3")
+texture = ExtResource("3_jn56p")
 
 [node name="HexBoundsMarkers" type="Node2D" parent="." unique_id=1725985817]
 scale = Vector2(38, 38)
@@ -97,4 +97,4 @@ offset_top = -8.0
 offset_right = 31.0
 offset_bottom = 15.0
 
-[node name="HexOptions" parent="." unique_id=2025673578 instance=ExtResource("3_246br")]
+[node name="HexOptions" parent="." unique_id=2025673578 instance=ExtResource("4_1rymq")]

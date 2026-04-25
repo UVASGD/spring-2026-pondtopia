@@ -9,8 +9,6 @@ const DEFENSE_REQUIREMENT : int = 3
 var defense : bool = false
 
 func on_added_to_map(_type: CREATE_TYPE, _extra_params : Array):
-	# cost
-	GameInfo.num_flies -= 100
 	on_added_to_map_base(_type, _extra_params)
 	var contiguous_dam : Array[BaseHex] = await find_touching_dams()
 	if contiguous_dam.size() >= DEFENSE_REQUIREMENT:

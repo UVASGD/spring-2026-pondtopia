@@ -122,18 +122,23 @@ func on_selected_base() :
 	# trying out building buttons stuff
 	if GameInfo.cur_selected_tile != "":
 		try_deselect()
-		remove_from_map()
-		match GameInfo.cur_selected_tile:
-			"fly":
-				HexManager.create_hex(data.grid_coords, HexManager.FLY_HEX, CREATE_TYPE.INSTANT)
-			"dataCenter":
-				HexManager.create_hex(data.grid_coords, HexManager.DATA_CENTER_HEX, CREATE_TYPE.INSTANT)
-			"flower":
-				HexManager.create_hex(data.grid_coords, HexManager.FLOWER_HEX, CREATE_TYPE.INSTANT)
-			"house":
-				HexManager.create_hex(data.grid_coords, HexManager.HOUSE_HEX, CREATE_TYPE.INSTANT)
-			"dam":
-				HexManager.create_hex(data.grid_coords, HexManager.DAM_HEX, CREATE_TYPE.INSTANT)
+		var hex_scene : PackedScene = HexManager.HEXGRAB[GameInfo.cur_selected_tile]
+		var hex_object : BaseHex = hex_scene.instantiate()
+		var hexcategory = hex_object.hex_category
+		if hexcategory == HexManager.HexCategory.WORK && GameInfo.happiness < 20:
+			print("no happy work")
+		elif hexcategory == HexManager.HexCategory.HOUSING && GameInfo.happiness < 10:
+			print("no happy house")
+		elif hex_object.data.energy_cost > GameInfo.energy:
+			print("Energy: ", GameInfo.energy)
+			print("no energy")
+		elif hex_object.data.cost > GameInfo.num_flies:
+			print("Flies: ", GameInfo.num_flies)
+			print("hex cost: ", hex_object.data.cost)
+			print("no fliessssssssssssssssssssss")
+		else:
+			remove_from_map()
+			HexManager.create_hex(data.grid_coords,hex_scene,CREATE_TYPE.INSTANT)
 
 func on_deselected_base() :
 	sprites.modulate.b = 1
