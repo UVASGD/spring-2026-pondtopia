@@ -1,10 +1,139 @@
 [gd_scene format=3 uid="uid://bhuom4ivjp0be"]
 
 [ext_resource type="Script" uid="uid://bj5ye56nvni8h" path="res://shell_scenes/shell_scene_button.gd" id="1_lxpdn"]
+[ext_resource type="Texture2D" uid="uid://bxku07wn4b0on" path="res://credits/33F86551-91C6-4163-81F4-CA30165A5100.jpg" id="1_ul17v"]
+[ext_resource type="Texture2D" uid="uid://duqrff4oj4lyv" path="res://credits/IMG_8310_Original.jpg" id="3_xbnn2"]
+[ext_resource type="Texture2D" uid="uid://3a7x1fdry854" path="res://credits/PXL_20260313_140417063.jpg" id="4_idks1"]
+[ext_resource type="Texture2D" uid="uid://bn8rumd1bgo6s" path="res://credits/IMG_7630.jpg" id="5_e6am0"]
+[ext_resource type="Texture2D" uid="uid://bwudc58pelr7q" path="res://credits/IMG_6729.jpg" id="6_wrhl7"]
+[ext_resource type="Texture2D" uid="uid://mdhdnify8aew" path="res://credits/image.jpg" id="7_hofbd"]
+[ext_resource type="Texture2D" uid="uid://hjwal7uyjemh" path="res://credits/image0.jpg" id="8_hl21r"]
+[ext_resource type="Texture2D" uid="uid://cf5l4j4a6kok7" path="res://credits/AP1GczNokplOqCqkrGKNcY1K6yTCrNYE5YQITrouc-1LoFaBGwlgr8WQ-bNwlgw775-h1034-s-no.png" id="9_031rn"]
+[ext_resource type="Texture2D" uid="uid://ggua86g84kxx" path="res://credits/aiden.jpg" id="10_pipyw"]
+[ext_resource type="Texture2D" uid="uid://c12bnvrynwcd2" path="res://credits/4A7B8AB5-FF19-406B-B135-0FA87A880584.jpg" id="11_ddcjg"]
+
+[sub_resource type="SystemFont" id="SystemFont_4ec6p"]
+font_names = PackedStringArray("Comic Sans MS")
+font_weight = 999
 
 [node name="Credits" type="Control" unique_id=568560026]
 layout_mode = 3
 anchors_preset = 0
+offset_right = 1150.0
+offset_bottom = 647.0
+
+[node name="Title" type="Label" parent="." unique_id=778105395]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -82.0
+offset_top = 10.0
+offset_right = 82.0
+offset_bottom = 67.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.12941177, 0.31764707, 0.27058825, 1)
+theme_override_fonts/font = SubResource("SystemFont_4ec6p")
+theme_override_font_sizes/font_size = 40
+text = "Credits"
+horizontal_alignment = 1
+
+[node name="AadarshPic" type="Sprite2D" parent="." unique_id=135263517]
+position = Vector2(515, 120.00001)
+scale = Vector2(0.021846067, 0.021846075)
+texture = ExtResource("1_ul17v")
+
+[node name="JasonLabel" type="Label" parent="." unique_id=84177531]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -529.0
+offset_top = 124.0
+offset_right = -276.0
+offset_bottom = 377.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.12941177, 0.31764707, 0.27058825, 1)
+theme_override_fonts/font = SubResource("SystemFont_4ec6p")
+theme_override_font_sizes/font_size = 20
+text = "Programmers:
+Jason Bagel
+Luke Christopher Gouge
+Daria Fastwinska
+Joey (last name)
+Aiden Hahah
+Via (the president)
+Vincent Chen"
+horizontal_alignment = 1
+
+[node name="AadarshLabel" type="Label" parent="." unique_id=826356556]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -558.0
+offset_top = 83.0
+offset_right = -86.5
+offset_bottom = 140.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.12941177, 0.31764707, 0.27058825, 1)
+theme_override_fonts/font = SubResource("SystemFont_4ec6p")
+theme_override_font_sizes/font_size = 20
+text = "Aadarsh Natarajan: Director & Programmer"
+horizontal_alignment = 1
+
+[node name="LaurenLabel" type="Label" parent="." unique_id=86242100]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -4.0
+offset_top = 84.0
+offset_right = 467.5
+offset_bottom = 141.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.12941177, 0.31764707, 0.27058825, 1)
+theme_override_fonts/font = SubResource("SystemFont_4ec6p")
+theme_override_font_sizes/font_size = 20
+text = "Lauren Hruza: Director & Coordinator of stuff"
+horizontal_alignment = 1
+
+[node name="LaurenLabel2" type="Label" parent="." unique_id=1851440976]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -223.0
+offset_top = 180.0
+offset_right = 107.5
+offset_bottom = 273.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.12941177, 0.31764707, 0.27058825, 1)
+theme_override_fonts/font = SubResource("SystemFont_4ec6p")
+theme_override_font_sizes/font_size = 20
+text = "Music:
+Aven the goat
+Megan thee horse"
+horizontal_alignment = 1
+
+[node name="LaurenLabel3" type="Label" parent="." unique_id=1321868426]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 127.0
+offset_top = 149.0
+offset_right = 457.5
+offset_bottom = 274.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.12941177, 0.31764707, 0.27058825, 1)
+theme_override_fonts/font = SubResource("SystemFont_4ec6p")
+theme_override_font_sizes/font_size = 20
+text = "Art:
+Katrina Katrina
+Sallie :)
+Yutao Frog"
+horizontal_alignment = 1
 
 [node name="BackButton" type="Button" parent="." unique_id=1154312429]
 layout_mode = 0
@@ -15,13 +144,50 @@ offset_bottom = 567.0
 text = "Back"
 script = ExtResource("1_lxpdn")
 switch_scene = true
-switch_to = "main_menu"
 allow_quick_key = true
+switch_to = "main_menu"
 
-[node name="TEMP" type="Label" parent="." unique_id=778105395]
-layout_mode = 0
-offset_left = 534.0
-offset_top = 113.0
-offset_right = 698.0
-offset_bottom = 162.0
-text = "Credits"
+[node name="LaurenPic" type="Sprite2D" parent="." unique_id=2108850536]
+position = Vector2(1093, 132)
+scale = Vector2(0.043981478, 0.04398147)
+texture = ExtResource("3_xbnn2")
+
+[node name="LukePic" type="Sprite2D" parent="." unique_id=1818438365]
+position = Vector2(81, 452)
+scale = Vector2(0.02786915, 0.027869156)
+texture = ExtResource("4_idks1")
+
+[node name="VincentPic" type="Sprite2D" parent="." unique_id=1354862472]
+position = Vector2(83, 567)
+scale = Vector2(0.034259297, 0.034259297)
+texture = ExtResource("5_e6am0")
+
+[node name="MeganPic" type="Sprite2D" parent="." unique_id=926320712]
+position = Vector2(671, 336)
+scale = Vector2(0.0451389, 0.04513891)
+texture = ExtResource("6_wrhl7")
+
+[node name="DariaPic" type="Sprite2D" parent="." unique_id=1366089545]
+position = Vector2(180.62502, 451.83334)
+scale = Vector2(0.024884265, 0.024884272)
+texture = ExtResource("7_hofbd")
+
+[node name="JasonPic" type="Sprite2D" parent="." unique_id=1660793957]
+position = Vector2(183, 569)
+scale = Vector2(0.03530096, 0.035300966)
+texture = ExtResource("8_hl21r")
+
+[node name="ViaPic" type="Sprite2D" parent="." unique_id=1509160535]
+position = Vector2(431.99997, 394.00003)
+scale = Vector2(0.10677427, 0.10677428)
+texture = ExtResource("9_031rn")
+
+[node name="Aiden" type="Sprite2D" parent="." unique_id=1025692464]
+position = Vector2(286, 455)
+scale = Vector2(0.03796297, 0.037962984)
+texture = ExtResource("10_pipyw")
+
+[node name="4a7b8ab5Ff19406bB1350fa87a880584" type="Sprite2D" parent="." unique_id=393019929]
+position = Vector2(1015, 335)
+scale = Vector2(0.039409664, 0.039409675)
+texture = ExtResource("11_ddcjg")
