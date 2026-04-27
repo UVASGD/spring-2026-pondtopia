@@ -1,10 +1,14 @@
 extends Node2D
 
 const SONG_ORDER = [
-	"res://z_assets/music/Bustling Frog Town.mp3",
+	"res://z_assets/music/Winding Frog Creek.mp3",
 	"res://z_assets/music/Construction Frogs.mp3",
-	"res://z_assets/music/Froggy Morning.mp3"
+	"res://z_assets/music/Froggy Morning.mp3",
+	"res://z_assets/music/Bustling Frog Town.mp3",
+	"res://z_assets/music/Frog Volcano.mp3"
 ]
+const SONG_LOSE = "res://z_assets/music/Sleeping Frogs.mp3"
+const SONG_WIN = "res://z_assets/music/The Frogs Have Done It.mp3"
 
 var cur_song_ind : int
 
