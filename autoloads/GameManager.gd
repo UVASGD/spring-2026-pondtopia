@@ -69,6 +69,7 @@ func start_game() :
 	GameInfo.happiness = 100
 	GameInfo.energy = 100
 	BarsManager.updateHappy()
+	#MusicManager.switch_song()
 
 
 func end_game() :
